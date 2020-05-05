@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Simulation;
+import java.util.Random;
 
 /**
  *
@@ -11,15 +12,28 @@ package Simulation;
  */
 public class CSACorporate extends Machine implements CSA{ 
     private final double costHour = 60;
-    private double workingTime = 0;
+    private double workingTime = 0;    
     private boolean active = false; //is this CSA woking now?, might be redundant
     private int shift = 0;
+    private int customers = 0;
+    private TruncNormal tr;
     
     public CSACorporate(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN) {
         //TODO set the parameter of the actual distribution
         super(q,s,e,n);
         shift = shiftN;
+        tr = new TruncNormal(1000);  //TODO set parameters, in minutes/seconds/hours?
     }
+    
+    public void execute(int type, double tme) {
+        //TODO override -> check time shift, update counts, ...
+        super.execute(type, tme);
+    }
+    
+    private void startProduction() {
+        //TODO override -> use TruncNorm instead of exponential
+    }
+    
     
     public boolean getActive() {
         return active;
@@ -44,19 +58,9 @@ public class CSACorporate extends Machine implements CSA{
     
     public double getWorkingTime() {
         return workingTime;
-    }
+    }          
     
-    //TODO is it the correct class? arrivals
-    private static double drawNonstatPoisson(double[] rates, double[] times) {
-        //8am-6pm: 1/minute
-        //6pm-8am: 0.2/minute
-        return 0;
-    }
-    
-    private static double drawTrunNorm(double mean, double sd, double min) {
-        //mean: 3.6 min
-        //sd: 1.2 min
-        //min: 45 s
-        return 0;
+    public int getTotalCustomers() {
+        return customers;
     }
 }
