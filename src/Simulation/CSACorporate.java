@@ -3,7 +3,7 @@ package Simulation;
 public class CSACorporate extends Machine implements CSA{ 
     private final double costHour = 60;
     private double workingTime = 0;    
-    private boolean active = true; //is this CSA woking now?, might be redundant
+    private boolean active = true; //is this CSA working now?, might be redundant
     private int shift = 0;
     private int customers = 0;
     private TruncNormal tr;
@@ -31,7 +31,7 @@ public class CSACorporate extends Machine implements CSA{
         // set status to busy
         status='b';
 
-        customers++;        
+        customers++;
     }
     
     @Override

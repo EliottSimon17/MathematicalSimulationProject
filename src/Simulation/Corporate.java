@@ -3,6 +3,7 @@ package Simulation;
 import java.util.Random;
 
 public class Corporate extends Product {
+    private boolean being_served = false;
 
     public double getPoissonRandom(double time) {
         double ratePerMinutes = 0;
@@ -19,6 +20,9 @@ public class Corporate extends Product {
 
         //Based on Donald Knuth The art of programming 3.4.1
         return Math.log(1.0 - r.nextDouble())/-ratePerMinutes; // Need a minus sign, else we get a negative number
+    }
 
+    public boolean getServed() {
+        return being_served;
     }
 }
