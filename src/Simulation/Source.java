@@ -150,13 +150,14 @@ public class Source implements CProcess
 		double t = prevArrTime;
 
 		//Based on the thinning process from slide 13, first part of Lecture 7
+		double u1, u2;
 		do {
-			double u1 = rnd.nextDouble();
-			double u2 = rnd.nextDouble();
+			u1 = rnd.nextDouble();
+			u2 = rnd.nextDouble();
 
-			t = t - (1 / lambdaStar) Math.log(u1);
+			t = t - (1 / lambdaStar) * Math.log(u1);
 		} while (u2 <= (getLambda(t)/lambdaStar));
-		
+
 		return t;
 	}
 
