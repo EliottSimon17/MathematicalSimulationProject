@@ -40,7 +40,7 @@ public class CEventList implements CProcess
 		boolean success=false;
 		// First create a new event using the parameters
 		CEvent evnt;
-                evnt = new CEvent(target,type,tme);
+		evnt = new CEvent(target,type,tme);
 		// Now it is examened where the event has to be inserted in the list
 		for(int i=0;i<events.size();i++)
 		{

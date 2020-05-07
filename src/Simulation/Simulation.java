@@ -13,9 +13,8 @@ public class Simulation {
     public Source source;
     public Sink sink;
     public Machine mach;
-	
 
-        /**
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {

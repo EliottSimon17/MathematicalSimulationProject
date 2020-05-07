@@ -53,30 +53,30 @@ public class TruncNormal {
             return (1 / (sd*Math.sqrt(2*Math.PI)) * Math.exp(-Math.pow((x-mean)/sd,2) / 2)) / (Fb - Fa);
         }
         
-        public double drawTruncNorm() {            
+        public double drawTruncNorm() {
             //acceptance-rejection method
                 //truncated normal PDF and scaled normal PDF
             
             //truncNorm = Norm * 1/(Fb-Fa)  
             //-> Norm * 1/(Fb-Fa) >= truncNorm
-            //-> t = Norm * 1/(Fb-Fa)
-            //-> scale = Fb-Fa, r = Norm
+            //-> t = NormPDF * 1/(Fb-Fa)
+            //-> scale = Fb-Fa, r = NormPDF
             // return U <= truncNom / (Norm *1/(Fa-Fb) * scale) = U <= trunc / Norm
             
             double y = 0;
             do {
                 y = rnd.nextGaussian() * sd + mean;
             //} while(rnd.nextDouble() <= truncNormPdf(y) / (Math.exp(-Math.pow((y - mean) / sd, 2) / 2)/(2*Math.sqrt(Math.PI))));
-            } while(!isInDomain(y));            
+            } while(!isInDomain(y));
             return y;
         }
         
         private double erf(double x) {
-            // compute int[0, x] e^{-t^2/2} dt with Simpson's rule            
+            // compute integral[0, x] e^{-t^2/2} dt with Simpson's rule
             double sign = Math.signum(x);
             x = Math.abs(x);
             double h = x / n;   //size of each interval
-            double val = Math.exp(0);
+            double val = 1;
             
             for(int i = 1; i <= n/2; i++) {
                 val += 2*Math.exp(-(Math.pow(x + 2*i*h, 2)) / 2);
@@ -87,7 +87,7 @@ public class TruncNormal {
         }
         
         public void setLeft(double min) {
-            //compute F(a) = int[-inf,a] f(x) dx, left truncate
+            //compute F(a) = integral[-inf,a] f(x) dx, left truncate
             //normal CDF evaluated at a
             this.min = min;
             if(!Double.isFinite(min))
