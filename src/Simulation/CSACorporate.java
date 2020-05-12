@@ -1,67 +1,77 @@
 package Simulation;
 
 public class CSACorporate extends Machine implements CSA{ 
+    //TODO set time unit
     private final double costHour = 60;
-    private double workingTime = 0;    
-    private boolean active = true; //is this CSA working now?, might be redundant
+    private double workingTime = 0;         //Amount of time this CSA has been working
     private int shift = 0;
     private int customers = 0;
-    private TruncNormal tr;
+    private double totalServiceTime = 0;    //Sum of service time for all the customesr
+    private Distribution tr;
+    //status: b->busy, i->idle, n->not working
     
-    public CSACorporate(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN, double mean, double sd, double min, double max) {
-        //TODO set the parameter of the actual distribution
+    public CSACorporate(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN, Distribution d) {        
         super(q,s,e,n, 3.6);
         shift = shiftN;
-        tr = new TruncNormal(mean, sd, min, Double.NaN, 100);
+        tr = d;
     }
     
     @Override
     public void execute(int type, double tme) {
-        //TODO override -> check time shift, update counts, ...
-        //should we check the time shift here or from outside?
+        //TODO override -> check time shift, update counts, ...        
         super.execute(type, tme);
+        //if tme is outside the shift -> status = 'n'
     }
     
     @Override
     protected void startProduction() {                               
-        double duration = tr.drawTruncNorm();        
+        double duration = tr.drawRandom();        
         // Create a new event in the eventlist
         double tme = eventlist.getTime();
         eventlist.add(this,0,tme+duration); //target,type,time
         // set status to busy
         status='b';
-
+        
+        totalServiceTime = duration;
         customers++;
     }
     
     @Override
     public boolean giveProduct(Product p)
     {
-        //TODO override -> adapt to customers/corporate, depends on policy
-        // Only accept something if the machine is idle
-        if(status=='i' && getActive())
+        //TODO override -> adapt to customers/corporate, depends on policy        
+        // Only accept something if the machine is not busy
+        if(status!='b')
         {
-                // accept the product
-                product=p;
-                // mark starting time
-                product.stamp(eventlist.getTime(),"Production started",name);
-                // start production
-                startProduction();
-                // Flag that the product has arrived
-                return true;
+            //TODO
+            if(eventlist.getTime() >= 0) {   //Starting of the shift
+                status = 'i';
+            }else{
+                status = 'n';
+                return false;
+            }
+            
+            // accept the product
+            product=p;
+            // mark starting time
+            product.stamp(eventlist.getTime(),"Production started",name);
+            // start production
+            startProduction();
+            // Flag that the product has arrived
+            return true;
         }
         // Flag that the product has been rejected
         else return false;
     }
     
     
-    public boolean getActive() {
+    /*public boolean getActive() {
         return active;
     }
     
     public void setActive(boolean active) {
         this.active = active;
-    }
+    }*/
     
     @Override
     public int getShift() {
@@ -86,5 +96,10 @@ public class CSACorporate extends Machine implements CSA{
     @Override
     public int getTotalCustomers() {
         return customers;
-    }    
+    } 
+    
+    @Override
+    public double getMeanServiceTime() {
+        return totalServiceTime / customers;
+    }
 }
