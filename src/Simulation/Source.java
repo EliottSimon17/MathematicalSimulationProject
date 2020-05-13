@@ -23,6 +23,7 @@ import java.util.Random;
  */
 public class Source implements CProcess
 {
+        //TODO use 2 queues or 2 sources
 	/** Eventlist that will be requested to construct events */
 	private CEventList list;
 	/** Queue that buffers products for the machine */

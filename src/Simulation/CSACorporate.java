@@ -1,21 +1,24 @@
 package Simulation;
 
-public class CSACorporate extends Machine implements CSA{ 
-    //TODO set time unit
-    private final double costHour = 60;
-    private double workingTime = 0;         //Amount of time this CSA has been working
-    private int shift = 0;
-    private int customers = 0;
-    private double totalServiceTime = 0;    //Sum of service time for all the customers
+public class CSACorporate extends CSAConsumer {    
     //status: b->busy, i->idle, n->not working
+    private Queue altQueue;
     
+<<<<<<< HEAD
     public CSACorporate(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN) {
         super(q,s,e,n, 3.6);
         shift = shiftN;
+=======
+    public CSACorporate(Queue q1, Queue q2, ProductAcceptor s, CEventList e, String n, int shiftN) {        
+        super(q1,s,e,n, shiftN);                
+        costHour = 60;
+        altQueue = q2;
+>>>>>>> a7663bea093ea52cc81f7bc896094fccb0537ec0
     }
     
     @Override
     public void execute(int type, double tme) {
+<<<<<<< HEAD
         //TODO override -> check time shift, update counts, ...        
         super.execute(type, tme);
         //if tme is outside the shift -> status = 'n'
@@ -28,14 +31,35 @@ public class CSACorporate extends Machine implements CSA{
         eventlist.add(this,0,tme+duration); //target,type,time
         // set status to busy
         status='b';
+=======
+        //TODO check time shift        
+                
+        // show arrival
+        System.out.println("Product finished at time = " + tme);
+        // Remove product from system
+        product.stamp(tme,"Production complete",name);
+        sink.giveProduct(product);
+        product=null;
+        // set machine status to idle
+>>>>>>> a7663bea093ea52cc81f7bc896094fccb0537ec0
         
-        totalServiceTime = duration;
-        customers++;
-    }
+        if(tme > 0 && tme < 0) {    //TODO check time shift
+            status='i';
+            // Ask the queue for products
+            if(!queue.askProduct(this)) {
+                altQueue.askProduct(this);
+            }
+        }else {
+            status='n';
+        }        
+    }            
     
     @Override
+    //The queue call this method to give a product to this machine
+    //If giveProduct returns false the object is kept in the queue
     public boolean giveProduct(Product p)
     {
+<<<<<<< HEAD
         //TODO override -> adapt to customers/corporate, depends on policy        
         // Only accept something if the machine is not busy
         if(status!='b')
@@ -99,4 +123,8 @@ public class CSACorporate extends Machine implements CSA{
     public double getMeanServiceTime() {
         return totalServiceTime / customers;
     }
+=======
+        return super.giveProduct(p) && true; //TODO product type                    
+    }     
+>>>>>>> a7663bea093ea52cc81f7bc896094fccb0537ec0
 }
