@@ -1,7 +1,4 @@
 package Simulation;
-
-
-
 /**
  *	Machine in a factory
  *	@author Joel Karel
@@ -14,9 +11,9 @@ public class Machine implements CProcess,ProductAcceptor
 	/** Eventlist that will manage events */
 	protected final CEventList eventlist;
 	/** Queue from which the machine has to take products */
-	private Queue queue;
+	protected Queue queue;
 	/** Sink to dump products */
-	private ProductAcceptor sink;
+	protected ProductAcceptor sink;
 	/** Status of the machine (b=busy, i=idle) */
 	protected char status;
 	/** Machine name */
