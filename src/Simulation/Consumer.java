@@ -1,13 +1,44 @@
 package Simulation;
 
-public class Consumer extends Product implements Customer {
-    private boolean being_served = false;       // whether the customer is currently being served
 
+/* TODO:
+ *  - GIVE THE PARAMETERS OF THE POISSON AND TRUNCNORMAL DISTRIBUTIONS IN THE CONSTRUCTOR
+ *      --> compute them from the assignment sheet
+ *
+ *  - CHANGE TO USE TIME OBJECTS INSTEAD OF A DOUBLE VALUE
+ *
+ *  - WRITE THE BODY OF THE getNewServiceTime() METHOD TO USE THE TRUNCNORMAL
+ */
+
+public class Consumer extends Product {
+    private Poisson arrivalDistr = new Poisson(param1, param2, ...);
+    private TruncNormal serviceDistr = TruncNormal(param1, param2);
+
+    /**
+     * Default constructor with no parameters
+     */
     public Consumer() {
-        super();
+        this(0);
     }
 
-    public boolean getServed() {
-        return being_served;
+    /**
+     * Parametric constructor
+     *
+     * @param previousArrivalTime the time of the last arrival which happened so far
+     */
+    public Consumer(double previousArrivalTime) {
+        // Set the previous arrival time
+        arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
+    }
+
+    public static double getNewArrivalTime(double currentTime) {
+        // Give the current time
+        arrivalDistr.setCurrentTime(currentTime);
+        // Draw a random number
+        arrivalDistr.drawRandom();
+    }
+
+    public static double getNewServiceTime() {
+        // TODO
     }
 }

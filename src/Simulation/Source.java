@@ -2,6 +2,18 @@ package Simulation;
 
 import java.util.Random;
 
+
+
+/* TODO MODIFY EXECUTE SUCH AS TO USE THE POISSON DISTRIBUTIONS OF CONSUMER AND CORPORATE DIRECTLY,
+ * THEN TAKE ONLY THE FIRST ONE, AND SAVE THE OTHER ONE FOR LATER.
+ * THEN NEXT TIME, GENERATE A NEW ARRIVAL TIME ONLY FOR THE ONE THAT HAD BEEN TAKEN BEFORE.
+ * ETC
+*/
+
+
+
+
+
 /**
  *	A source of products
  *	This class implements CProcess so that it can execute events.
@@ -17,20 +29,12 @@ public class Source implements CProcess
 	private ProductAcceptor queue;
 	/** Name of the source */
 	private String name;
-	/** Mean interarrival time */
-	//private double meanArrTime;
 	/** Interarrival times (in case pre-specified) */
 	private double[] interarrivalTimes;
 	/** Interarrival time iterator */
 	private int interArrCnt;
-	// The time of the previous arrival, used in the random poisson generator
-	private double previousArrivalTime;
 	// boolean whether the interarrival times were pre-specified
 	private boolean iaTimesPrespecified;
-	// the random number generator from Java
-	private Random rnd;
-	// the maximum rate of the process
-	private double lambdaStar;
 
 	/**
 	*	Constructor, creates objects
@@ -47,34 +51,10 @@ public class Source implements CProcess
 		//meanArrTime=33;
 		previousArrivalTime = 0;
 		iaTimesPrespecified = false;
-		rnd = new Random();
-		lambdaStar = 10;									// NOT SURE WHAT VALUE WOULD BE GOOD AS DEFAULT
 		// put first event in list for initialization
 		//list.add(this,0,drawRandomExponential(meanArrTime)); //target,type,time
-		list.add(this,0,drawNextPoisson(previousArrivalTime)); //target,type,time
-	}
-
-	/**
-	*	Constructor, creates objects
-	*        Interarrival times are exponentially distributed with specified mean
-	*	@param q			The receiver of the products
-	*	@param l			The eventlist that is requested to construct events
-	*	@param n			Name of object
-	*	@param lambdaStar	the maximum rate of arrivals
-	*/
-	public Source(ProductAcceptor q,CEventList l,String n,double lambdaStar)
-	{
-		list = l;
-		queue = q;
-		name = n;
-		//meanArrTime=m;
-		previousArrivalTime = 0;
-		iaTimesPrespecified = false;
-		rnd = new Random();
-		this.lambdaStar = lambdaStar;
-		// put first event in list for initialization
-		//list.add(this,0,drawRandomExponential(meanArrTime)); //target,type,time
-		list.add(this,0,drawNextPoisson(previousArrivalTime)); //target,type,time
+		//list.add(this,0,drawNextPoisson(previousArrivalTime)); //target,type,time
+		// TODO ADD THE FIRST EVENT IN LIST
 	}
 
 	/**
@@ -112,6 +92,7 @@ public class Source implements CProcess
 		// generate duration
 		if (! iaTimesPrespecified)
 		{
+			/*  TODO, replace this to use the Poisson distributions of the Consumer and Corporate classes */
 			double nextTime = drawNextPoisson(previousArrivalTime);
 			// Create a new event in the eventlist
 			list.add(this,0,nextTime); //target,type,time
@@ -128,46 +109,5 @@ public class Source implements CProcess
 				list.stop();
 			}
 		}
-	}
-
-	/* UNUSED, REPLACED BY drawNextPoisson()
-	public static double drawRandomExponential(double mean)
-	{
-		// draw a [0,1] uniform distributed number
-		double u = Math.random();
-		// Convert it into a exponentially distributed random variate with mean 33
-		double res = -mean*Math.log(u);
-		return res;
-	}
-	*/
-
-	/** This method uses the thinning algorithm to generate the next arrival time
-	 *
-	 * @param prevArrTime the previous arrival time in seconds
-	 * @return a non-stationary poisson distributed random arrival time
-	 */
-	public double drawNextPoisson(double prevArrTime) {
-		double t = prevArrTime;
-
-		//Based on the thinning process from slide 13, first part of Lecture 7
-		double u1, u2;
-		do {
-			u1 = rnd.nextDouble();
-			u2 = rnd.nextDouble();
-
-			t = t - (1 / lambdaStar) * Math.log(u1);
-		} while (u2 > (getLambda(t)/lambdaStar));
-
-		return t;
-	}
-
-	/** Returns the value of lambda at the given moment
-	 *
-	 * @param currentTime the time in seconds
-	 * @return the rate of arrivals at that time
-	 */
-	public double getLambda (double currentTime) {
-		// TODO somehow link this to the customer to get the rate,
-		// as the rate changes depending on time and customer type
 	}
 }
