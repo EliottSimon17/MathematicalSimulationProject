@@ -156,7 +156,7 @@ public class Source implements CProcess
 			u2 = rnd.nextDouble();
 
 			t = t - (1 / lambdaStar) * Math.log(u1);
-		} while (u2 <= (getLambda(t)/lambdaStar));
+		} while (u2 > (getLambda(t)/lambdaStar));
 
 		return t;
 	}
