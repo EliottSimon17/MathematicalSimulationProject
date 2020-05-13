@@ -6,14 +6,12 @@ public class CSACorporate extends Machine implements CSA{
     private double workingTime = 0;         //Amount of time this CSA has been working
     private int shift = 0;
     private int customers = 0;
-    private double totalServiceTime = 0;    //Sum of service time for all the customesr
-    private Distribution tr;
+    private double totalServiceTime = 0;    //Sum of service time for all the customers
     //status: b->busy, i->idle, n->not working
     
-    public CSACorporate(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN, Distribution d) {        
+    public CSACorporate(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN) {
         super(q,s,e,n, 3.6);
         shift = shiftN;
-        tr = d;
     }
     
     @Override
@@ -22,10 +20,9 @@ public class CSACorporate extends Machine implements CSA{
         super.execute(type, tme);
         //if tme is outside the shift -> status = 'n'
     }
-    
-    @Override
-    protected void startProduction() {                               
-        double duration = tr.drawRandom();        
+
+    protected void startProduction(Product p) {
+        double duration = p.getNewServiceTime();
         // Create a new event in the eventlist
         double tme = eventlist.getTime();
         eventlist.add(this,0,tme+duration); //target,type,time
@@ -56,7 +53,7 @@ public class CSACorporate extends Machine implements CSA{
             // mark starting time
             product.stamp(eventlist.getTime(),"Production started",name);
             // start production
-            startProduction();
+            startProduction(p);
             // Flag that the product has arrived
             return true;
         }
