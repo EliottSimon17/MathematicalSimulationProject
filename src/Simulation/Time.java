@@ -79,4 +79,51 @@ public class Time {
     public int getDays() {
         return days;
     }
+    
+    //Less/less equal by negation
+    //This > >= == than the other
+    //NoDay does not consider the day
+    public boolean greater(Time other) {
+        return this.greaterEq(other) && !this.eq(other);
+    }
+    
+    public boolean greaterEq(Time other) {
+        if(this.getDays() >= other.getDays())
+            return true;
+        else
+            return this.greaterEqNoDay(other);
+    }
+    
+    public boolean greaterNoDay(Time other) { 
+        return this.greaterEqNoDay(other) && !this.eqNoDay(other);
+    }
+    
+    public boolean greaterEqNoDay(Time other) {
+        boolean ge = false;        
+        if(this.getHours() > other.getHours()) {
+            ge = true;
+        }else if(this.getHours() == other.getHours()) {
+            if(this.getMinutes()> other.getMinutes()) {
+                ge = true; 
+            }else if(this.getMinutes() == other.getMinutes()) {
+                if(this.getSeconds() >= other.getSeconds()) {
+                    ge = true;
+                }
+            }
+        }
+        return ge;
+    }
+    
+    public boolean eq(Time other) { 
+        return this.getDays() == other.getDays() && this.eqNoDay(other);
+    }
+    
+    public boolean eqNoDay(Time other) {
+        return (this.getHours() == other.getHours()) && (this.getMinutes()== other.getMinutes()) && (this.getSeconds()== other.getSeconds());
+    }
+    
+    public boolean in(Time[] range) { return this.greaterEq(range[0]) && !this.greater(range[1]); }
+    public boolean inNoDay(Time[] range) { return this.greaterEqNoDay(range[0]) && !this.greaterNoDay(range[1]); }
+    public boolean in(Time t1, Time t2) { return this.greaterEq(t1) && !this.greater(t2); }
+    public boolean inNoDay(Time t1, Time t2) { return this.greaterEqNoDay(t1) && !this.greaterNoDay(t2); }
 }
