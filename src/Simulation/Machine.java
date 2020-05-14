@@ -145,33 +145,32 @@ public class Machine implements CProcess,ProductAcceptor
 	*/
 	protected void startProduction()
 	{
-		// generate duration
-		/* -------------------------------------------- TODO ----------------------------------------- */
-		if(meanProcTime>0)
-		{
-			double duration = drawRandomExponential(meanProcTime);
-			// Create a new event in the eventlist
-			Time tme = eventlist.getTime();
-			/* -------------------------------------------- TODO ----------------------------------------- */
-			eventlist.add(this,0,tme+duration); //target,type,time
-			// set status to busy
-			status='b';
-		}
-		else
-		{
-			if(processingTimes.length>procCnt)
-			{
-				/* -------------------------------------------- TODO ----------------------------------------- */
-				eventlist.add(this,0,eventlist.getTime()+processingTimes[procCnt]); //target,type,time
-				// set status to busy
-				status='b';
-				procCnt++;
-			}
-			else
-			{
-				eventlist.stop();
-			}
-		}
+            // generate duration		
+            if(meanProcTime.greaterNoDay(new Time(0)))
+            {
+                double duration = drawRandomExponential(meanProcTime.getSeconds());
+                // Create a new event in the eventlist
+                Time tme = eventlist.getTime();    
+                //TODO remove int, use seconds in double
+                eventlist.add(this,0, new Time(tme.getSeconds() + (int)duration)); //target,type,time
+                // set status to busy
+                status='b';
+            }
+            else
+            {
+                if(processingTimes.length>procCnt)
+                {
+                    /* -------------------------------------------- TODO ----------------------------------------- */
+                    eventlist.add(this,0,new Time(eventlist.getTime().getSeconds() + processingTimes[procCnt].getSeconds())); //target,type,time
+                    // set status to busy
+                    status='b';
+                    procCnt++;
+                }
+                else
+                {
+                    eventlist.stop();
+                }
+            }
 	}
 
 	/* WILL NOT WORK WITH THE TIME OBJECT ANYMORE, WOULD NEED TO BE MODIFIED.
