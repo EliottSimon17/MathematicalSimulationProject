@@ -50,6 +50,10 @@ public class Sink implements ProductAcceptor
 			events.add(e.get(i));
 			stations.add(s.get(i));
 		}
+
+		// IS HERE A GOOD PLACE TO COMPUTE ALL STATS ?
+		// --> coolects the information of all product's events, times and stations ?
+
 		return true;
 	}
 	
