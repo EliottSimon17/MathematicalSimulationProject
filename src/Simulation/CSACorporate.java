@@ -26,8 +26,8 @@ public class CSACorporate extends CSAConsumer {
         sink.giveProduct(product);
         product=null;
         // set machine status to idle
-        /* -------------------------------------------- TODO ----------------------------------------- */
-        if(tme > 0 && tme < 0) {    //TODO check time shift
+        // TODO check on the shft between 22pm and 6am
+        if(tme.inNoDay(getShift(shift))) {    //TODO check time shift
             status='i';
             // Ask the queue for products
             if(!queue.askProduct(this)) {
@@ -42,7 +42,7 @@ public class CSACorporate extends CSAConsumer {
     //The queue call this method to give a product to this machine
     //If giveProduct returns false the object is kept in the queue
     public boolean giveProduct(Product p)
-    {
+    {        
         return super.giveProduct(p) && true; //TODO product type
         //      --> shouldn't super.giveProduct(p) and True come down to super.giveProduct(p) ?
     }
