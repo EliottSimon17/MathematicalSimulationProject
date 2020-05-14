@@ -1,4 +1,12 @@
 package Simulation;
+
+
+/* TODO:
+	- change lines 150, 156, 165 to work with Time objects
+		--> these are comparisons or additions of Time objects
+ */
+
+
 /**
  *	Machine in a factory
  *	@author Joel Karel
@@ -19,9 +27,9 @@ public class Machine implements CProcess,ProductAcceptor
 	/** Machine name */
 	protected final String name;
 	/** Mean processing time */
-	protected double meanProcTime;
+	protected Time meanProcTime;
 	/** Processing times (in case pre-specified) */
-	private double[] processingTimes;
+	private Time[] processingTimes;
 	/** Processing time iterator */
 	private int procCnt;
 	
@@ -41,7 +49,7 @@ public class Machine implements CProcess,ProductAcceptor
 		sink=s;
 		eventlist=e;
 		name=n;
-		meanProcTime=30;
+		meanProcTime=new Time(0, 30);
 		queue.askProduct(this);
 	}
 
@@ -54,7 +62,7 @@ public class Machine implements CProcess,ProductAcceptor
 	*	@param n	The name of the machine
 	*        @param m	Mean processing time
 	*/
-	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, double m)
+	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, Time m)
 	{
 		status='i';
 		queue=q;
@@ -74,14 +82,14 @@ public class Machine implements CProcess,ProductAcceptor
 	*	@param n	The name of the machine
 	*        @param st	service times
 	*/
-	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, double[] st)
+	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, Time[] st)
 	{
 		status='i';
 		queue=q;
 		sink=s;
 		eventlist=e;
 		name=n;
-		meanProcTime=-1;
+		meanProcTime=new Time(-1);
 		processingTimes=st;
 		procCnt=0;
 		queue.askProduct(this);
@@ -92,7 +100,7 @@ public class Machine implements CProcess,ProductAcceptor
 	*	@param type	The type of the event that has to be executed
 	*	@param tme	The current time
 	*/
-	public void execute(int type, double tme)
+	public void execute(int type, Time tme)
 	{
 		// show arrival
 		System.out.println("Product finished at time = " + tme);
@@ -138,11 +146,13 @@ public class Machine implements CProcess,ProductAcceptor
 	protected void startProduction()
 	{
 		// generate duration
+		/* -------------------------------------------- TODO ----------------------------------------- */
 		if(meanProcTime>0)
 		{
 			double duration = drawRandomExponential(meanProcTime);
 			// Create a new event in the eventlist
-			double tme = eventlist.getTime();
+			Time tme = eventlist.getTime();
+			/* -------------------------------------------- TODO ----------------------------------------- */
 			eventlist.add(this,0,tme+duration); //target,type,time
 			// set status to busy
 			status='b';
@@ -151,6 +161,7 @@ public class Machine implements CProcess,ProductAcceptor
 		{
 			if(processingTimes.length>procCnt)
 			{
+				/* -------------------------------------------- TODO ----------------------------------------- */
 				eventlist.add(this,0,eventlist.getTime()+processingTimes[procCnt]); //target,type,time
 				// set status to busy
 				status='b';
@@ -163,6 +174,9 @@ public class Machine implements CProcess,ProductAcceptor
 		}
 	}
 
+	/* WILL NOT WORK WITH THE TIME OBJECT ANYMORE, WOULD NEED TO BE MODIFIED.
+		HOWEVER, WE SHOULD NOT NEED THIS METHOD ANYMORE
+	 */
 	public static double drawRandomExponential(double mean)
 	{
 		// draw a [0,1] uniform distributed number

@@ -12,7 +12,7 @@ public class Sink implements ProductAcceptor
 	private ArrayList<Product> products;
 	/** All properties of products are kept */
 	private ArrayList<Integer> numbers;
-	private ArrayList<Double> times;
+	private ArrayList<Time> times;
 	private ArrayList<String> events;
 	private ArrayList<String> stations;
 	/** Counter to number products */
@@ -40,7 +40,7 @@ public class Sink implements ProductAcceptor
 		number++;
 		products.add(p);
 		// store stamps
-		ArrayList<Double> t = p.getTimes();
+		ArrayList<Time> t = p.getTimes();
 		ArrayList<String> e = p.getEvents();
 		ArrayList<String> s = p.getStations();
 		for(int i=0;i<t.size();i++)
@@ -64,13 +64,13 @@ public class Sink implements ProductAcceptor
 		return tmp;
 	}
 
-	public double[] getTimes()
+	public Time[] getTimes()
 	{
 		times.trimToSize();
-		double[] tmp = new double[times.size()];
+		Time[] tmp = new Time[times.size()];
 		for (int i=0; i < times.size(); i++)
 		{
-			tmp[i] = (times.get(i)).doubleValue();
+			tmp[i] = (Time)times.get(i);
 		}
 		return tmp;
 	}

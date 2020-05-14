@@ -3,11 +3,10 @@ package Simulation;
 import java.util.Random;
 
 
-
-
-/* TODO THE CLASS HAS TO BE MODIFIED TO USE A TIME OBJECT for time */
-
-
+/* TODO:
+    - change lines 100, 112, 115 to work with Time objects
+        --> comparison or computations of Time objects
+ */
 
 
 /**
@@ -18,7 +17,7 @@ import java.util.Random;
 public class Poisson implements Distribution {
     private Random rnd;
     private double lambdaStar;                  // the maximum rate of arrival
-    private double prevArrTime;
+    private Time prevArrTime;
     private LambdaT lambdaGivenTime;
 
     /**
@@ -38,7 +37,7 @@ public class Poisson implements Distribution {
      * @param lambdaT object giving the value of lambda(t) for a given t
      */
     public Poisson (double lambdaStar, LambdaT lambdaT) {
-        this(lambdaStar, lambdaT, 0);
+        this(lambdaStar, lambdaT, new Time(0));
     }
 
     /**
@@ -48,7 +47,7 @@ public class Poisson implements Distribution {
      * @param lambdaT object giving the value of lambda(t) for a given t
      * @param previousArrivalTime the last generated arrival time, by default holds value 0
      */
-    public Poisson (double lambdaStar, LambdaT lambdaT, double previousArrivalTime) {
+    public Poisson (double lambdaStar, LambdaT lambdaT, Time previousArrivalTime) {
         // Save the given parameters in the corresponding variables
         this.lambdaStar = lambdaStar;
         this.lambdaGivenTime = lambdaT;
@@ -72,7 +71,7 @@ public class Poisson implements Distribution {
      *
      * @param newValue the new value of the previous arrival time
      */
-    public void setPreviousArrivalTime(double newValue) {
+    public void setPreviousArrivalTime(Time newValue) {
         this.prevArrTime = newValue;
     }
 
@@ -81,7 +80,7 @@ public class Poisson implements Distribution {
      *
      * @return the value of the last arrival time
      */
-    public double getPreviousArrivalTime() {
+    public Time getPreviousArrivalTime() {
         return this.prevArrTime;
     }
 
@@ -94,9 +93,10 @@ public class Poisson implements Distribution {
      *
      * @return the generated random variate
      */
-    public double drawRandom () {
+    public Time drawRandom () {
         // Make sure that lambdaGivenTime is not null before attempting to generate a new random variate
         if (this.lambdaGivenTime != null) {
+            /* -------------------------------------------- TODO ----------------------------------------- */
             double t = this.prevArrTime;
 
             double u1, u2;
@@ -108,8 +108,10 @@ public class Poisson implements Distribution {
                 t = t - (1 / this.lambdaStar) * Math.log(u1);
             } while (u2 > (this.lambdaGivenTime.getLambda(t) / this.lambdaStar));
 
+            /* -------------------------------------------- TODO ----------------------------------------- */
             this.prevArrTime = t;
 
+            /* -------------------------------------------- TODO ----------------------------------------- */
             return t;
         }
         // If lambdaGivenTime has not yet been set, we cannot generate a random variate

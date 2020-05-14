@@ -13,7 +13,7 @@ public class CEvent
 	/** The type of the event */
 	private int type;
 	/** The time on which the event will be executed */
-	private double executionTime;
+	private Time executionTime;
 
 	/**
 	*	Constructor for objects
@@ -21,7 +21,7 @@ public class CEvent
 	*	@param tp	The type of the event
 	*	@param tme	The time on which the event will be executed
 	*/
-	public CEvent(CProcess dl,int tp, double tme)
+	public CEvent(CProcess dl,int tp, Time tme)
 	{
 		target=dl;
 		type=tp;
@@ -40,7 +40,7 @@ public class CEvent
 	*	Method to ask the event at which time it will be executed
 	*	@return	The time at which the event will be executed
 	*/
-	public double getExecutionTime()
+	public Time getExecutionTime()
 	{
 		return executionTime;
 	}

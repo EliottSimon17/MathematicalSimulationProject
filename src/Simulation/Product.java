@@ -1,13 +1,6 @@
 package Simulation;
 
 
-/* TODO MODIFY PRODUCT TO MAKE IT IMPLEMENT (OR HAVE ABSTRACT CLASSES)
- * FOR EVERYTHING THAT IS NEEDED IN THE CUSTOMER CLASSES
- * --> see Consumer.java
- *
- * ALSO: CHANGE IT TO USE TIME OBJECTS INSTEAD OF DOUBLE TIMES
- */
-
 import java.util.ArrayList;
 /**
  *	Product that is send trough the system
@@ -16,7 +9,7 @@ import java.util.ArrayList;
  */
 abstract class Product {
 	/** Stamps for the products */
-	private ArrayList<Double> times;
+	private ArrayList<Time> times;
 	private ArrayList<String> events;
 	private ArrayList<String> stations;
 	
@@ -31,13 +24,13 @@ abstract class Product {
 		stations = new ArrayList<>();
 	}
 	
-	public void stamp(double time,String event,String station) {
+	public void stamp(Time time,String event,String station) {
 		times.add(time);
 		events.add(event);
 		stations.add(station);
 	}
 	
-	public ArrayList<Double> getTimes()
+	public ArrayList<Time> getTimes()
 	{
 		return times;
 	}
@@ -52,14 +45,15 @@ abstract class Product {
 		return stations;
 	}
 	
-	public double[] getTimesAsArray()
+	public Time[] getTimesAsArray()
 	{
 		times.trimToSize();
-		double[] tmp = new double[times.size()];
+		Time[] tmp = new Time[times.size()];
 		for (int i=0; i < times.size(); i++)
 		{
-			tmp[i] = (times.get(i)).doubleValue();
+			tmp[i] = (Time)times.get(i);
 		}
+
 		return tmp;
 	}
 

@@ -2,6 +2,11 @@ package Simulation;
 
 import java.util.ArrayList;
 
+
+/* TODO:
+ * CHANGE add() to be able to compare times at line 54
+ */
+
 /**
  *	Event processing mechanism
  *	Events are created here and it is ensured that they are processed in the proper order
@@ -12,7 +17,7 @@ import java.util.ArrayList;
 public class CEventList implements CProcess
 {
 	/** The time in the simulation */
-	private double currentTime;
+	private Time currentTime;
 	/** List of events that have to be executed */
 	private final ArrayList<CEvent> events;
 	/** Stop flag */
@@ -24,7 +29,7 @@ public class CEventList implements CProcess
 	*/
 	public CEventList()
 	{
-		currentTime = 0;
+		currentTime = new Time(0);
 		stopFlag = false;
 		events = new ArrayList<>();
 	}
@@ -35,7 +40,7 @@ public class CEventList implements CProcess
 	*	@param type A type indicator of the event for objects that can process multiple types of events.
 	*	@param tme The time at which the event will be executed
 	*/
-	public void add(CProcess target, int type, double tme)
+	public void add(CProcess target, int type, Time tme)
 	{
 		boolean success=false;
 		// First create a new event using the parameters
@@ -45,6 +50,7 @@ public class CEventList implements CProcess
 		for(int i=0;i<events.size();i++)
 		{
 			// The events are sorted chronologically
+			/* -------------------------------------------- TODO ----------------------------------------- */
 			if(events.get(i).getExecutionTime()>evnt.getExecutionTime())
 			{
 				// If an event is found in the list that has to be executed after the current event
@@ -84,7 +90,7 @@ public class CEventList implements CProcess
 	*	It will run until there are no longer events in the list or that a maximum time has elapsed
 	*	@param mx De maximum time of the simulation
 	*/
-	public void start(double mx)
+	public void start(Time mx)
 	{
 		add(this,-1,mx);
 		// stop criterion
@@ -110,7 +116,7 @@ public class CEventList implements CProcess
 	*	This method makes it possible to read the time.
 	*	@return The current time in the simulation
 	*/
-	public double getTime()
+	public Time getTime()
 	{
 		return currentTime;
 	}
@@ -121,7 +127,7 @@ public class CEventList implements CProcess
 	*	@param tme	The current time
 	*/
         @Override
-	public void execute(int type, double tme)
+	public void execute(int type, Time tme)
 	{
 		if(type==-1)
 			stop();

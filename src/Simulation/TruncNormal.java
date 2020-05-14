@@ -47,11 +47,12 @@ public class TruncNormal implements Distribution{
          * Normal N(mean, sd^2) truncated on the left at min and on the right at max
          * If min or max are NaN or infinite the distribution is not truncated on that side
          */
-        public TruncNormal(double mean, double sd, double min, double max) {            
+        public TruncNormal(double mean, double sd, double min, double max) {
             //setIntegralSteps(n)            
             this.rnd = new Random();
             this.mean = mean;
             this.sd = sd;
+            /* NOTE: SHOULD WE HAVE THE MIN AND MAX AS DOUBLE OR AS TIME OBJECTS ? */
             setLeft(min);
             setRight(max);
         }
@@ -61,6 +62,7 @@ public class TruncNormal implements Distribution{
          * If min or max are NaN or infinite the distribution is not truncated on that side
          */
         public TruncNormal(double mean, double sd, double min, double max, long seed) {
+            /* NOTE: SHOULD WE HAVE THE MIN AND MAX AS DOUBLE OR AS TIME OBJECTS ? */
             this(mean, sd, min, max);
             rnd.setSeed(seed);
         }
@@ -69,7 +71,7 @@ public class TruncNormal implements Distribution{
          * 
          * @return Random number from this distribution
          */
-        public double drawRandom() {
+        public Time drawRandom() {
             //acceptance-rejection method
                 //truncated normal PDF and scaled normal PDF
             
@@ -83,6 +85,7 @@ public class TruncNormal implements Distribution{
             do {
                 y = rnd.nextGaussian() * sd + mean;  // random number from r          
             } while(!isInDomain(y));    //check whether U <= f*(Y)/t(Y) -> only when f* is non-zero
+            /* TODO: WE NEED TO RETURN A TIME OBJECT, SO SOMEHOW DO THE CONVERSION FROM DOUBLE TO TIME OBJECTS */
             return y;
         }
         

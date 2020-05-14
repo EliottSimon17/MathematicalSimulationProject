@@ -15,5 +15,5 @@ package Simulation;
  */
 public interface LambdaT {
     // This method should be implemented such as to return the rate lambda given the current time as Time object
-    public double getLambda(double time);
+    public double getLambda(Time time);
 }

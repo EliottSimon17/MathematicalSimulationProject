@@ -8,6 +8,8 @@ import java.util.Random;
  * THEN TAKE ONLY THE FIRST ONE, AND SAVE THE OTHER ONE FOR LATER.
  * THEN NEXT TIME, GENERATE A NEW ARRIVAL TIME ONLY FOR THE ONE THAT HAD BEEN TAKEN BEFORE.
  * ETC
+ *
+ * MOREOVER, the line 108 needs to be modified to work with Time objects
 */
 
 
@@ -31,11 +33,13 @@ public class Source implements CProcess
 	/** Name of the source */
 	private String name;
 	/** Interarrival times (in case pre-specified) */
-	private double[] interarrivalTimes;
+	private Time[] interarrivalTimes;
 	/** Interarrival time iterator */
 	private int interArrCnt;
 	// boolean whether the interarrival times were pre-specified
 	private boolean iaTimesPrespecified;
+	// the last arrival time, not sure if it's still needed
+	private Time previousArrivalTime;
 
 	/**
 	*	Constructor, creates objects
@@ -49,8 +53,7 @@ public class Source implements CProcess
 		list = l;
 		queue = q;
 		name = n;
-		//meanArrTime=33;
-		previousArrivalTime = 0;
+		previousArrivalTime = new Time(0);
 		iaTimesPrespecified = false;
 		// put first event in list for initialization
 		//list.add(this,0,drawRandomExponential(meanArrTime)); //target,type,time
@@ -66,7 +69,7 @@ public class Source implements CProcess
 	*	@param n	Name of object
 	*	@param ia	interarrival times
 	*/
-	public Source(ProductAcceptor q,CEventList l,String n,double[] ia)
+	public Source(ProductAcceptor q,CEventList l,String n,Time[] ia)
 	{
 		list = l;
 		queue = q;
@@ -75,14 +78,12 @@ public class Source implements CProcess
 		interarrivalTimes=ia;
 		interArrCnt=0;
 		iaTimesPrespecified = true;
-		rnd = new Random();
-		lambdaStar = 10;									// NOT SURE WHAT VALUE WOULD BE GOOD AS DEFAULT
 		// put first event in list for initialization
 		list.add(this,0,interarrivalTimes[0]); //target,type,time
 	}
 	
         @Override
-	public void execute(int type, double tme)
+	public void execute(int type, Time tme)
 	{
 		// show arrival
 		System.out.println("Arrival at time = " + tme);
@@ -94,7 +95,7 @@ public class Source implements CProcess
 		if (! iaTimesPrespecified)
 		{
 			/*  TODO, replace this to use the Poisson distributions of the Consumer and Corporate classes */
-			double nextTime = drawNextPoisson(previousArrivalTime);
+			Time nextTime = drawNextPoisson(previousArrivalTime);
 			// Create a new event in the eventlist
 			list.add(this,0,nextTime); //target,type,time
 		}
@@ -103,6 +104,7 @@ public class Source implements CProcess
 			interArrCnt++;
 			if(interarrivalTimes.length>interArrCnt)
 			{
+				/* -------------------------------------------- TODO ----------------------------------------- */
 				list.add(this,0,tme+interarrivalTimes[interArrCnt]); //target,type,time
 			}
 			else

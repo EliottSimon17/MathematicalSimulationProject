@@ -1,5 +1,11 @@
 package Simulation;
 
+/* TODO:
+    Needs a toString method for Machine.java (where we print the time)
+        or we remove the print, but not recommended (ask Valentin if question why)
+
+ */
+
 public class Time {
     private int days;
     private int hours;
