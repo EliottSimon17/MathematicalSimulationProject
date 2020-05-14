@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 import static java.lang.System.out;
 
+/*
+    This class displays how we could write out data to .txt files
+        --> to be able to save simulation data from Java and load it into Matlab
+ */
+
 public class writeOnTxt {
     public static void writeOnTxt(ArrayList<Time> arrivalTime, ArrayList<String> customerType, ArrayList<Time> finishTime) throws FileNotFoundException {
         out.println("writing ");
