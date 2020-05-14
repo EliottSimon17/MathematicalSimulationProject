@@ -6,9 +6,7 @@ import java.util.Random;
 /* TODO CHANGE SIMILARLY TO CONSUMER.java */
 
 
-
-
-public class Corporate extends Product {
+public class Corporate extends Customer {
     private Poisson arrivalDistr = Poisson(param1, param2, ...);
     private TruncNormal serviceDistr = TruncNormal(param1, param2);
 

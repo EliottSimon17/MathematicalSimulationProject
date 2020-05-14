@@ -10,7 +10,7 @@ package Simulation;
  *  - WRITE THE BODY OF THE getNewServiceTime() METHOD TO USE THE TRUNCNORMAL
  */
 
-public class Consumer extends Product {
+public class Consumer extends Customer {
     private Poisson arrivalDistr = new Poisson(param1, param2, ...);
     private TruncNormal serviceDistr = TruncNormal(param1, param2);
 

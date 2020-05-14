@@ -76,14 +76,4 @@ abstract class Product {
 		tmp = stations.toArray(tmp);
 		return tmp;
 	}
-
-	public static double getNewServiceTime() {
-		// This method should be overwritten in the subclasses
-		throw new UnsupportedOperationException("This method should have been overwritten in the subclass.");
-	}
-
-	public static double getNewArrivalTime() {
-		// This method should be overwritten in the subclass(es)
-		throw new UnsupportedOperationException("This method should have been overwritten in the subclass.");
-	}
 }
