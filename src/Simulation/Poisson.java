@@ -16,15 +16,15 @@ import java.util.Random;
  */
 public class Poisson implements Distribution {
     private Random rnd;
-    private double lambdaStar;                  // the maximum rate of arrival
+    private double lambdaStar;              // the maximum rate of arrivals per second
     private Time prevArrTime;
-    private LambdaT lambdaGivenTime;
+    private LambdaT lambdaGivenTime;        // the rate of arrivals at time t per second
 
     /**
      * Non-fully parametric constructor for the Poisson distribution.
      * NOTE that the parameter lambdaGivenTime still has to be set BEFORE calling drawRandom()
      *
-     * @param lambdaStar the maximum rate of the Poisson distribution at any given time
+     * @param lambdaStar the maximum rate of the Poisson distribution at any given time of arrivals per second
      */
     public Poisson(double lambdaStar) {
         this(lambdaStar, null);
@@ -33,8 +33,8 @@ public class Poisson implements Distribution {
     /**
      * Full parametric constructor for this class
      *
-     * @param lambdaStar the maximum rate of the Poisson distribution at any given time
-     * @param lambdaT object giving the value of lambda(t) for a given t
+     * @param lambdaStar the maximum rate of the Poisson distribution at any given time of arrivals per second
+     * @param lambdaT object giving the value of lambda(t) for a given t of arrivals per second
      */
     public Poisson (double lambdaStar, LambdaT lambdaT) {
         this(lambdaStar, lambdaT, new Time(0));
@@ -43,8 +43,8 @@ public class Poisson implements Distribution {
     /**
      * Full parametric constructor for this class
      *
-     * @param lambdaStar the maximum rate of the Poisson distribution at any given time
-     * @param lambdaT object giving the value of lambda(t) for a given t
+     * @param lambdaStar the maximum rate of the Poisson distribution at any given time of arrivals per second
+     * @param lambdaT object giving the value of lambda(t) for a given t of arrivals per second
      * @param previousArrivalTime the last generated arrival time, by default holds value 0
      */
     public Poisson (double lambdaStar, LambdaT lambdaT, Time previousArrivalTime) {
@@ -96,8 +96,10 @@ public class Poisson implements Distribution {
     public Time drawRandom () {
         // Make sure that lambdaGivenTime is not null before attempting to generate a new random variate
         if (this.lambdaGivenTime != null) {
+            //Retrieve the last generated arrival time
             double t = this.prevArrTime.toSeconds();
 
+            // Generate the new arrival time
             double u1, u2;
             do {
                 u1 = this.rnd.nextDouble();
@@ -106,9 +108,10 @@ public class Poisson implements Distribution {
                 t = t - (1 / this.lambdaStar) * Math.log(u1);
             } while (u2 > (this.lambdaGivenTime.getLambda(new Time(t)) / this.lambdaStar));
 
-            this.prevArrTime = new Time(t);
+            //Set the last arrival time to the newly generated one and return it
+            this.setPreviousArrivalTime(new Time(t));
 
-            return this.prevArrTime;
+            return this.getPreviousArrivalTime();
         }
         // If lambdaGivenTime has not yet been set, we cannot generate a random variate
         else {

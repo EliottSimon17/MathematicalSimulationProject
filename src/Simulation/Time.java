@@ -18,7 +18,7 @@ public class Time {
      * @param seconds
      */
     public Time(double seconds) {
-        this(seconds % 60, (int)seconds / 60);
+        this(seconds % 60, ((int)seconds)/ 60);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Time {
      * @param minutes
      */
     public Time(double seconds, int minutes) {
-        this(seconds %60, (minutes + (int)seconds/60) % 60, (minutes +(int) seconds/60) / 60);
+        this(seconds % 60, (minutes + ((int)seconds)/60) % 60, (minutes + ((int)seconds)/60) / 60);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Time {
      * @param hours
      */
     public Time(double seconds, int minutes, int hours) {
-        this(seconds%60, (minutes + (int) seconds/60)%60, (hours + (minutes + (int) seconds/60)/60) % 24, (hours + (minutes + (int) seconds/60)/60) / 24);
+        this(seconds % 60, (minutes + ((int)seconds)/60)%60, (hours + (minutes + ((int)seconds)/60)/60) % 24, (hours + (minutes + ((int)seconds)/60)/60) / 24);
     }
 
     /**
@@ -48,10 +48,10 @@ public class Time {
      * @param days
      */
     public Time(double  seconds, int minutes, int hours, int days) {
-        this.seconds = seconds%60;
-        this.minutes = (minutes+(int)seconds/60)%60;
-        this.hours = (hours +(minutes+(int)seconds/60)/60)%24;
-        this.days = days +(hours +(minutes+(int)seconds/60)/60)/24;
+        this.seconds = seconds % 60;
+        this.minutes = (minutes+((int)seconds)/60)%60;
+        this.hours = (hours +(minutes+((int)seconds)/60)/60)%24;
+        this.days = days +(hours +(minutes+((int)seconds)/60)/60)/24;
     }
 
     /**
@@ -63,9 +63,9 @@ public class Time {
 
     public void setTime(double  seconds, int minutes, int hours, int days) {
         this.seconds = seconds%60;
-        this.minutes = (minutes+(int)seconds/60)%60;
-        this.hours = (hours +(minutes+(int)seconds/60)/60)%24;
-        this.days = days +(hours +(minutes+(int)seconds/60)/60)/24;
+        this.minutes = (minutes+((int)seconds)/60)%60;
+        this.hours = (hours +(minutes+((int)seconds)/60)/60)%24;
+        this.days = days +(hours +(minutes+((int)seconds)/60)/60)/24;
     }
 
     /**
@@ -76,7 +76,6 @@ public class Time {
         this.addSeconds(timePast);
         this.addMinutes(0);
         this.addHours(0);
-
     }
 
     /**
@@ -88,7 +87,6 @@ public class Time {
         this.addMinutes(timePast.getMinutes());
         this.addHours(timePast.getHours());
         this.days += timePast.getDays();
-
     }
 
     /**
@@ -124,7 +122,6 @@ public class Time {
         this.addMinutes(t.getMinutes());
         this.addHours(t.getHours());
         this.days += t.getDays();
-
     }
 
     /**
@@ -212,7 +209,6 @@ public class Time {
     public boolean inNoDay(Time[] range) { return this.greaterEqNoDay(range[0]) && !this.greaterNoDay(range[1]); }
     public boolean in(Time t1, Time t2) { return this.greaterEq(t1) && !this.greater(t2); }
     public boolean inNoDay(Time t1, Time t2) { return this.greaterEqNoDay(t1) && !this.greaterNoDay(t2); }
-
 
     public double getSeconds() {
         return this.seconds;

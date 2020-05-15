@@ -10,7 +10,23 @@ package Simulation;
 
 public class Corporate extends Customer {
     // These variables are the distributions used for generating arrival times and service times
-    private static Poisson arrivalDistr = Poisson(param1, param2, ...);
+    private static final double lambdaStarPerSecond = 1.0 / 60;
+    // the maximum value that lambda(t) could possibly take on
+
+    // Set some constants, to get the lambdaT
+    private static final double sixPm = new Time(0, 0, 18).toSeconds();
+    private static final double eightAm = new Time(0, 0, 8).toSeconds();
+    private static final double oneDay = new Time(0, 0, 0, 1).toSeconds();
+    private static final LambdaT lambdaGivenTimeInSeconds = (time) -> {
+        double timeInSeconds = time.toSeconds();
+        double timeInTheDay = timeInSeconds % oneDay;
+
+        if (eightAm <= timeInTheDay && timeInTheDay < sixPm)
+            return 1.0/60;      // rate = 1 / minute = 1/60 / second
+        else
+            return 0.2/60;      // rate = 0.2 / minute = 0.2/60 / second
+    };
+    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
     private static TruncNormal serviceDistr = TruncNormal(param1, param2);
 
     /**
@@ -32,28 +48,6 @@ public class Corporate extends Customer {
         arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
     }
 
-    /* COULD STILL BE USED FOR THE LAMBDAT OBJECT OF THE POISSON DISTRIBUTION,
-        BUT !
-            It needs to use a time object instead of a double object
-            And it should be used to create a LambdaT object ...
-                --> could be either an anonymous class object or a lambda expression
-
-    public double getPoissonRandom(double time) {
-        double ratePerMinutes = 0;
-        double correctTime = time%24;
-        Random r = new Random();
-
-        if (correctTime > 8 && correctTime < 18) {
-            ratePerMinutes = 1;
-
-        }else{
-            ratePerMinutes = 0.2;
-        }
-
-        return time + Math.log(r.nextDouble())/-ratePerMinutes;
-    }
-    */
-
     /**
      * This method generates a new arrival time given the current time.
      *
@@ -69,7 +63,18 @@ public class Corporate extends Customer {
         return arrivalDistr.drawRandom();
     }
 
-    public static double getNewServiceTime() {
+    /**
+     * This method generates a new arrival time given the current time.
+     * It re-uses the previous arrival time
+     *
+     * @return
+     */
+    public static Time getNewArrivalTime() {
+        //Generate and return a random number
+        return arrivalDistr.drawRandom();
+    }
+
+    public static Time getNewServiceTime() {
         // TODO
     }
 }

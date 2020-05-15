@@ -10,7 +10,22 @@ package Simulation;
 
 public class Consumer extends Customer {
     // These variables are the distributions used for generating arrival times and service times
-    private static Poisson arrivalDistr = new Poisson(param1, param2, ...);
+    private static final double lambdaStarPerSecond = 3.8 / 60;        // Since lambda(t) has mean 2 and lowest point 0.2,
+    // the highest point will be 2 + (2-0.2) = 2 + 1.8 = 3.8 / minute = 3.8/60 / second
+
+    // Set some constants, to get the lambdaT
+    private static final double period = new Time(0, 0, 0, 1).toSeconds();
+    private static final double lowestPoint = new TIme(0, 0, 3).toSeconds();
+    private static final double mean = 2.0 / 60;      //mean arrival rate is 2 / minute, = 2/60 / second
+    private static final double range = 3.6 / 60;
+    private static final LambdaT lambdaGivenTimeInSeconds = (time) -> {
+        double timeInSeconds = time.toSeconds();
+
+        // formula should be:
+        // (max-min)/2 * cos((2*pi*(x + (period/2 - wishedLowestPoint)))/period) + mean
+        return range/2 * Math.cos((2.0*Math.PI*(timeInSeconds + (period/2 - lowestPoint)))/(period)) + mean;
+    };
+    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
     private static TruncNormal serviceDistr = TruncNormal(param1, param2);
 
     /**
@@ -47,7 +62,18 @@ public class Consumer extends Customer {
         return arrivalDistr.drawRandom();
     }
 
-    public static double getNewServiceTime() {
+    /**
+     * This method generates a new arrival time given the current time.
+     * It re-uses the previous arrival time
+     *
+     * @return
+     */
+    public static Time getNewArrivalTime() {
+        //Generate and return a random number
+        return arrivalDistr.drawRandom();
+    }
+
+    public static Time getNewServiceTime() {
         // TODO
     }
 }
