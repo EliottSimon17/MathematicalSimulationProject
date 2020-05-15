@@ -17,8 +17,8 @@ public abstract class CSA extends Machine {
         Time duration = ((Customer)p).getNewServiceTime();
         // Create a new event in the eventlist
         Time tme = eventlist.getTime();
-        /* -------------------------------------------- TODO ----------------------------------------- */
-        eventlist.add(this,0,tme.sum(duration)); //target,type,time
+        tme.add(duration);
+        eventlist.add(this,0,tme); //target,type,time
         // set status to busy
         status='b';
         
@@ -79,7 +79,7 @@ public abstract class CSA extends Machine {
         
     public Time getMeanServiceTime() {
         //TODO use seconds with doubles
-        return new Time((int)totalServiceTime.getSeconds() / customers);
+        return new Time(totalServiceTime.getSeconds() / customers);
     }    
     
     public Time[] getShift(int n) {

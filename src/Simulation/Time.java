@@ -73,23 +73,9 @@ public class Time {
      * @param timePast seconds passed since last update
      */
     public void updateTime(double timePast) {
-        this.seconds += timePast%60;
-        this.minutes += (int) timePast/60;
-
-        if (this.seconds >= 60) {
-            this.minutes += (int) this.seconds/60;
-            this.seconds = this.seconds%60;
-        }
-
-        if (this.minutes >= 60) {
-            this.hours += this.minutes/60;
-            this.minutes = this.minutes%60;
-        }
-
-        if (this.hours > 23) {
-            this.days += this.hours/24;
-            this.hours = this.hours%24;
-        }
+        this.addSeconds(timePast);
+        this.addMinutes(0);
+        this.addHours(0);
 
     }
 
@@ -98,25 +84,10 @@ public class Time {
      * @param timePast time past since last update
      */
     public void updateTime(Time timePast) {
-        this.seconds += timePast.getSeconds();
-        if (this.seconds >= 60) {
-            this.minutes += (int) this.seconds/60;
-            this.seconds = this.seconds%60;
-        }
-
-        this.minutes += timePast.getMinutes();
-        if (this.minutes >= 60) {
-            this.hours += this.minutes/60;
-            this.minutes = this.minutes%60;
-        }
-
-        this.hours+= timePast.getHours();
-        if (this.hours > 23) {
-            this.days += hours/24;
-            this.hours = this.hours%24;
-        }
-
-        this.days+=timePast.getDays();
+        this.addSeconds(timePast.getSeconds());
+        this.addMinutes(timePast.getMinutes());
+        this.addHours(timePast.getHours());
+        this.days += timePast.getDays();
 
     }
 
@@ -128,27 +99,58 @@ public class Time {
         return ((this.days*24 + this.hours)*60 + this.minutes)*60 + this.seconds;
     }
 
-    public double getSeconds() {
-        return this.seconds;
-    }
-
-    public int getMinutes() {
-        return minutes;
-    }
-
-    public int getHours() {
-        return hours;
-    }
-
-    public int getDays() {
-        return days;
-    }
-
     public String toString() {
         return "days " + this.days +
                 ", hours " + this.hours +
                 ", minutes " + this.minutes +
                 ", seconds " + this.seconds;
+    }
+
+    public void add(Time t) {
+        this.addSeconds(t.getSeconds());
+        this.addMinutes(t.getMinutes());
+        this.addHours(t.getHours());
+        this.days += t.getDays();
+
+    }
+
+    /**
+     * adds seconds to Time t
+     * And corrects the value of seconds and minutes, if seconds bigger than 59
+     * @param s
+     */
+    public void addSeconds(double s) {
+        this.seconds += s;
+        if (this.seconds >= 60.0) {
+            this.seconds = this.seconds%60;
+            this.minutes += (int) this.seconds/60;
+        }
+    }
+
+    /**
+     * Adds minutes m to Time t
+     * And corrects the value of minutes and hours, if minutes is bigger than 59
+     * @param m
+     */
+    public void addMinutes(int m) {
+        this.minutes += m;
+        if (this.minutes >= 60) {
+            this.minutes = this.minutes%60;
+            this.hours +=  this.minutes/60;
+        }
+    }
+
+    /**
+     * adds hours to Time t
+     * And corrects the value of hours and days, if hours bigger than 23
+     * @param h hours to be added to
+     */
+    public void addHours(int h) {
+        this.hours += h;
+        if (this.hours > 23) {
+            this.hours = this.hours%24;
+            this.days += this.days/24;
+        }
     }
     
     //Less/less equal by negation
@@ -197,4 +199,21 @@ public class Time {
     public boolean inNoDay(Time[] range) { return this.greaterEqNoDay(range[0]) && !this.greaterNoDay(range[1]); }
     public boolean in(Time t1, Time t2) { return this.greaterEq(t1) && !this.greater(t2); }
     public boolean inNoDay(Time t1, Time t2) { return this.greaterEqNoDay(t1) && !this.greaterNoDay(t2); }
+
+
+    public double getSeconds() {
+        return this.seconds;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public int getDays() {
+        return days;
+    }
 }
