@@ -54,7 +54,7 @@ public abstract class CSA extends Machine {
     
     public Time[] getShiftInterval(int n) {
         //TODO
-        return new Time[]{};
+        return new Time[]{new Time(0,0)};
     }
         
     public int getShift() {
@@ -78,7 +78,6 @@ public abstract class CSA extends Machine {
     } 
         
     public Time getMeanServiceTime() {
-        //TODO use seconds with doubles
         return new Time(totalServiceTime.getSeconds() / customers);
     }    
     

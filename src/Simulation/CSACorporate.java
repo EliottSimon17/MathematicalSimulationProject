@@ -17,8 +17,6 @@ public class CSACorporate extends CSAConsumer {
     
     @Override
     public void execute(int type, Time tme) {
-        //TODO check time shift        
-                
         // show arrival
         System.out.println("Product finished at time = " + tme);
         // Remove product from system

@@ -1,10 +1,6 @@
 package Simulation;
 
 
-/* TODO:
-	- change lines 150, 156, 165 to work with Time objects
-		--> these are comparisons or additions of Time objects
- */
 
 
 /**
@@ -151,8 +147,7 @@ public class Machine implements CProcess,ProductAcceptor
                 double duration = drawRandomExponential(meanProcTime.getSeconds());
                 // Create a new event in the eventlist
                 Time tme = eventlist.getTime();    
-                //TODO remove int, use seconds in double
-                eventlist.add(this,0, new Time(tme.getSeconds() + (int)duration)); //target,type,time
+                eventlist.add(this,0, new Time(tme.getSeconds() + duration)); //target,type,time
                 // set status to busy
                 status='b';
             }
@@ -160,7 +155,6 @@ public class Machine implements CProcess,ProductAcceptor
             {
                 if(processingTimes.length>procCnt)
                 {
-                    /* -------------------------------------------- TODO ----------------------------------------- */
                     eventlist.add(this,0,new Time(eventlist.getTime().getSeconds() + processingTimes[procCnt].getSeconds())); //target,type,time
                     // set status to busy
                     status='b';
