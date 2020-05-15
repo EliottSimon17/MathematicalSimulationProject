@@ -27,7 +27,7 @@ public class Time {
      * @param minutes
      */
     public Time(double seconds, int minutes) {
-        this(seconds, minutes % 60, minutes / 60);
+        this(seconds %60, (minutes + (int)seconds/60) % 60, (minutes +(int) seconds/60) / 60);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Time {
      * @param hours
      */
     public Time(double seconds, int minutes, int hours) {
-        this(seconds, minutes, hours % 24, hours / 24);
+        this(seconds%60, (minutes + (int) seconds/60)%60, (hours + (minutes + (int) seconds/60)/60) % 24, (hours + (minutes + (int) seconds/60)/60) / 24);
     }
 
     /**
@@ -48,36 +48,36 @@ public class Time {
      * @param days
      */
     public Time(double  seconds, int minutes, int hours, int days) {
-        this.seconds = seconds;
-        this.minutes = minutes;
-        this.hours = hours;
-        this.days = days;
+        this.seconds = seconds%60;
+        this.minutes = (minutes+(int)seconds/60)%60;
+        this.hours = (hours +(minutes+(int)seconds/60)/60)%24;
+        this.days = days +(hours +(minutes+(int)seconds/60)/60)/24;
     }
 
     /**
      * @return an array containing all the values of Time
      */
-    public Object[] getTime() {
-        return new Object[] {this.days, this.hours, this.minutes, this.seconds};
+    public double[] getTime() {
+        return new double[] {this.days, this.hours, this.minutes, this.seconds};
     }
 
-    public void setTime(int newDays, int newHours, int newMinutes, int newSeconds) {
-        this.days = newDays;
-        this.hours = newHours;
-        this.minutes = newMinutes;
-        this.seconds = newSeconds;
+    public void setTime(double  seconds, int minutes, int hours, int days) {
+        this.seconds = seconds%60;
+        this.minutes = (minutes+(int)seconds/60)%60;
+        this.hours = (hours +(minutes+(int)seconds/60)/60)%24;
+        this.days = days +(hours +(minutes+(int)seconds/60)/60)/24;
     }
 
     /**
      * Update the date, taking seconds in input
      * @param timePast seconds passed since last update
      */
-    public void updateTime(int timePast) {
+    public void updateTime(double timePast) {
         this.seconds += timePast%60;
-        this.minutes += timePast/60;
+        this.minutes += (int) timePast/60;
 
         if (this.seconds >= 60) {
-            this.minutes += this.seconds/60;
+            this.minutes += (int) this.seconds/60;
             this.seconds = this.seconds%60;
         }
 
@@ -90,6 +90,7 @@ public class Time {
             this.days += this.hours/24;
             this.hours = this.hours%24;
         }
+
     }
 
     /**
@@ -99,7 +100,7 @@ public class Time {
     public void updateTime(Time timePast) {
         this.seconds += timePast.getSeconds();
         if (this.seconds >= 60) {
-            this.minutes += this.seconds/60;
+            this.minutes += (int) this.seconds/60;
             this.seconds = this.seconds%60;
         }
 
