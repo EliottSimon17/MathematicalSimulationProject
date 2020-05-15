@@ -1,42 +1,64 @@
 package Simulation;
 
-/* TODO:
-    Needs a toString method for Machine.java (where we print the time)
-        or we remove the print, but not recommended (ask Valentin if question why)
-
- */
-
 public class Time {
     private int days;
     private int hours;
     private int minutes;
-    private int seconds;
+    private double seconds;
 
+    /**
+     * Default constructor
+     */
     public Time() {
         this(0, 0, 0, 0);
     }
 
-    public Time(int seconds) {
-        this(seconds % 60, seconds / 60);
+    /**
+     * Parametric constructor
+     * @param seconds
+     */
+    public Time(double seconds) {
+        this(seconds % 60, (int)seconds / 60);
     }
 
-    public Time(int seconds, int minutes) {
+    /**
+     * Parametric constructor
+     * @param seconds
+     * @param minutes
+     */
+    public Time(double seconds, int minutes) {
         this(seconds, minutes % 60, minutes / 60);
     }
 
-    public Time(int seconds, int minutes, int hours) {
+    /**
+     * Parametric constructor
+     * @param seconds
+     * @param minutes
+     * @param hours
+     */
+    public Time(double seconds, int minutes, int hours) {
         this(seconds, minutes, hours % 24, hours / 24);
     }
 
-    public Time(int seconds, int minutes, int hours, int days) {
+    /**
+     * Parametric constructor
+     * @param seconds
+     * @param minutes
+     * @param hours
+     * @param days
+     */
+    public Time(double  seconds, int minutes, int hours, int days) {
         this.seconds = seconds;
         this.minutes = minutes;
         this.hours = hours;
         this.days = days;
     }
 
-    public int[] getTime() {
-        return new int[] {this.days, this.hours, this.minutes, this.seconds};
+    /**
+     * @return an array containing all the values of Time
+     */
+    public Object[] getTime() {
+        return new Object[] {this.days, this.hours, this.minutes, this.seconds};
     }
 
     public void setTime(int newDays, int newHours, int newMinutes, int newSeconds) {
@@ -47,7 +69,7 @@ public class Time {
     }
 
     /**
-     *
+     * Update the date, taking seconds in input
      * @param timePast seconds passed since last update
      */
     public void updateTime(int timePast) {
@@ -65,12 +87,47 @@ public class Time {
         }
 
         if (this.hours > 23) {
-            this.days += hours/24;
+            this.days += this.hours/24;
             this.hours = this.hours%24;
         }
     }
 
-    public int getSeconds() {
+    /**
+     * Update the time, with Time object as input
+     * @param timePast time past since last update
+     */
+    public void updateTime(Time timePast) {
+        this.seconds += timePast.getSeconds();
+        if (this.seconds >= 60) {
+            this.minutes += this.seconds/60;
+            this.seconds = this.seconds%60;
+        }
+
+        this.minutes += timePast.getMinutes();
+        if (this.minutes >= 60) {
+            this.hours += this.minutes/60;
+            this.minutes = this.minutes%60;
+        }
+
+        this.hours+= timePast.getHours();
+        if (this.hours > 23) {
+            this.days += hours/24;
+            this.hours = this.hours%24;
+        }
+
+        this.days+=timePast.getDays();
+
+    }
+
+    /**
+     *
+     * @return Time in seconds
+     */
+    public double toSeconds() {
+        return ((this.days*24 + this.hours)*60 + this.minutes)*60 + this.seconds;
+    }
+
+    public double getSeconds() {
         return this.seconds;
     }
 
@@ -84,6 +141,13 @@ public class Time {
 
     public int getDays() {
         return days;
+    }
+
+    public String toString() {
+        return "days " + this.days +
+                ", hours " + this.hours +
+                ", minutes " + this.minutes +
+                ", seconds " + this.seconds;
     }
     
     //Less/less equal by negation

@@ -61,7 +61,7 @@ public class Corporate extends Customer {
      *
      * @return a new arrival time, generated according to the arrivalDistr distribution
      */
-    public static double getNewArrivalTime(Time previousArrivalTime) {
+    public static Time getNewArrivalTime(Time previousArrivalTime) {
         // Pass on the previous arrival time to the arrival time distribution
         arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
 

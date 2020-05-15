@@ -13,9 +13,6 @@ import java.util.Random;
 */
 
 
-
-
-
 /**
  *	A source of products
  *	This class implements CProcess so that it can execute events.

@@ -96,23 +96,19 @@ public class Poisson implements Distribution {
     public Time drawRandom () {
         // Make sure that lambdaGivenTime is not null before attempting to generate a new random variate
         if (this.lambdaGivenTime != null) {
-            /* -------------------------------------------- TODO ----------------------------------------- */
-            double t = this.prevArrTime;
+            double t = this.prevArrTime.toSeconds();
 
             double u1, u2;
             do {
                 u1 = this.rnd.nextDouble();
                 u2 = this.rnd.nextDouble();
 
-                /** TODO THIS HAS TO BE REPLACED TO USE A TIME OBJECT */
                 t = t - (1 / this.lambdaStar) * Math.log(u1);
-            } while (u2 > (this.lambdaGivenTime.getLambda(t) / this.lambdaStar));
+            } while (u2 > (this.lambdaGivenTime.getLambda(new Time(t)) / this.lambdaStar));
 
-            /* -------------------------------------------- TODO ----------------------------------------- */
-            this.prevArrTime = t;
+            this.prevArrTime = new Time(t);
 
-            /* -------------------------------------------- TODO ----------------------------------------- */
-            return t;
+            return this.prevArrTime;
         }
         // If lambdaGivenTime has not yet been set, we cannot generate a random variate
         else {
