@@ -101,8 +101,8 @@ public class Source implements CProcess
 			interArrCnt++;
 			if(interarrivalTimes.length>interArrCnt)
 			{
-				/* -------------------------------------------- TODO ----------------------------------------- */
-				list.add(this,0,tme+interarrivalTimes[interArrCnt]); //target,type,time
+				tme.add(interarrivalTimes[interArrCnt]);
+				list.add(this,0,tme); //target,type,time
 			}
 			else
 			{

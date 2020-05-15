@@ -93,6 +93,19 @@ public class Time {
 
     /**
      *
+     * @return the CSA shift. 1, 2 or 3
+     */
+    public int getCSAShift() {
+        if (this.hours >= 6 && this.hours < 14)
+            return 1;
+        else if (this.hours >= 14 && this.hours < 22)
+            return 2;
+        else
+            return 3;
+    }
+
+    /**
+     *
      * @return Time in seconds
      */
     public double toSeconds() {

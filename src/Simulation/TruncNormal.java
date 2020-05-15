@@ -85,8 +85,7 @@ public class TruncNormal implements Distribution{
             do {
                 y = rnd.nextGaussian() * sd + mean;  // random number from r          
             } while(!isInDomain(y));    //check whether U <= f*(Y)/t(Y) -> only when f* is non-zero
-            /* TODO: WE NEED TO RETURN A TIME OBJECT, SO SOMEHOW DO THE CONVERSION FROM DOUBLE TO TIME OBJECTS */
-            return y;
+            return new Time(y);
         }
         
         
