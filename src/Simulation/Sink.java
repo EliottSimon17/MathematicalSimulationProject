@@ -6,8 +6,7 @@ import java.util.ArrayList;
  *	@author Joel Karel
  *	@version %I%, %G%
  */
-public class Sink implements ProductAcceptor
-{
+public class Sink implements ProductAcceptor {
 	/** All products are kept */
 	private ArrayList<Product> products;
 	/** All properties of products are kept */
@@ -63,7 +62,7 @@ public class Sink implements ProductAcceptor
 		int[] tmp = new int[numbers.size()];
 		for (int i=0; i < numbers.size(); i++)
 		{
-			tmp[i] = (numbers.get(i)).intValue();
+			tmp[i] = numbers.get(i).intValue();
 		}
 		return tmp;
 	}

@@ -9,7 +9,6 @@ import java.util.Random;
  * THEN NEXT TIME, GENERATE A NEW ARRIVAL TIME ONLY FOR THE ONE THAT HAD BEEN TAKEN BEFORE.
  * ETC
  *
- * MOREOVER, the line 108 needs to be modified to work with Time objects
 */
 
 

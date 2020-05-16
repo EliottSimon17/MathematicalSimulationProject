@@ -1,8 +1,5 @@
 package Simulation;
 
-
-
-
 /**
  *	Machine in a factory
  *	@author Joel Karel
