@@ -27,7 +27,7 @@ public class Time {
      * @param minutes
      */
     public Time(double seconds, int minutes) {
-        this(seconds % 60, (minutes + ((int)seconds)/60) % 60, (minutes + ((int)seconds)/60) / 60);
+        this(seconds, minutes, minutes / 60);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Time {
      * @param hours
      */
     public Time(double seconds, int minutes, int hours) {
-        this(seconds % 60, (minutes + ((int)seconds)/60)%60, (hours + (minutes + ((int)seconds)/60)/60) % 24, (hours + (minutes + ((int)seconds)/60)/60) / 24);
+        this(seconds, minutes, hours % 24, hours / 24);
     }
 
     /**
@@ -135,6 +135,7 @@ public class Time {
             this.seconds = this.seconds%60;
             this.minutes += (int) this.seconds/60;
         }
+        this.addMinutes(0);
     }
 
     /**
@@ -148,6 +149,7 @@ public class Time {
             this.minutes = this.minutes%60;
             this.hours +=  this.minutes/60;
         }
+        this.addHours(0);
     }
 
     /**
