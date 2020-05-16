@@ -22,6 +22,9 @@ public class Simulation {
     // 1 single Sink
     // as many machines as we want, depending on the number of CSA per shift
 
+    // this variables specifies how many CSACorporate should be free before they help Consumers
+    public final double CSACorporateLimit = 0;
+
     /**
      * @param args the command line arguments
      */
