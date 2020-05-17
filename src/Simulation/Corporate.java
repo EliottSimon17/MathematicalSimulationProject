@@ -26,8 +26,15 @@ public class Corporate extends Customer {
         else
             return 0.2/60;      // rate = 0.2 / minute = 0.2/60 / second
     };
+    
+    //in seconds
+    private static final double serviceMean = 3.6*60;
+    private static final double serviceStd = 1.2*60;
+    private static final double serviceMin = 45;
+    private static final double serviceMax = Double.NaN;    
+    
     private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
-    private static TruncNormal serviceDistr = TruncNormal(param1, param2);
+    private static TruncNormal serviceDistr = new TruncNormal(serviceMean, serviceStd, serviceMin, serviceMax);
 
     /**
      * Default constructor with no parameters
@@ -75,6 +82,6 @@ public class Corporate extends Customer {
     }
 
     public static Time getNewServiceTime() {
-        // TODO
+        return serviceDistr.drawRandom();
     }
 }

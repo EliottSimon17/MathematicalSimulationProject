@@ -8,12 +8,12 @@ import java.util.Random;
  * If the truncation boundaries are not set it is a normal distribution
  */
 public class TruncNormal implements Distribution{
+        //Internally this class uses seconds, but can return/take Time objects
         private double mean = 0;
         private double sd = 1;
         private Random rnd;                 //Random generator for U(0,1) and N(0,1)
         private double min = Double.NaN;    //Nan or infinite mean not set -> no truncation
-        private double max = Double.NaN;
-        
+        private double max = Double.NaN;        
         
         /**
          * Standard normal N(0,1)
@@ -30,31 +30,43 @@ public class TruncNormal implements Distribution{
         }
         
         /**
-         * Normal N(mean, sd^2)
+         * Normal N(mean, sd^2), in seconds
          */
         public TruncNormal(double mean, double sd) {
             this(mean, sd, Float.NaN, Float.NaN);
         }
         
+        public TruncNormal(Time mean, Time sd) {
+            this(mean.toSeconds(), sd.toSeconds(), Float.NaN, Float.NaN);
+        }
+        
         /**
-         * Normal N(mean, sd^2) from a given seed
+         * Normal N(mean, sd^2) from a given seed, in seconds
          */
         public TruncNormal(double mean, double sd, long seed) {
             this(mean, sd, Float.NaN, Float.NaN, seed);
         }
         
+        public TruncNormal(Time mean, Time sd, long seed) {
+            this(mean.toSeconds(), sd.toSeconds(), Float.NaN, Float.NaN, seed);
+        }
+        
         /**
          * Normal N(mean, sd^2) truncated on the left at min and on the right at max
          * If min or max are NaN or infinite the distribution is not truncated on that side
+         * In seconds
          */
         public TruncNormal(double mean, double sd, double min, double max) {
             //setIntegralSteps(n)            
             this.rnd = new Random();
             this.mean = mean;
-            this.sd = sd;
-            /* NOTE: SHOULD WE HAVE THE MIN AND MAX AS DOUBLE OR AS TIME OBJECTS ? */
+            this.sd = sd;            
             setLeft(min);
             setRight(max);
+        }
+        
+        public TruncNormal(Time mean, Time sd, Time min, Time max) {
+            this(mean.toSeconds(), sd.toSeconds(), min.toSeconds(), max.toSeconds());
         }
         
         /**
@@ -66,7 +78,11 @@ public class TruncNormal implements Distribution{
             this(mean, sd, min, max);
             rnd.setSeed(seed);
         }
-                        
+        
+        public TruncNormal(Time mean, Time sd, Time min, Time max, long seed) {
+            this(mean.toSeconds(), sd.toSeconds(), min.toSeconds(), max.toSeconds(), seed);
+        }
+        
         /**
          * 
          * @return Random number from this distribution
@@ -86,8 +102,7 @@ public class TruncNormal implements Distribution{
                 y = rnd.nextGaussian() * sd + mean;  // random number from r          
             } while(!isInDomain(y));    //check whether U <= f*(Y)/t(Y) -> only when f* is non-zero
             return new Time(y);
-        }
-        
+        }                       
         
         public boolean isInDomain(double x) {
             //check whether x is a<= x <= b
