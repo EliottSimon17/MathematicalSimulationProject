@@ -6,14 +6,55 @@
 
 package Simulation;
 
+import java.util.ArrayList;
+
 public class Simulation {
 
-    public CEventList list;
-    public Queue queue;
-    public Source source;
-    public Sink sink;
-    public Machine mach;
-
+    public CEventList l;
+    public Queue q1;
+    public Queue q2;
+    public Source s1;
+    public Source s2;
+    public Sink si;
+    public CSA[] ms;
+    
+    /**
+     * 
+     * @param corporates: number of corporate machine per shift
+     * @param consumers : number of consumers machine per shift
+     */
+    public Simulation(int[] corporates, int[] consumers) {
+        l = new CEventList();
+        q1= new Queue();
+        q2= new Queue();
+        
+        // TODO use correct Source subclass
+        s1 = new Source(q1, l, "Source corporate");
+        s2 = new Source(q2, l, "Source consumer");
+        
+        int total = corporates[0] + corporates[1] + corporates[2];
+        total += consumers[0] + consumers[1] + consumers[2];
+        
+        ms = new CSA[total];
+        
+        total = 0;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < corporates[i]; j++) {
+                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i);
+            }
+            total += corporates[i];
+            for(int j = 0; j < consumers[i]; j++) {
+                ms[total + j] = new CSAConsumer(q1, si, l, "CSA consumer " + i + " " + j , i);
+            }
+            total += consumers[i];
+        }
+        si = new Sink("Sink 1");        
+    }
+    
+    public void start(Time t) {
+        l.start(t);
+    }
+    
     // Recipe for a successful simulation:
     //
     // 1 single CEventList
@@ -26,7 +67,7 @@ public class Simulation {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Create an eventlist
+        /*// Create an eventlist
         CEventList l = new CEventList();
         // A queue for the machine
         Queue q = new Queue();
@@ -37,6 +78,14 @@ public class Simulation {
         // A machine
         Machine m = new Machine(q, si, l, "Machine 1");
         // start the eventlist
-        l.start(new Time(2000)); // 2000 is maximum time
+        l.start(new Time(2000)); // 2000 is maximum time*/
+        
+        int runs = 10;
+        Simulation[] sims = new Simulation[runs];
+        Time t = new Time(1, 0, 0, 0);
+        for(int i = 0; i < runs; i++) {
+           sims[i] = new Simulation(new int[]{10, 10, 10}, new int[]{5, 10, 5});
+           sims[i].start(t);
+        }
     }
 }
