@@ -15,7 +15,7 @@ public class Consumer extends Customer {
 
     // Set some constants, to get the lambdaT
     private static final double period = new Time(0, 0, 0, 1).toSeconds();
-    private static final double lowestPoint = new TIme(0, 0, 3).toSeconds();
+    private static final double lowestPoint = new Time(0, 0, 3).toSeconds();
     private static final double mean = 2.0 / 60;      //mean arrival rate is 2 / minute, = 2/60 / second
     private static final double range = 3.6 / 60;
     private static final LambdaT lambdaGivenTimeInSeconds = (time) -> {
@@ -25,8 +25,15 @@ public class Consumer extends Customer {
         // (max-min)/2 * cos((2*pi*(x + (period/2 - wishedLowestPoint)))/period) + mean
         return range/2 * Math.cos((2.0*Math.PI*(timeInSeconds + (period/2 - lowestPoint)))/(period)) + mean;
     };
+    
+    //in seconds
+    private static final double serviceMean = 1.2*60;
+    private static final double serviceStd = 35;
+    private static final double serviceMin = 25;
+    private static final double serviceMax = Double.NaN;
+    
     private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
-    private static TruncNormal serviceDistr = TruncNormal(param1, param2);
+    private static TruncNormal serviceDistr = new TruncNormal(serviceMean, serviceStd, serviceMin, serviceMax);
 
     /**
      * Default constructor with no parameters
@@ -74,6 +81,6 @@ public class Consumer extends Customer {
     }
 
     public static Time getNewServiceTime() {
-        // TODO
+        return serviceDistr.drawRandom();
     }
 }
