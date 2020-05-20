@@ -11,14 +11,16 @@ public class CSACorporate extends CSA {
     private Queue altQueue;
 
     // this variable will be the number of CSACorporate that should be free such that they start taking Consumer customers
-    private static double limitForTakingConsumers;
-    private static double freeCSACorporate;
+    private static int limitForTakingConsumers;
+    private static int freeCSACorporate = 0;
 
     public CSACorporate(Queue q1, Queue q2, ProductAcceptor s, CEventList e, String n, int shiftN, int limitForTakingConsumers) {
         super(q1,s,e,n, shiftN);                
         costHour = 60;
         altQueue = q2;
         this.limitForTakingConsumers = limitForTakingConsumers;
+        // add one free csacorporate to the count
+        freeCSACorporate ++;
     }
     
     @Override
@@ -30,9 +32,9 @@ public class CSACorporate extends CSA {
         sink.giveProduct(product);
         product=null;
         // set machine status to idle
-        // TODO check on the shift between 22pm and 6am
-        if(tme.inNoDay(getShift(shift))) {    //TODO check time shift
+        if (tme.inShift(getShift(shift))) {
             status='i';
+            freeCSACorporate ++;
             // Ask the queue for products
             if(!queue.askProduct(this)) {
                 altQueue.askProduct(this);
@@ -47,7 +49,39 @@ public class CSACorporate extends CSA {
     //If giveProduct returns false the object is kept in the queue
     public boolean giveProduct(Product p)
     {
-        return super.giveProduct(p) && true; //TODO product type AND CHECKING IF THE LIMIT OF free CSACOrporate's to have before helping Consumers has been reached
-        //      --> shouldn't super.giveProduct(p) and True come down to super.giveProduct(p) ?
+        if(status!='b')
+        {
+            if(eventlist.getTime().inShift(getShift(shift))) {
+                //Starting of the shift, one more free csa corporate
+                status = 'i';
+                freeCSACorporate ++;
+            }else{
+                // End of the shift, one less free csacorporate
+                freeCSACorporate --;
+                status = 'n';
+                return false;
+            }
+
+            // accept the product only if it is a Corporate or there are enough free csacorporate
+            if ((product instanceof Corporate) || (freeCSACorporate >= limitForTakingConsumers)) {
+                // We accept the product, so the number of freeCSACorporate is decreased by 1
+                freeCSACorporate --;
+
+                // Create the product
+                product = p;
+                // mark starting time
+                product.stamp(eventlist.getTime(), "Production started", name);
+                // start production
+                startProduction(p);
+                // Flag that the product has arrived
+                return true;
+            }
+            else{
+                // Flag that the product is rejected
+                return false;
+            }
+        }
+        // Flag that the product has been rejected
+        else return false;
     }
 }

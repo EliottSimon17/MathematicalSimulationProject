@@ -178,6 +178,14 @@ public class Time {
         else
             return this.greaterEqNoDay(other);
     }
+
+    public boolean smaller(Time other) {
+        return ! (this.greaterEq(other));
+    }
+
+    public boolean smallerEq(Time other) {
+        return ! (this.greater(other));
+    }
     
     public boolean greaterNoDay(Time other) { 
         return this.greaterEqNoDay(other) && !this.eqNoDay(other);
@@ -197,6 +205,14 @@ public class Time {
             }
         }
         return ge;
+    }
+
+    public boolean smallerNoDay(Time other) {
+        return ! this.greaterEqNoDay(other);
+    }
+
+    public boolean smallerEqNoDay(Time other) {
+        return ! this.greaterNoDay(other);
     }
     
     public boolean eq(Time other) { 
@@ -226,5 +242,31 @@ public class Time {
 
     public int getDays() {
         return days;
+    }
+
+    /**
+     * Return the time of this object as a new object, but disregarding the number of days passed
+     */
+    public Time getTimeOfTheDay () {
+        return new Time(this.getSeconds(), this.getMinutes(), this.getHours(), 0);
+    }
+
+    /**
+     * Computes whether this time object is in the given range
+     *
+     * @param range (a, b) the range between Time a and Time b that we should be
+     * @return true if this time object is comprised in that interval
+     */
+    public boolean inShift (Time[] range) {
+        // for range=(a, b), if a < b, then we have a "normal" case, for example from 8 am to 4 pm (of the same day)
+        if (range[0].smaller(range[1])) {
+            // So then we check whether we are after a AND before b
+            return (this.greaterEq(range[0]) && this.smallerEq(range[1]));
+        }
+        // otherwise, we have for example a range from 22 pm to 6 am (of consecutive days),
+        else {
+            // So we have to check if we are after the a OR before b in this case
+            return (this.greaterEq(range[0]) || this.smallerEq(range[1]));
+        }
     }
 }

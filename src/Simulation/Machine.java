@@ -138,7 +138,7 @@ public class Machine implements CProcess,ProductAcceptor
 	*/
 	protected void startProduction()
 	{
-            // generate duration		
+            // generate duration
             if(meanProcTime.greaterNoDay(new Time(0)))
             {
                 double duration = drawRandomExponential(meanProcTime.getSeconds());
