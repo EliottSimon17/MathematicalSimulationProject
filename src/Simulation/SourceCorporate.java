@@ -11,12 +11,18 @@ public class SourceCorporate implements CProcess {
     private int interArrCnt;
     // boolean whether the interarrival times were pre-specified
     private boolean iaTimesPrespecified;
+    // the last arrival time, not sure if it's still needed
+    private Time previousArrivalTime;
+
+    private Corporate corporate;
 
     public SourceCorporate(ProductAcceptor q,CEventList l,String n) {
         list = l;
         queue = q;
         name = n;
         iaTimesPrespecified = false;
+        previousArrivalTime = new Time(0);
+        corporate = new Corporate();
         addFirstEvent();
     }
 
@@ -24,10 +30,8 @@ public class SourceCorporate implements CProcess {
      *  Initializes the event list
      */
     private void addFirstEvent() {
-        // TODO : Find OPTIMAL LAMBDA
-        double lambda = 0;
-        Poisson ps = new Poisson(lambda);
-        list.add(this, 0, ps.drawRandom());
+        // TODO : Make sure that this has to be initialized this way
+        list.add(this, 0, corporate.getNewArrivalTime());
     }
 
     /**
@@ -59,5 +63,11 @@ public class SourceCorporate implements CProcess {
     public void execute(int type, Time tme) {
         System.out.println("Arrival at time = " + tme);
 
+        //Feeds the product to the queue
+        Customer cust = new Customer();
+        cust.stamp(tme,"Creation",name);
+        queue.giveProduct(cust);
+
+        list.add(this, 0, corporate.getNewArrivalTime(previousArrivalTime));
     }
 }

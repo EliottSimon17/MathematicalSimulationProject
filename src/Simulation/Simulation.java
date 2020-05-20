@@ -13,8 +13,8 @@ public class Simulation {
     public CEventList l;
     public Queue q1;
     public Queue q2;
-    public Source s1;
-    public Source s2;
+    public SourceCorporate s1;
+    public SourceConsumer s2;
     public Sink si;
     public CSA[] ms;
     
@@ -29,8 +29,8 @@ public class Simulation {
         q2= new Queue();
         
         // TODO use correct Source subclass
-        s1 = new Source(q1, l, "Source corporate");
-        s2 = new Source(q2, l, "Source consumer");
+        s1 = new SourceCorporate(q1, l, "Source corporate");
+        s2 = new SourceConsumer(q2, l, "Source consumer");
         
         int total = corporates[0] + corporates[1] + corporates[2];
         total += consumers[0] + consumers[1] + consumers[2];
@@ -40,7 +40,7 @@ public class Simulation {
         total = 0;
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < corporates[i]; j++) {
-                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i);
+                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i,0);
             }
             total += corporates[i];
             for(int j = 0; j < consumers[i]; j++) {

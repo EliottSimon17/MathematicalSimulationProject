@@ -84,16 +84,16 @@ public class Source implements CProcess
 		// show arrival
 		System.out.println("Arrival at time = " + tme);
 		// give arrived product to queue
-		Product p = new Product();
-		p.stamp(tme,"Creation",name);
-		queue.giveProduct(p);
+		//Product p = new Product();
+		//p.stamp(tme,"Creation",name);
+		//queue.giveProduct(p);
 		// generate duration
 		if (! iaTimesPrespecified)
 		{
 			/*  TODO, replace this to use the Poisson distributions of the Consumer and Corporate classes */
-			Time nextTime = drawNextPoisson(previousArrivalTime);
+			//Time nextTime = drawNextPoisson(previousArrivalTime);
 			// Create a new event in the eventlist
-			list.add(this,0,nextTime); //target,type,time
+			//list.add(this,0,nextTime); //target,type,time
 		}
 		else
 		{

@@ -11,12 +11,18 @@ public class SourceConsumer implements CProcess{
     private int interArrCnt;
     // boolean whether the interarrival times were pre-specified
     private boolean iaTimesPrespecified;
+    // These variables are the distributions used for generating arrival times and service times
+    private Consumer consumer;
+    // the last arrival time, not sure if it's still needed
+    private Time previousArrivalTime;
 
     public SourceConsumer(ProductAcceptor q,CEventList l,String n) {
         list = l;
         queue = q;
         name = n;
+        previousArrivalTime = new Time(0);
         iaTimesPrespecified = false;
+        consumer = new Consumer();
         addFirstEvent();
     }
 
@@ -24,10 +30,7 @@ public class SourceConsumer implements CProcess{
      *  Initializes the event list
      */
     private void addFirstEvent() {
-        // TODO : Find OPTIMAL LAMBDA
-        double lambda = 0;
-        Poisson ps = new Poisson(lambda);
-        list.add(this, 0, ps.drawRandom());
+        list.add(this, 0, consumer.getNewArrivalTime());
     }
 
     public String getName(){
@@ -47,6 +50,12 @@ public class SourceConsumer implements CProcess{
     @Override
     public void execute(int type, Time tme) {
         System.out.println("Arrival at time = " + tme);
+        //Feed the product to the queue
 
+        Customer cust = new Customer();
+        cust.stamp(tme,"Creation",name);
+        queue.giveProduct(cust);
+
+        list.add(this, 0, consumer.getNewArrivalTime(previousArrivalTime));
     }
 }
