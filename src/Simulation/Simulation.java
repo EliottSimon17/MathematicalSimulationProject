@@ -17,6 +17,8 @@ public class Simulation {
     public SourceConsumer s2;
     public Sink si;
     public CSA[] ms;
+    // this variables specifies how many CSACorporate should be free before they help Consumers
+    public final int CSACorporateLimit = 0;
     
     /**
      * 
@@ -40,7 +42,7 @@ public class Simulation {
         total = 0;
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < corporates[i]; j++) {
-                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i,0);
+                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i,CSACorporateLimit);
             }
             total += corporates[i];
             for(int j = 0; j < consumers[i]; j++) {
@@ -63,8 +65,7 @@ public class Simulation {
     // 1 single Sink
     // as many machines as we want, depending on the number of CSA per shift
 
-    // this variables specifies how many CSACorporate should be free before they help Consumers
-    public final double CSACorporateLimit = 0;
+
 
     /**
      * @param args the command line arguments
