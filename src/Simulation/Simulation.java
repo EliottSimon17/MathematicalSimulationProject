@@ -87,7 +87,7 @@ public class Simulation {
 
         int runs = 10;
         Simulation[] sims = new Simulation[runs];
-        Time t = new Time(1, 0, 0, 0);
+        Time t = new Time(0, 0, 0, 7);
         for(int i = 0; i < runs; i++) {
            sims[i] = new Simulation(corporateCSAPerShift, consumerCSAPerShift, CSACorporateLimitForTakingConsumers);
            sims[i].start(t);
