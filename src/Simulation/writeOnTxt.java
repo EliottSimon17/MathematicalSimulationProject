@@ -26,10 +26,13 @@ public class writeOnTxt {
 
         try {
             for (int i = 0; i < arrivalTime.size(); i++) {
+                // TODO make sure the times are in a fixed unit (seconds seems good ?)
                 sb.append(customerType.get(i));
                 sb.append(", ");
                 sb.append(arrivalTime.get(i));
                 sb.append(", ");
+                // TODO add the time when the Customer starts being processed by a Machine
+                // TODO add which CSA type the Customer was processed by
                 sb.append(finishTime.get(i));
                 sb.append("\n");
             }

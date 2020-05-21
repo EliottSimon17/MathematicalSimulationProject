@@ -26,7 +26,7 @@ public abstract class CSA extends Machine {
         // set status to busy
         status='b';
         
-        totalServiceTime = duration;
+        totalServiceTime.updateTime(duration);
         customers++;
     }
     
@@ -67,7 +67,7 @@ public abstract class CSA extends Machine {
         return shift;
     }
         
-    public double getCurrentCost() {        
+    public double getCurrentCost() {
         return (workingTime.getDays() * 24 + workingTime.getHours() + workingTime.getMinutes() / 60.0 + workingTime.getSeconds() / 3600) * costHour;
     }
         
