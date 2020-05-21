@@ -17,15 +17,13 @@ public class Simulation {
     public SourceConsumer s2;
     public Sink si;
     public CSA[] ms;
-    // this variables specifies how many CSACorporate should be free before they help Consumers
-    public final int CSACorporateLimit = 0;
     
     /**
      * 
      * @param corporates: number of corporate machine per shift
      * @param consumers : number of consumers machine per shift
      */
-    public Simulation(int[] corporates, int[] consumers) {
+    public Simulation(int[] corporates, int[] consumers, int corporateCSALimit) {
         l = new CEventList();
         q1= new Queue();
         q2= new Queue();
@@ -42,7 +40,7 @@ public class Simulation {
         total = 0;
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < corporates[i]; j++) {
-                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i,CSACorporateLimit);
+                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i, corporateCSALimit);
             }
             total += corporates[i];
             for(int j = 0; j < consumers[i]; j++) {
@@ -65,8 +63,6 @@ public class Simulation {
     // 1 single Sink
     // as many machines as we want, depending on the number of CSA per shift
 
-
-
     /**
      * @param args the command line arguments
      */
@@ -83,12 +79,17 @@ public class Simulation {
         Machine m = new Machine(q, si, l, "Machine 1");
         // start the eventlist
         l.start(new Time(2000)); // 2000 is maximum time*/
-        
+
+        // Specify the strategy for the runs
+        int[] consumerCSAPerShift = {5, 10, 5};
+        int[] corporateCSAPerShift = {10, 10, 10};
+        int CSACorporateLimitForTakingConsumers = 0;
+
         int runs = 10;
         Simulation[] sims = new Simulation[runs];
         Time t = new Time(1, 0, 0, 0);
         for(int i = 0; i < runs; i++) {
-           sims[i] = new Simulation(new int[]{10, 10, 10}, new int[]{5, 10, 5});
+           sims[i] = new Simulation(corporateCSAPerShift, consumerCSAPerShift, CSACorporateLimitForTakingConsumers);
            sims[i].start(t);
         }
     }
