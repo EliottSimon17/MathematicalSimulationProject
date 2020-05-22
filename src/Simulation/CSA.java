@@ -21,8 +21,8 @@ public abstract class CSA extends Machine {
         Time duration = ((Customer)p).getNewServiceTime();
         // Create a new event in the eventlist
         Time tme = eventlist.getTime();
-        tme.add(duration);
-        eventlist.add(this,0,tme); //target,type,time
+        duration.add(tme);
+        eventlist.add(this,0,duration); //target,type,time
         // set status to busy
         status='b';
         
