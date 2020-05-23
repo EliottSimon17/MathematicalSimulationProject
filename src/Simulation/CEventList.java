@@ -42,6 +42,10 @@ public class CEventList implements CProcess
     */
     public void add(CProcess target, int type, Time tme)
     {
+        // !!! DEBUGGING !!! DEBUG
+        System.out.println("Adding event with target of type " + target.getClass().getName());
+
+        
         boolean success=false;
         // First create a new event using the parameters
         CEvent evnt;

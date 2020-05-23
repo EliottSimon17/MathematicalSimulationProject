@@ -18,7 +18,16 @@ public abstract class CSA extends Machine {
     }
     
     protected void startProduction(Product p) {
-        Time duration = ((Customer)p).getNewServiceTime();
+        Time duration;
+
+        if (p instanceof Consumer) {
+            Consumer c = (Consumer) p;
+            duration = c.getNewServiceTime();
+        } else {
+            Corporate c = (Corporate) p;
+            duration = c.getNewServiceTime();
+        }
+
         // Create a new event in the eventlist
         Time tme = eventlist.getTime();
         duration.add(tme);
