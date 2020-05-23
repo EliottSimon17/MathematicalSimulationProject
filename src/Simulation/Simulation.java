@@ -42,6 +42,7 @@ public class Simulation {
         ms = new CSA[total];
 
         si = new Sink("Sink 1");
+        sinks.add(si);
 
         total = 0;
         for(int i = 0; i < 3; i++) {
