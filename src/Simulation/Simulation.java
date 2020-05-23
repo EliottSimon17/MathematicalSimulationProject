@@ -6,6 +6,7 @@
 
 package Simulation;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Simulation {
@@ -16,6 +17,7 @@ public class Simulation {
     public SourceCorporate s1;
     public SourceConsumer s2;
     public Sink si;
+    public static ArrayList<Sink> sinks;
     public CSA[] ms;
     
     /**
@@ -28,13 +30,15 @@ public class Simulation {
         q1= new Queue();
         q2= new Queue();
         
-        // TODO use correct Source subclass
         s1 = new SourceCorporate(q1, l, "Source corporate");
         s2 = new SourceConsumer(q2, l, "Source consumer");
         
         int total = corporates[0] + corporates[1] + corporates[2];
         total += consumers[0] + consumers[1] + consumers[2];
-        
+
+        si = new Sink("Sink 1");
+        sinks.add(si);
+
         ms = new CSA[total];
 
         si = new Sink("Sink 1");
@@ -67,7 +71,7 @@ public class Simulation {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         /*// Create an eventlist
         CEventList l = new CEventList();
         // A queue for the machine
@@ -86,6 +90,7 @@ public class Simulation {
         int[] corporateCSAPerShift = {10, 10, 10};
         int CSACorporateLimitForTakingConsumers = 0;
 
+        sinks = new ArrayList<>();
         int runs = 10;
         Simulation[] sims = new Simulation[runs];
         Time t = new Time(0, 0, 0, 7);
@@ -95,5 +100,6 @@ public class Simulation {
 
            System.out.println("\nEnd of simulation\n\n");
         }
+        WriteOnTxt.writeOnTxt(sinks);
     }
 }
