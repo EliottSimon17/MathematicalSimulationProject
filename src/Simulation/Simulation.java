@@ -36,9 +36,6 @@ public class Simulation {
         int total = corporates[0] + corporates[1] + corporates[2];
         total += consumers[0] + consumers[1] + consumers[2];
 
-        si = new Sink("Sink 1");
-        sinks.add(si);
-
         ms = new CSA[total];
 
         si = new Sink("Sink 1");
@@ -92,7 +89,7 @@ public class Simulation {
         int CSACorporateLimitForTakingConsumers = 0;
 
         sinks = new ArrayList<>();
-        int runs = 10;
+        int runs = 1;
         Simulation[] sims = new Simulation[runs];
         Time t = new Time(0, 0, 0, 7);
         for(int i = 0; i < runs; i++) {
