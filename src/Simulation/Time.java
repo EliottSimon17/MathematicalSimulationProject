@@ -18,7 +18,7 @@ public class Time {
      * @param seconds
      */
     public Time(double seconds) {
-        this(seconds % 60, ((int)seconds)/ 60);
+        this(seconds, 0);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Time {
      * @param minutes
      */
     public Time(double seconds, int minutes) {
-        this(seconds, minutes, minutes / 60);
+        this(seconds, minutes, 0);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Time {
      * @param hours
      */
     public Time(double seconds, int minutes, int hours) {
-        this(seconds, minutes, hours % 24, hours / 24);
+        this(seconds, minutes, hours, 0);
     }
 
     /**
@@ -49,9 +49,9 @@ public class Time {
      */
     public Time(double  seconds, int minutes, int hours, int days) {
         this.seconds = seconds % 60;
-        this.minutes = (minutes+((int)seconds)/60)%60;
-        this.hours = (hours +(minutes+((int)seconds)/60)/60)%24;
-        this.days = days +(hours +(minutes+((int)seconds)/60)/60)/24;
+        this.minutes = (minutes+((int)seconds/60))%60;
+        this.hours = (hours +(minutes+((int)seconds/60)/60))%24;
+        this.days = days +(hours +(minutes+((int)seconds/60)/60))/24;
     }
 
     public Time (Time other) {
@@ -95,19 +95,6 @@ public class Time {
 
     /**
      *
-     * @return the CSA shift. 1, 2 or 3
-     */
-    public int getCSAShift() {
-        if (this.hours >= 6 && this.hours < 14)
-            return 1;
-        else if (this.hours >= 14 && this.hours < 22)
-            return 2;
-        else
-            return 3;
-    }
-
-    /**
-     *
      * @return Time in seconds
      */
     public double toSeconds() {
@@ -136,8 +123,8 @@ public class Time {
     public void addSeconds(double s) {
         this.seconds += s;
         if (this.seconds >= 60.0) {
-            this.seconds = this.seconds%60;
             this.minutes += (int) this.seconds/60;
+            this.seconds = this.seconds%60;
         }
         this.addMinutes(0);
     }
@@ -150,8 +137,8 @@ public class Time {
     public void addMinutes(int m) {
         this.minutes += m;
         if (this.minutes >= 60) {
-            this.minutes = this.minutes%60;
             this.hours +=  this.minutes/60;
+            this.minutes = this.minutes%60;
         }
         this.addHours(0);
     }
@@ -164,8 +151,8 @@ public class Time {
     public void addHours(int h) {
         this.hours += h;
         if (this.hours > 23) {
+            this.days += this.hours/24;
             this.hours = this.hours%24;
-            this.days += this.days/24;
         }
     }
     
