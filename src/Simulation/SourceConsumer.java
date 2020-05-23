@@ -30,7 +30,16 @@ public class SourceConsumer implements CProcess{
      *  Initializes the event list
      */
     private void addFirstEvent() {
-        list.add(this, 0, consumer.getNewArrivalTime());
+        //System.out.println("Added new first arrival at a new time");
+        Time newEventTime = consumer.getNewArrivalTime();
+
+
+        // DEBUGGING !!! DEBUG !!!
+        System.out.println("Generated new first arrival at time t=" + newEventTime);
+
+
+
+        list.add(this, 0, newEventTime);
     }
 
     public String getName(){
@@ -52,10 +61,10 @@ public class SourceConsumer implements CProcess{
         System.out.println("Arrival at time = " + tme);
         //Feed the product to the queue
 
-        Customer cust = new Customer();
+        Consumer cust = new Consumer();
         cust.stamp(tme,"Creation",name);
         queue.giveProduct(cust);
 
-        list.add(this, 0, consumer.getNewArrivalTime(previousArrivalTime));
+        list.add(this, 0, consumer.getNewArrivalTime());
     }
 }

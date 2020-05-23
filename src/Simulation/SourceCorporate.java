@@ -64,10 +64,10 @@ public class SourceCorporate implements CProcess {
         System.out.println("Arrival at time = " + tme);
 
         //Feeds the product to the queue
-        Customer cust = new Customer();
+        Corporate cust = new Corporate();
         cust.stamp(tme,"Creation",name);
         queue.giveProduct(cust);
 
-        list.add(this, 0, corporate.getNewArrivalTime(previousArrivalTime));
+        list.add(this, 0, corporate.getNewArrivalTime());
     }
 }
