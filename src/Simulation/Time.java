@@ -54,6 +54,10 @@ public class Time {
         this.days = days +(hours +(minutes+((int)seconds)/60)/60)/24;
     }
 
+    public Time (Time other) {
+        this(other.getSeconds(), other.getMinutes(), other.getHours(), other.getDays());
+    }
+
     /**
      * @return an array containing all the values of Time
      */
@@ -173,10 +177,12 @@ public class Time {
     }
     
     public boolean greaterEq(Time other) {
-        if(this.getDays() >= other.getDays())
+        if(this.getDays() > other.getDays())
             return true;
-        else
+        else if (this.getDays() == other.getDays())
             return this.greaterEqNoDay(other);
+        else
+            return false;
     }
 
     public boolean smaller(Time other) {
@@ -192,7 +198,7 @@ public class Time {
     }
     
     public boolean greaterEqNoDay(Time other) {
-        boolean ge = false;        
+        boolean ge = false;
         if(this.getHours() > other.getHours()) {
             ge = true;
         }else if(this.getHours() == other.getHours()) {

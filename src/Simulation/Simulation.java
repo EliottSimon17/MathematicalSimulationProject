@@ -36,7 +36,9 @@ public class Simulation {
         total += consumers[0] + consumers[1] + consumers[2];
         
         ms = new CSA[total];
-        
+
+        si = new Sink("Sink 1");
+
         total = 0;
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < corporates[i]; j++) {
@@ -48,7 +50,6 @@ public class Simulation {
             }
             total += consumers[i];
         }
-        si = new Sink("Sink 1");        
     }
     
     public void start(Time t) {
@@ -91,6 +92,8 @@ public class Simulation {
         for(int i = 0; i < runs; i++) {
            sims[i] = new Simulation(corporateCSAPerShift, consumerCSAPerShift, CSACorporateLimitForTakingConsumers);
            sims[i].start(t);
+
+           System.out.println("\nEnd of simulation\n\n");
         }
     }
 }
