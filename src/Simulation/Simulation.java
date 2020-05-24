@@ -89,7 +89,7 @@ public class Simulation {
         int CSACorporateLimitForTakingConsumers = 0;
 
         sinks = new ArrayList<>();
-        int runs = 1;
+        int runs = 2;
         Simulation[] sims = new Simulation[runs];
         Time t = new Time(0, 0, 0, 7);
         for(int i = 0; i < runs; i++) {

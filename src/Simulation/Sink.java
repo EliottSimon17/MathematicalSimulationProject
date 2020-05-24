@@ -40,6 +40,7 @@ public class Sink implements ProductAcceptor {
 		ArrayList<Time> t = p.getTimes();
 		ArrayList<String> e = p.getEvents();
 		ArrayList<String> s = p.getStations();
+		//System.out.println("-----------------"+t.size()+"------------");
 		for(int i=0;i<t.size();i++) {
 			products.add(p);
 			numbers.add(number);
