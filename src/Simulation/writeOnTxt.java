@@ -65,7 +65,7 @@ public class writeOnTxt {
                 writer.close();
             }
         }
-        sb.append("file end");
+        sb.append("simulation end");
 
         writer.write(sb.toString());
         writer.close();
@@ -123,7 +123,7 @@ public class writeOnTxt {
                 writer.close();
             }
         }
-        sb.append("file end");
+        sb.append("simulation end");
 
         writer.write(sb.toString());
         writer.close();
