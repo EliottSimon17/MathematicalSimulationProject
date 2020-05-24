@@ -42,6 +42,7 @@ public class writeOnTxt {
             out.println("events length: "+ events.length);
             out.println("Station length: "+ stations.length);
             out.println("times length: "+times.length);
+            out.println();
 
             try {
                 for (int i= 0; i < numbers.length; i++) {
@@ -64,8 +65,8 @@ public class writeOnTxt {
                 writer.close();
             }
         }
+        sb.append("file end");
 
-        //out.println(sb.toString());
         writer.write(sb.toString());
         writer.close();
 
@@ -98,6 +99,7 @@ public class writeOnTxt {
             out.println("events length: "+ events.length);
             out.println("Station length: "+ stations.length);
             out.println("times length: "+times.length);
+            out.println();
 
             try {
                 for (int i= 0; i < numbers.length; i++) {
@@ -121,8 +123,8 @@ public class writeOnTxt {
                 writer.close();
             }
         }
+        sb.append("file end");
 
-        //out.println(sb.toString());
         writer.write(sb.toString());
         writer.close();
 
