@@ -67,7 +67,7 @@ public class Poisson implements Distribution {
      * @param newValue the new value of the previous arrival time
      */
     public void setPreviousArrivalTime(Time newValue) {
-        this.prevArrTime.add(newValue);
+        this.prevArrTime= newValue;
     }
 
     /**

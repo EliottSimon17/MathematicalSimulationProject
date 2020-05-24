@@ -26,10 +26,13 @@ public class Simulation {
      * @param consumers : number of consumers machine per shift
      */
     public Simulation(int[] corporates, int[] consumers, int corporateCSALimit) {
+        System.out.println("New simulation");
+        Consumer.getArrivDistr().setPreviousArrivalTime(new Time(0));
+
         l = new CEventList();
         q1= new Queue();
         q2= new Queue();
-        
+
         s1 = new SourceCorporate(q1, l, "Source corporate");
         s2 = new SourceConsumer(q2, l, "Source consumer");
         

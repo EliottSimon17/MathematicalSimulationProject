@@ -57,8 +57,8 @@ public class writeOnTxt {
                         sb.append(times[i].toSeconds());
                         sb.append("\n");
                     }
-
                 }
+                sb.append("\n");
             } catch (IndexOutOfBoundsException e) {
                 writer.write(sb.toString());
                 writer.close();
@@ -113,8 +113,9 @@ public class writeOnTxt {
                         sb.append(times[i].toSeconds());
                         sb.append("\n");
                     }
-
                 }
+                sb.append("\n");
+
             } catch (IndexOutOfBoundsException e) {
                 writer.write(sb.toString());
                 writer.close();
