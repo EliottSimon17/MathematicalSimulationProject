@@ -32,7 +32,7 @@ public class Consumer extends Customer {
      * Default constructor with no parameters
      */
     public Consumer() {
-        this(new Time(0));
+        super();
     }
 
     /**
@@ -42,7 +42,7 @@ public class Consumer extends Customer {
      */
     public Consumer(Time previousArrivalTime) {
         // Call the superclass constructor (which should be the one from Product
-        super();
+        this();
         // Set the previous arrival time
         arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
     }

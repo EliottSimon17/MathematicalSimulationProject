@@ -101,6 +101,7 @@ public class Simulation {
 
            System.out.println("\nEnd of simulation\n\n");
         }
+        System.out.println(sinks.size());
         writeOnTxt.writeOnTxt(sinks);
     }
 }

@@ -40,7 +40,7 @@ public class Corporate extends Customer {
      * Default constructor with no parameters
      */
     public Corporate() {
-        this(new Time(0));
+        super();
     }
 
     /**
@@ -50,7 +50,7 @@ public class Corporate extends Customer {
      */
     public Corporate (Time previousArrivalTime) {
         // Call the superclass constructor (which should be the one from Product
-        super();
+        this();
         // Set the previous arrival time
         arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
     }

@@ -1,10 +1,5 @@
 package Simulation;
 
-/* TODO:
-    - change line 30 to work with Time objects
-        --> comparison of Time objects
-    -
- */
 
 public class CSACorporate extends CSA {
     //status: b->busy, i->idle, n->not working

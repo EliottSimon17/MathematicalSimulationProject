@@ -34,7 +34,7 @@ public class Sink implements ProductAcceptor {
 	
         @Override
 	public boolean giveProduct(Product p) {
-		System.out.println("nex product");
+		//System.out.println("nex product");
 		number++;
 		// store stamps
 		ArrayList<Time> t = p.getTimes();
