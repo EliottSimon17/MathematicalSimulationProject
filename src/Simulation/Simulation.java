@@ -98,6 +98,6 @@ public class Simulation {
 
            System.out.println("\nEnd of simulation\n\n");
         }
-        WriteOnTxt.writeOnTxt(sinks);
+        writeOnTxt.writeOnTxt(sinks);
     }
 }
