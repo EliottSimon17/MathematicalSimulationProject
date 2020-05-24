@@ -1,0 +1,33 @@
+simulation: 1
+Number: customer type: event: station: time: 
+2, consumer, Creation, Source consumer, 34.42395076411023
+2, consumer, Production started, CSA Corporate 2 0, 308.54332001491326
+2, consumer, Production complete, CSA Corporate 2 0, 308.54332001491326
+3, consumer, Creation, Source consumer, 10998.6353452442
+3, consumer, Production started, CSA Corporate 2 0, 10998.6353452442
+3, consumer, Production complete, CSA Corporate 2 0, 11132.84298957965
+4, consumer, Creation, Source consumer, 11035.50657991833
+4, consumer, Production started, CSA Corporate 2 0, 11132.84298957965
+4, consumer, Production complete, CSA Corporate 2 0, 11174.08734505777
+5, consumer, Creation, Source consumer, 14670.642843945949
+5, consumer, Production started, CSA Corporate 2 0, 14670.642843945949
+5, consumer, Production complete, CSA Corporate 2 0, 14806.114503468823
+6, consumer, Creation, Source consumer, 14671.765787803446
+6, consumer, Production started, CSA Corporate 2 0, 14806.114503468823
+6, consumer, Production complete, CSA Corporate 2 0, 14910.578649058696
+7, consumer, Creation, Source consumer, 18318.60780505715
+7, consumer, Production started, CSA Corporate 2 0, 18318.60780505715
+7, consumer, Production complete, CSA Corporate 2 0, 18415.576609377153
+8, consumer, Creation, Source consumer, 18334.981975128296
+8, consumer, Production started, CSA Corporate 2 0, 18415.576609377153
+8, consumer, Production complete, CSA Corporate 2 0, 18497.139519967517
+9, consumer, Creation, Source consumer, 18348.96510869315
+9, consumer, Production started, CSA Corporate 2 0, 18497.139519967517
+9, consumer, Production complete, CSA Corporate 2 0, 18582.297369901396
+10, consumer, Creation, Source consumer, 18353.154124439367
+10, consumer, Production started, CSA Corporate 2 0, 18582.297369901396
+10, consumer, Production complete, CSA Corporate 2 0, 18618.5451220743
+
+simulation: 2
+Number: customer type: event: station: time: 
+

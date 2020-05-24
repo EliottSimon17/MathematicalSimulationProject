@@ -1,0 +1,9 @@
+simulation: 1
+Number: customer type: event: station: time: 
+1, Corporate, Creation, Source corporate, 14.767309457000641
+1, Corporate, Production started, CSA Corporate 2 0, 14.767309457000641
+1, Corporate, Production complete, CSA Corporate 2 0, 308.54332001491326
+
+simulation: 2
+Number: customer type: event: station: time: 
+
