@@ -84,4 +84,8 @@ public class Corporate extends Customer {
     public static Time getNewServiceTime() {
         return serviceDistr.drawRandom();
     }
+    
+    public static Poisson getArrivDistr() {
+        return arrivalDistr;
+    }
 }

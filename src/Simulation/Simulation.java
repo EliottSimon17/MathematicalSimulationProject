@@ -28,6 +28,7 @@ public class Simulation {
     public Simulation(int[] corporates, int[] consumers, int corporateCSALimit) {
         System.out.println("New simulation");
         Consumer.getArrivDistr().setPreviousArrivalTime(new Time(0));
+        Corporate.getArrivDistr().setPreviousArrivalTime(new Time(0));
 
         l = new CEventList();
         q1= new Queue();
