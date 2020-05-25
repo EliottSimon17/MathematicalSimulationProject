@@ -18,8 +18,7 @@ public class Queue implements ProductAcceptor
 	*	Initializes the queue and introduces a dummy machine
 	*	the machine has to be specified later
 	*/
-	public Queue()
-	{
+	public Queue() 	{
 		row = new ArrayList<>();
 		requests = new ArrayList<>();
 	}
@@ -28,22 +27,18 @@ public class Queue implements ProductAcceptor
 	*	Asks a queue to give a product to a machine
 	*	True is returned if a product could be delivered; false if the request is queued
 	*/
-	public boolean askProduct(Machine machine)
-	{
+	public boolean askProduct(Machine machine) {
 		// This is only possible with a non-empty queue
-		if(row.size()>0)
-		{
+		if(row.size()>0) {
 			// If the machine accepts the product
-			if(machine.giveProduct(row.get(0)))
-			{
+			if(machine.giveProduct(row.get(0))) {
 				row.remove(0);// Remove it from the queue
 				return true;
 			}
 			else
 				return false; // Machine rejected; don't queue request
 		}
-		else
-		{
+		else {
 			requests.add(machine);
 			return false; // queue request
 		}
@@ -54,16 +49,11 @@ public class Queue implements ProductAcceptor
 	*	It is investigated whether a machine wants the product, otherwise it is stored
 	*/
 	public boolean giveProduct(Product p) {
-		//System.out.println("Gave this queue a product");
-
 		// Check if the machine accepts it
 		if (requests.size() < 1) {
-			//System.out.println("Have no waiting machine");
 			row.add(p); // Otherwise store it
 		}
-		else
-		{
-			//System.out.println("Have a waiting machine");
+		else {
 			boolean delivered = false;
 			while(!delivered & (requests.size()>0))
 			{

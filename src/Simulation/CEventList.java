@@ -3,10 +3,6 @@ package Simulation;
 import java.util.ArrayList;
 
 
-/* TODO:
- * CHANGE add() to be able to compare times at line 54
- */
-
 /**
  *	Event processing mechanism
  *	Events are created here and it is ensured that they are processed in the proper order
