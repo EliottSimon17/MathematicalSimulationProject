@@ -7,22 +7,11 @@ public class SourceConsumer implements CProcess{
     private ProductAcceptor queue;
     /** Name of the source */
     private String name;
-    /** Interarrival time iterator */
-    private int interArrCnt;
-    // boolean whether the interarrival times were pre-specified
-    private boolean iaTimesPrespecified;
-    // These variables are the distributions used for generating arrival times and service times
-    private Consumer consumer;
-    // the last arrival time, not sure if it's still needed
-    private Time previousArrivalTime;
 
     public SourceConsumer(ProductAcceptor q,CEventList l,String n) {
         list = l;
         queue = q;
         name = n;
-        previousArrivalTime = new Time(0);
-        iaTimesPrespecified = false;
-        consumer = new Consumer();
         addFirstEvent();
     }
 
@@ -30,12 +19,11 @@ public class SourceConsumer implements CProcess{
      *  Initializes the event list
      */
     private void addFirstEvent() {
-        //System.out.println("Added new first arrival at a new time");
-        Time newEventTime = consumer.getNewArrivalTime();
+        Time newEventTime = Consumer.getNewArrivalTime();
 
 
         // DEBUGGING !!! DEBUG !!!
-        System.out.println("Generated new first arrival at time t=" + newEventTime);
+        // System.out.println("Generated new first arrival at time t=" + newEventTime);
 
 
 
@@ -65,6 +53,6 @@ public class SourceConsumer implements CProcess{
         cust.stamp(tme,"Creation",name);
         queue.giveProduct(cust);
 
-        list.add(this, 0, consumer.getNewArrivalTime());
+        list.add(this, 0, Consumer.getNewArrivalTime());
     }
 }
