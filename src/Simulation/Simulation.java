@@ -35,8 +35,8 @@ public class Simulation {
         // Note: did not yet reset the service times object, because they should not need to be reset
 
         l = new CEventList();
-        q1= new Queue();
-        q2= new Queue();
+        q1= new Queue();    //Corporate
+        q2= new Queue();    //Consumer
 
         s1 = new SourceCorporate(q1, l, "Source corporate");
         s2 = new SourceConsumer(q2, l, "Source consumer");
@@ -56,7 +56,7 @@ public class Simulation {
             }
             total += corporates[i];
             for(int j = 0; j < consumers[i]; j++) {
-                ms[total + j] = new CSAConsumer(q1, si, l, "CSA consumer " + i + " " + j , i);
+                ms[total + j] = new CSAConsumer(q2, si, l, "CSA consumer " + i + " " + j , i);
             }
             total += consumers[i];
         }
@@ -97,7 +97,7 @@ public class Simulation {
         int CSACorporateLimitForTakingConsumers = 0;
 
         sinks = new ArrayList<>();
-        int runs = 10;
+        int runs = 5;
         Simulation[] sims = new Simulation[runs];
         Time t = new Time(0, 0, 0, 7);
         for(int i = 0; i < runs; i++) {
