@@ -1,13 +1,6 @@
 package Simulation;
 
 
-/* TODO:
- *  - GIVE THE PARAMETERS OF THE POISSON AND TRUNCNORMAL DISTRIBUTIONS IN THE CONSTRUCTOR
- *      --> compute them from the assignment sheet
- *
- *  - WRITE THE BODY OF THE getNewServiceTime() METHOD TO USE THE TRUNCNORMAL
- */
-
 public class Consumer extends Customer {
     // These variables are the distributions used for generating arrival times and service times
     private static final double lambdaStarPerSecond = 3.8 / 60;        // Since lambda(t) has mean 2 and lowest point 0.2,
@@ -39,7 +32,7 @@ public class Consumer extends Customer {
      * Default constructor with no parameters
      */
     public Consumer() {
-        this(new Time(0));
+        super();
     }
 
     /**
@@ -49,7 +42,7 @@ public class Consumer extends Customer {
      */
     public Consumer(Time previousArrivalTime) {
         // Call the superclass constructor (which should be the one from Product
-        super();
+        this();
         // Set the previous arrival time
         arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
     }
@@ -82,6 +75,10 @@ public class Consumer extends Customer {
 
     public static Time getNewServiceTime() {
         return serviceDistr.drawRandom();
+    }
+
+    public static Poisson getArrivDistr() {
+        return arrivalDistr;
     }
 
     /**

@@ -1,0 +1,721 @@
+simulation: 1
+Number: customer type: event: station: time: 
+1, Corporate, Creation, Source corporate, 7331.356110711995
+1, Corporate, Production started, CSA Corporate 2 0, 7331.356110711995
+1, Corporate, Production complete, CSA Corporate 2 0, 7359.390768409511
+
+simulation: 2
+Number: customer type: event: station: time: 
+1, Corporate, Creation, Source corporate, 399661.0103731368
+1, Corporate, Production started, CSA Corporate 2 0, 399661.0103731368
+1, Corporate, Production complete, CSA Corporate 2 0, 399886.4411781592
+2, Corporate, Creation, Source corporate, 399673.8945041185
+2, Corporate, Production started, CSA Corporate 2 1, 399673.8945041185
+2, Corporate, Production complete, CSA Corporate 2 1, 399923.59973593405
+3, Corporate, Creation, Source corporate, 399684.3261287342
+3, Corporate, Production started, CSA Corporate 2 2, 399684.3261287342
+3, Corporate, Production complete, CSA Corporate 2 2, 399947.1762355336
+157, Corporate, Creation, Source corporate, 403334.22885152156
+157, Corporate, Production started, CSA Corporate 2 3, 403334.22885152156
+157, Corporate, Production complete, CSA Corporate 2 3, 403478.55264376383
+349, Corporate, Creation, Source corporate, 407022.8682241341
+349, Corporate, Production started, CSA Corporate 2 4, 407022.8682241341
+349, Corporate, Production complete, CSA Corporate 2 4, 407167.5784719344
+879, Corporate, Creation, Source corporate, 414348.01060926117
+879, Corporate, Production started, CSA Corporate 2 5, 414348.01060926117
+879, Corporate, Production complete, CSA Corporate 2 5, 414696.5287227964
+1174, Corporate, Creation, Source corporate, 417961.2647330612
+1174, Corporate, Production started, CSA Corporate 2 6, 417961.2647330612
+1174, Corporate, Production complete, CSA Corporate 2 6, 418094.8977655946
+1183, Corporate, Creation, Source corporate, 417979.3314622692
+1183, Corporate, Production started, CSA Corporate 2 7, 417979.3314622692
+1183, Corporate, Production complete, CSA Corporate 2 7, 418173.1110683055
+1188, Corporate, Creation, Source corporate, 418013.64177130966
+1188, Corporate, Production started, CSA Corporate 2 8, 418013.64177130966
+1188, Corporate, Production complete, CSA Corporate 2 8, 418228.7664799916
+2074, Corporate, Creation, Source corporate, 425297.34907952294
+2074, Corporate, Production started, CSA Corporate 2 9, 425297.34907952294
+2074, Corporate, Production complete, CSA Corporate 2 9, 425316.0580078349
+2615, Corporate, Creation, Source corporate, 428984.0680372726
+2615, Corporate, Production started, CSA consumer 2 0, 428984.0680372726
+2615, Corporate, Production complete, CSA consumer 2 0, 429211.4330376924
+3633, Corporate, Creation, Source corporate, 436278.35128395475
+3633, Corporate, Production started, CSA consumer 2 1, 436278.35128395475
+3633, Corporate, Production complete, CSA consumer 2 1, 436463.0952219876
+3639, Corporate, Creation, Source corporate, 436297.28057882434
+3639, Corporate, Production started, CSA consumer 2 2, 436297.28057882434
+3639, Corporate, Production complete, CSA consumer 2 2, 436502.429839335
+5116, Corporate, Creation, Source corporate, 447258.0541484537
+5116, Corporate, Production started, CSA consumer 2 4, 447258.0541484537
+5116, Corporate, Production complete, CSA consumer 2 4, 447422.53081532725
+5121, Corporate, Creation, Source corporate, 447263.7510152901
+5121, Corporate, Production started, CSA consumer 2 0, 447263.7510152901
+5121, Corporate, Production complete, CSA consumer 2 0, 447446.92176257016
+5142, Corporate, Creation, Source corporate, 447241.1991019583
+5142, Corporate, Production started, CSA consumer 2 3, 447241.1991019583
+5142, Corporate, Production complete, CSA consumer 2 3, 447611.9250813793
+7642, Corporate, Creation, Source corporate, 465557.7458949908
+7642, Corporate, Production started, CSA consumer 2 1, 465557.7458949908
+7642, Corporate, Production complete, CSA consumer 2 1, 465630.7369971568
+8602, Corporate, Creation, Source corporate, 476559.7644779363
+8602, Corporate, Production started, CSA Corporate 2 2, 476559.7644779363
+8602, Corporate, Production complete, CSA Corporate 2 2, 476724.482434079
+8603, Corporate, Creation, Source corporate, 476538.9144123165
+8603, Corporate, Production started, CSA Corporate 2 0, 476538.9144123165
+8603, Corporate, Production complete, CSA Corporate 2 0, 476746.20009696594
+8604, Corporate, Creation, Source corporate, 476550.6724128118
+8604, Corporate, Production started, CSA Corporate 2 7, 476550.6724128118
+8604, Corporate, Production complete, CSA Corporate 2 7, 476851.29054615
+8618, Corporate, Creation, Source corporate, 480221.20373006834
+8618, Corporate, Production started, CSA Corporate 2 6, 480221.20373006834
+8618, Corporate, Production complete, CSA Corporate 2 6, 480387.7228543229
+8655, Corporate, Creation, Source corporate, 483860.16864144115
+8655, Corporate, Production started, CSA Corporate 2 9, 483860.16864144115
+8655, Corporate, Production complete, CSA Corporate 2 9, 484016.4104690984
+8751, Corporate, Creation, Source corporate, 487523.13821184734
+8751, Corporate, Production started, CSA consumer 2 2, 487523.13821184734
+8751, Corporate, Production complete, CSA consumer 2 2, 487649.90776472003
+8752, Corporate, Creation, Source corporate, 487526.945942788
+8752, Corporate, Production started, CSA Corporate 2 4, 487526.945942788
+8752, Corporate, Production complete, CSA Corporate 2 4, 487818.4050996957
+8842, Corporate, Creation, Source corporate, 494826.53165554575
+8842, Corporate, Production started, CSA Corporate 2 4, 494826.53165554575
+8842, Corporate, Production complete, CSA Corporate 2 4, 494915.54049244296
+8843, Corporate, Creation, Source corporate, 494832.5240518262
+8843, Corporate, Production started, CSA Corporate 2 8, 494832.5240518262
+8843, Corporate, Production complete, CSA Corporate 2 8, 495031.016440986
+8844, Corporate, Creation, Source corporate, 494854.35896525654
+8844, Corporate, Production started, CSA Corporate 2 3, 494854.35896525654
+8844, Corporate, Production complete, CSA Corporate 2 3, 495046.5991301215
+8847, Corporate, Creation, Source corporate, 498480.8380000002
+8847, Corporate, Production started, CSA Corporate 2 1, 498480.8380000002
+8847, Corporate, Production complete, CSA Corporate 2 1, 498631.4682546061
+8964, Corporate, Creation, Source corporate, 502194.5980164015
+8964, Corporate, Production started, CSA Corporate 2 2, 502194.5980164015
+8964, Corporate, Production complete, CSA Corporate 2 2, 502460.56036356004
+9111, Corporate, Creation, Source corporate, 505806.43031817145
+9111, Corporate, Production started, CSA Corporate 2 0, 505806.43031817145
+9111, Corporate, Production complete, CSA Corporate 2 0, 506009.08157916775
+9261, Corporate, Creation, Source corporate, 509498.1116463016
+9261, Corporate, Production started, CSA Corporate 2 7, 509498.1116463016
+9261, Corporate, Production complete, CSA Corporate 2 7, 509664.05852918525
+9262, Corporate, Creation, Source corporate, 509464.4773003988
+9262, Corporate, Production started, CSA Corporate 2 9, 509464.4773003988
+9262, Corporate, Production complete, CSA Corporate 2 9, 509762.0369575177
+9456, Corporate, Creation, Source corporate, 513148.0790419197
+9456, Corporate, Production started, CSA Corporate 2 4, 513148.0790419197
+9456, Corporate, Production complete, CSA Corporate 2 4, 513254.4423125323
+9457, Corporate, Creation, Source corporate, 513174.0244303412
+9457, Corporate, Production started, CSA Corporate 2 8, 513174.0244303412
+9457, Corporate, Production complete, CSA Corporate 2 8, 513509.36547712557
+9888, Corporate, Creation, Source corporate, 520485.61128006654
+9888, Corporate, Production started, CSA Corporate 2 3, 520485.61128006654
+9888, Corporate, Production complete, CSA Corporate 2 3, 520735.6228420842
+9889, Corporate, Creation, Source corporate, 520498.8394169688
+9889, Corporate, Production started, CSA Corporate 2 5, 520498.8394169688
+9889, Corporate, Production complete, CSA Corporate 2 5, 520834.4341941014
+10358, Corporate, Creation, Source corporate, 527768.4042430702
+10358, Corporate, Production started, CSA Corporate 2 7, 527768.4042430702
+10358, Corporate, Production complete, CSA Corporate 2 7, 527918.4526283487
+10359, Corporate, Creation, Source corporate, 527797.616912896
+10359, Corporate, Production started, CSA Corporate 2 6, 527797.616912896
+10359, Corporate, Production complete, CSA Corporate 2 6, 527996.7607537052
+10814, Corporate, Creation, Source corporate, 535124.6476493912
+10814, Corporate, Production started, CSA Corporate 2 9, 535124.6476493912
+10814, Corporate, Production complete, CSA Corporate 2 9, 535228.987077618
+10815, Corporate, Creation, Source corporate, 535136.4234946686
+10815, Corporate, Production started, CSA Corporate 2 3, 535136.4234946686
+10815, Corporate, Production complete, CSA Corporate 2 3, 535282.7134813507
+10816, Corporate, Creation, Source corporate, 535115.3126630287
+10816, Corporate, Production started, CSA Corporate 2 2, 535115.3126630287
+10816, Corporate, Production complete, CSA Corporate 2 2, 535389.1337462022
+10817, Corporate, Creation, Source corporate, 535125.2382079978
+10817, Corporate, Production started, CSA Corporate 2 0, 535125.2382079978
+10817, Corporate, Production complete, CSA Corporate 2 0, 535459.8184845106
+10818, Corporate, Creation, Source corporate, 535083.5897747194
+10818, Corporate, Production started, CSA Corporate 2 1, 535083.5897747194
+10818, Corporate, Production complete, CSA Corporate 2 1, 535472.4690042584
+11456, Corporate, Creation, Source corporate, 553399.9482600158
+11456, Corporate, Production started, CSA Corporate 2 7, 553399.9482600158
+11456, Corporate, Production complete, CSA Corporate 2 7, 553654.7019128668
+11555, Corporate, Creation, Source corporate, 560753.3823887756
+11555, Corporate, Production started, CSA Corporate 2 8, 560753.3823887756
+11555, Corporate, Production complete, CSA Corporate 2 8, 561010.9685372901
+11640, Corporate, Creation, Source corporate, 568054.7854583631
+11640, Corporate, Production started, CSA Corporate 2 2, 568054.7854583631
+11640, Corporate, Production complete, CSA Corporate 2 2, 568264.2192424224
+11675, Corporate, Creation, Source corporate, 571735.7882398455
+11675, Corporate, Production started, CSA Corporate 2 1, 571735.7882398455
+11675, Corporate, Production complete, CSA Corporate 2 1, 571950.4646631089
+11678, Corporate, Creation, Source corporate, 575376.0625327856
+11678, Corporate, Production started, CSA Corporate 2 5, 575376.0625327856
+11678, Corporate, Production complete, CSA Corporate 2 5, 575523.4198243403
+11679, Corporate, Creation, Source corporate, 575393.8093733373
+11679, Corporate, Production started, CSA Corporate 2 4, 575393.8093733373
+11679, Corporate, Production complete, CSA Corporate 2 4, 575579.1024952793
+11680, Corporate, Creation, Source corporate, 575377.1708984755
+11680, Corporate, Production started, CSA Corporate 2 6, 575377.1708984755
+11680, Corporate, Production complete, CSA Corporate 2 6, 575706.5650088309
+11682, Corporate, Creation, Source corporate, 579056.3936416998
+11682, Corporate, Production started, CSA Corporate 2 0, 579056.3936416998
+11682, Corporate, Production complete, CSA Corporate 2 0, 579196.4221385478
+11730, Corporate, Creation, Source corporate, 582703.6143720679
+11730, Corporate, Production started, CSA Corporate 2 1, 582703.6143720679
+11730, Corporate, Production complete, CSA Corporate 2 1, 582937.0786162894
+12057, Corporate, Creation, Source corporate, 590021.5785534872
+12057, Corporate, Production started, CSA Corporate 2 6, 590021.5785534872
+12057, Corporate, Production complete, CSA Corporate 2 6, 590172.7485951725
+12058, Corporate, Creation, Source corporate, 590029.8991561988
+12058, Corporate, Production started, CSA Corporate 2 7, 590029.8991561988
+12058, Corporate, Production complete, CSA Corporate 2 7, 590204.0871801737
+12059, Corporate, Creation, Source corporate, 589995.6245022935
+12059, Corporate, Production started, CSA Corporate 2 5, 589995.6245022935
+12059, Corporate, Production complete, CSA Corporate 2 5, 590297.5236585004
+12223, Corporate, Creation, Source corporate, 597339.3101889198
+12223, Corporate, Production started, CSA Corporate 2 9, 597339.3101889198
+12223, Corporate, Production complete, CSA Corporate 2 9, 597635.5086030697
+12434, Corporate, Creation, Source corporate, 601008.2471248704
+12434, Corporate, Production started, CSA Corporate 2 6, 601008.2471248704
+12434, Corporate, Production complete, CSA Corporate 2 6, 601241.9299679518
+
+simulation: 3
+Number: customer type: event: station: time: 
+1, Corporate, Creation, Source corporate, 399651.26643575163
+1, Corporate, Production started, CSA Corporate 2 0, 399651.26643575163
+1, Corporate, Production complete, CSA Corporate 2 0, 399888.10387552733
+201, Corporate, Creation, Source corporate, 414291.99913802015
+201, Corporate, Production started, CSA Corporate 2 1, 414291.99913802015
+201, Corporate, Production complete, CSA Corporate 2 1, 414489.93374869565
+298, Corporate, Creation, Source corporate, 417907.7041377908
+298, Corporate, Production started, CSA Corporate 2 2, 417907.7041377908
+298, Corporate, Production complete, CSA Corporate 2 2, 418019.1948433403
+446, Corporate, Creation, Source corporate, 421562.9710297086
+446, Corporate, Production started, CSA Corporate 2 3, 421562.9710297086
+446, Corporate, Production complete, CSA Corporate 2 3, 421780.5536189808
+851, Corporate, Creation, Source corporate, 428924.01606973127
+851, Corporate, Production started, CSA Corporate 2 4, 428924.01606973127
+851, Corporate, Production complete, CSA Corporate 2 4, 429198.4404475509
+1096, Corporate, Creation, Source corporate, 432552.00926984195
+1096, Corporate, Production started, CSA Corporate 2 5, 432552.00926984195
+1096, Corporate, Production complete, CSA Corporate 2 5, 432712.1649607377
+1415, Corporate, Creation, Source corporate, 436215.4748425318
+1415, Corporate, Production started, CSA Corporate 2 6, 436215.4748425318
+1415, Corporate, Production complete, CSA Corporate 2 6, 436491.8027222493
+1753, Corporate, Creation, Source corporate, 439891.16410415526
+1753, Corporate, Production started, CSA Corporate 2 8, 439891.16410415526
+1753, Corporate, Production complete, CSA Corporate 2 8, 440054.4852051126
+1757, Corporate, Creation, Source corporate, 439860.5870523805
+1757, Corporate, Production started, CSA Corporate 2 7, 439860.5870523805
+1757, Corporate, Production complete, CSA Corporate 2 7, 440088.243555873
+2705, Corporate, Creation, Source corporate, 447216.1573419758
+2705, Corporate, Production started, CSA Corporate 2 9, 447216.1573419758
+2705, Corporate, Production complete, CSA Corporate 2 9, 447412.9135533574
+3240, Corporate, Creation, Source corporate, 450862.73341848614
+3240, Corporate, Production started, CSA consumer 2 0, 450862.73341848614
+3240, Corporate, Production complete, CSA consumer 2 0, 451201.7950676105
+3719, Corporate, Creation, Source corporate, 454558.9903900994
+3719, Corporate, Production started, CSA consumer 2 2, 454558.9903900994
+3719, Corporate, Production complete, CSA consumer 2 2, 454787.65877941117
+3728, Corporate, Creation, Source corporate, 454537.9246302212
+3728, Corporate, Production started, CSA consumer 2 1, 454537.9246302212
+3728, Corporate, Production complete, CSA consumer 2 1, 454826.3740033854
+5234, Corporate, Creation, Source corporate, 465504.9002825502
+5234, Corporate, Production started, CSA consumer 2 3, 465504.9002825502
+5234, Corporate, Production complete, CSA consumer 2 3, 465776.2898003959
+5700, Corporate, Creation, Source corporate, 469148.4061573449
+5700, Corporate, Production started, CSA consumer 2 4, 469148.4061573449
+5700, Corporate, Production complete, CSA consumer 2 4, 469216.6472974098
+5721, Corporate, Creation, Source corporate, 469194.21150661603
+5721, Corporate, Production started, CSA consumer 2 1, 469194.21150661603
+5721, Corporate, Production complete, CSA consumer 2 1, 469375.6752408558
+5730, Corporate, Creation, Source corporate, 469153.7352429052
+5730, Corporate, Production started, CSA consumer 2 0, 469153.7352429052
+5730, Corporate, Production complete, CSA consumer 2 0, 469425.8132602618
+5738, Corporate, Creation, Source corporate, 469172.1885846695
+5738, Corporate, Production started, CSA consumer 2 2, 469172.1885846695
+5738, Corporate, Production complete, CSA consumer 2 2, 469466.0464521671
+6735, Corporate, Creation, Source corporate, 476468.23230181186
+6735, Corporate, Production started, CSA consumer 2 3, 476468.23230181186
+6735, Corporate, Production complete, CSA consumer 2 3, 476636.4702864457
+7776, Corporate, Creation, Source corporate, 483826.31423156674
+7776, Corporate, Production started, CSA consumer 2 4, 483826.31423156674
+7776, Corporate, Production complete, CSA consumer 2 4, 484145.87189239124
+8805, Corporate, Creation, Source corporate, 494771.40481134725
+8805, Corporate, Production started, CSA Corporate 2 2, 494771.40481134725
+8805, Corporate, Production complete, CSA Corporate 2 2, 495019.14066184516
+9135, Corporate, Creation, Source corporate, 505787.9979800854
+9135, Corporate, Production started, CSA Corporate 2 7, 505787.9979800854
+9135, Corporate, Production complete, CSA Corporate 2 7, 505944.1484365459
+9282, Corporate, Creation, Source corporate, 509435.48601629987
+9282, Corporate, Production started, CSA Corporate 2 1, 509435.48601629987
+9282, Corporate, Production complete, CSA Corporate 2 1, 509712.3187982401
+9283, Corporate, Creation, Source corporate, 509457.7686898993
+9283, Corporate, Production started, CSA Corporate 2 3, 509457.7686898993
+9283, Corporate, Production complete, CSA Corporate 2 3, 509717.5506164363
+9284, Corporate, Creation, Source corporate, 509449.395086933
+9284, Corporate, Production started, CSA Corporate 2 0, 509449.395086933
+9284, Corporate, Production complete, CSA Corporate 2 0, 509729.2895907738
+9470, Corporate, Creation, Source corporate, 513087.2343510623
+9470, Corporate, Production started, CSA Corporate 2 6, 513087.2343510623
+9470, Corporate, Production complete, CSA Corporate 2 6, 513184.10586609546
+9471, Corporate, Creation, Source corporate, 513077.1825287633
+9471, Corporate, Production started, CSA Corporate 2 1, 513077.1825287633
+9471, Corporate, Production complete, CSA Corporate 2 1, 513289.460447133
+9472, Corporate, Creation, Source corporate, 513115.7373329271
+9472, Corporate, Production started, CSA Corporate 2 0, 513115.7373329271
+9472, Corporate, Production complete, CSA Corporate 2 0, 513411.45436345227
+9777, Corporate, Creation, Source corporate, 516768.22476422373
+9777, Corporate, Production started, CSA consumer 2 1, 516768.22476422373
+9777, Corporate, Production complete, CSA consumer 2 1, 516980.0011431262
+9903, Corporate, Creation, Source corporate, 520436.30276560446
+9903, Corporate, Production started, CSA Corporate 2 3, 520436.30276560446
+9903, Corporate, Production complete, CSA Corporate 2 3, 520612.1553147148
+10135, Corporate, Creation, Source corporate, 524092.05362400354
+10135, Corporate, Production started, CSA Corporate 2 8, 524092.05362400354
+10135, Corporate, Production complete, CSA Corporate 2 8, 524239.452138863
+10136, Corporate, Creation, Source corporate, 524077.27369339304
+10136, Corporate, Production started, CSA Corporate 2 9, 524077.27369339304
+10136, Corporate, Production complete, CSA Corporate 2 9, 524330.3066878887
+10137, Corporate, Creation, Source corporate, 524064.9169999839
+10137, Corporate, Production started, CSA Corporate 2 4, 524064.9169999839
+10137, Corporate, Production complete, CSA Corporate 2 4, 524340.1367356889
+11088, Corporate, Creation, Source corporate, 538737.6890699841
+11088, Corporate, Production started, CSA consumer 2 0, 538737.6890699841
+11088, Corporate, Production complete, CSA consumer 2 0, 538980.5045229996
+11248, Corporate, Creation, Source corporate, 542353.2441160517
+11248, Corporate, Production started, CSA Corporate 2 3, 542353.2441160517
+11248, Corporate, Production complete, CSA Corporate 2 3, 542573.2113906515
+11359, Corporate, Creation, Source corporate, 546014.8442932537
+11359, Corporate, Production started, CSA Corporate 2 2, 546014.8442932537
+11359, Corporate, Production complete, CSA Corporate 2 2, 546125.9545882635
+11360, Corporate, Creation, Source corporate, 546056.4644053432
+11360, Corporate, Production started, CSA Corporate 2 9, 546056.4644053432
+11360, Corporate, Production complete, CSA Corporate 2 9, 546267.5640899786
+11442, Corporate, Creation, Source corporate, 549693.0702777123
+11442, Corporate, Production started, CSA Corporate 2 0, 549693.0702777123
+11442, Corporate, Production complete, CSA Corporate 2 0, 549795.246312167
+11443, Corporate, Creation, Source corporate, 549677.005341283
+11443, Corporate, Production started, CSA Corporate 2 3, 549677.005341283
+11443, Corporate, Production complete, CSA Corporate 2 3, 549830.5748582648
+11444, Corporate, Creation, Source corporate, 549703.1830948154
+11444, Corporate, Production started, CSA Corporate 2 5, 549703.1830948154
+11444, Corporate, Production complete, CSA Corporate 2 5, 549845.6892475194
+11542, Corporate, Creation, Source corporate, 557023.381358417
+11542, Corporate, Production started, CSA Corporate 2 6, 557023.381358417
+11542, Corporate, Production complete, CSA Corporate 2 6, 557195.3658234446
+11543, Corporate, Creation, Source corporate, 557025.8344178025
+11543, Corporate, Production started, CSA Corporate 2 8, 557025.8344178025
+11543, Corporate, Production complete, CSA Corporate 2 8, 557200.3681586519
+11544, Corporate, Creation, Source corporate, 556983.7302385974
+11544, Corporate, Production started, CSA consumer 2 2, 556983.7302385974
+11544, Corporate, Production complete, CSA consumer 2 2, 557245.2212934184
+11564, Corporate, Creation, Source corporate, 560671.6738546237
+11564, Corporate, Production started, CSA Corporate 2 4, 560671.6738546237
+11564, Corporate, Production complete, CSA Corporate 2 4, 560881.4461932743
+11610, Corporate, Creation, Source corporate, 564339.5299993765
+11610, Corporate, Production started, CSA Corporate 2 9, 564339.5299993765
+11610, Corporate, Production complete, CSA Corporate 2 9, 564528.4588080294
+11613, Corporate, Creation, Source corporate, 571657.1227194379
+11613, Corporate, Production started, CSA Corporate 2 5, 571657.1227194379
+11613, Corporate, Production complete, CSA Corporate 2 5, 571879.2607349887
+11614, Corporate, Creation, Source corporate, 571671.469156062
+11614, Corporate, Production started, CSA Corporate 2 1, 571671.469156062
+11614, Corporate, Production complete, CSA Corporate 2 1, 571965.709639613
+11618, Corporate, Creation, Source corporate, 575330.5233471361
+11618, Corporate, Production started, CSA Corporate 2 4, 575330.5233471361
+11618, Corporate, Production complete, CSA Corporate 2 4, 575478.1434515218
+11619, Corporate, Creation, Source corporate, 575325.1512065593
+11619, Corporate, Production started, CSA Corporate 2 5, 575325.1512065593
+11619, Corporate, Production complete, CSA Corporate 2 5, 575492.6610157504
+11620, Corporate, Creation, Source corporate, 575294.3182185381
+11620, Corporate, Production started, CSA Corporate 2 3, 575294.3182185381
+11620, Corporate, Production complete, CSA Corporate 2 3, 575539.4872618815
+11621, Corporate, Creation, Source corporate, 575310.704854846
+11621, Corporate, Production started, CSA Corporate 2 2, 575310.704854846
+11621, Corporate, Production complete, CSA Corporate 2 2, 575635.8106267765
+11694, Corporate, Creation, Source corporate, 578993.1334028323
+11694, Corporate, Production started, CSA Corporate 2 6, 578993.1334028323
+11694, Corporate, Production complete, CSA Corporate 2 6, 579274.0611974574
+11695, Corporate, Creation, Source corporate, 578998.4866455431
+11695, Corporate, Production started, CSA Corporate 2 0, 578998.4866455431
+11695, Corporate, Production complete, CSA Corporate 2 0, 579297.0568365396
+11697, Corporate, Creation, Source corporate, 582649.1428631276
+11697, Corporate, Production started, CSA Corporate 2 1, 582649.1428631276
+11697, Corporate, Production complete, CSA Corporate 2 1, 582778.5355414221
+11698, Corporate, Creation, Source corporate, 582640.3492795607
+11698, Corporate, Production started, CSA Corporate 2 9, 582640.3492795607
+11698, Corporate, Production complete, CSA Corporate 2 9, 582845.3642397001
+11991, Corporate, Creation, Source corporate, 586315.6380406524
+11991, Corporate, Production started, CSA Corporate 2 1, 586315.6380406524
+11991, Corporate, Production complete, CSA Corporate 2 1, 586459.8829890394
+11994, Corporate, Creation, Source corporate, 589945.0741102458
+11994, Corporate, Production started, CSA Corporate 2 6, 589945.0741102458
+11994, Corporate, Production complete, CSA Corporate 2 6, 590099.1982930052
+12155, Corporate, Creation, Source corporate, 597276.9801912194
+12155, Corporate, Production started, CSA Corporate 2 0, 597276.9801912194
+12155, Corporate, Production complete, CSA Corporate 2 0, 597413.8101439455
+12156, Corporate, Creation, Source corporate, 597289.4786391093
+12156, Corporate, Production started, CSA Corporate 2 3, 597289.4786391093
+12156, Corporate, Production complete, CSA Corporate 2 3, 597432.9108507362
+12157, Corporate, Creation, Source corporate, 597298.4470770722
+12157, Corporate, Production started, CSA Corporate 2 1, 597298.4470770722
+12157, Corporate, Production complete, CSA Corporate 2 1, 597478.541857638
+
+simulation: 4
+Number: customer type: event: station: time: 
+
+simulation: 5
+Number: customer type: event: station: time: 
+1, Corporate, Creation, Source corporate, 403232.50923956884
+1, Corporate, Production started, CSA Corporate 2 0, 403232.50923956884
+1, Corporate, Production complete, CSA Corporate 2 0, 403396.57348899747
+55, Corporate, Creation, Source corporate, 406911.4314021919
+55, Corporate, Production started, CSA Corporate 2 1, 406911.4314021919
+55, Corporate, Production complete, CSA Corporate 2 1, 407040.41374738514
+257, Corporate, Creation, Source corporate, 414201.03555835044
+257, Corporate, Production started, CSA Corporate 2 3, 414201.03555835044
+257, Corporate, Production complete, CSA Corporate 2 3, 414470.77711728885
+258, Corporate, Creation, Source corporate, 414182.25119878503
+258, Corporate, Production started, CSA Corporate 2 2, 414182.25119878503
+258, Corporate, Production complete, CSA Corporate 2 2, 414474.33982476615
+261, Corporate, Creation, Source corporate, 414235.9213796782
+261, Corporate, Production started, CSA Corporate 2 5, 414235.9213796782
+261, Corporate, Production complete, CSA Corporate 2 5, 414521.9082007259
+262, Corporate, Creation, Source corporate, 414217.86100329517
+262, Corporate, Production started, CSA Corporate 2 4, 414217.86100329517
+262, Corporate, Production complete, CSA Corporate 2 4, 414534.7912843038
+868, Corporate, Creation, Source corporate, 421540.6668850416
+868, Corporate, Production started, CSA Corporate 2 6, 421540.6668850416
+868, Corporate, Production complete, CSA Corporate 2 6, 421707.021533072
+1585, Corporate, Creation, Source corporate, 428833.14513140015
+1585, Corporate, Production started, CSA Corporate 2 7, 428833.14513140015
+1585, Corporate, Production complete, CSA Corporate 2 7, 429162.70075352734
+1998, Corporate, Creation, Source corporate, 432512.60355311236
+1998, Corporate, Production started, CSA Corporate 2 8, 432512.60355311236
+1998, Corporate, Production complete, CSA Corporate 2 8, 432807.5273064068
+2471, Corporate, Creation, Source corporate, 436196.99800153566
+2471, Corporate, Production started, CSA Corporate 2 9, 436196.99800153566
+2471, Corporate, Production complete, CSA Corporate 2 9, 436448.57119025406
+3500, Corporate, Creation, Source corporate, 443481.557868943
+3500, Corporate, Production started, CSA consumer 2 1, 443481.557868943
+3500, Corporate, Production complete, CSA consumer 2 1, 443700.76177050243
+3502, Corporate, Creation, Source corporate, 443510.46830430534
+3502, Corporate, Production started, CSA consumer 2 3, 443510.46830430534
+3502, Corporate, Production complete, CSA consumer 2 3, 443711.5768355089
+3517, Corporate, Creation, Source corporate, 443460.34163251915
+3517, Corporate, Production started, CSA consumer 2 0, 443460.34163251915
+3517, Corporate, Production complete, CSA consumer 2 0, 443797.00838921097
+3526, Corporate, Creation, Source corporate, 443501.53018259816
+3526, Corporate, Production started, CSA consumer 2 2, 443501.53018259816
+3526, Corporate, Production complete, CSA consumer 2 2, 443848.87969926395
+4028, Corporate, Creation, Source corporate, 447177.3971014522
+4028, Corporate, Production started, CSA consumer 2 1, 447177.3971014522
+4028, Corporate, Production complete, CSA consumer 2 1, 447328.1174936903
+4045, Corporate, Creation, Source corporate, 447168.4710536022
+4045, Corporate, Production started, CSA consumer 2 4, 447168.4710536022
+4045, Corporate, Production complete, CSA consumer 2 4, 447428.5980956901
+4522, Corporate, Creation, Source corporate, 450785.45142931084
+4522, Corporate, Production started, CSA consumer 2 3, 450785.45142931084
+4522, Corporate, Production complete, CSA consumer 2 3, 450927.9400691127
+5556, Corporate, Creation, Source corporate, 458157.5399290596
+5556, Corporate, Production started, CSA consumer 2 0, 458157.5399290596
+5556, Corporate, Production complete, CSA consumer 2 0, 458318.183260441
+6591, Corporate, Creation, Source corporate, 465474.0940997364
+6591, Corporate, Production started, CSA consumer 2 1, 465474.0940997364
+6591, Corporate, Production complete, CSA consumer 2 1, 465681.64351287554
+6592, Corporate, Creation, Source corporate, 465466.7568823317
+6592, Corporate, Production started, CSA consumer 2 2, 465466.7568823317
+6592, Corporate, Production complete, CSA consumer 2 2, 465682.3430904823
+7095, Corporate, Creation, Source corporate, 469097.9034914356
+7095, Corporate, Production started, CSA consumer 2 4, 469097.9034914356
+7095, Corporate, Production complete, CSA consumer 2 4, 469218.8887489
+7111, Corporate, Creation, Source corporate, 469119.39520689874
+7111, Corporate, Production started, CSA consumer 2 3, 469119.39520689874
+7111, Corporate, Production complete, CSA consumer 2 3, 469352.3631872649
+7616, Corporate, Creation, Source corporate, 472776.4445463459
+7616, Corporate, Production started, CSA consumer 2 0, 472776.4445463459
+7616, Corporate, Production complete, CSA consumer 2 0, 473013.02330401103
+8653, Corporate, Creation, Source corporate, 480105.2682940612
+8653, Corporate, Production started, CSA consumer 2 1, 480105.2682940612
+8653, Corporate, Production complete, CSA consumer 2 1, 480415.2320551668
+8827, Corporate, Creation, Source corporate, 483747.24014854856
+8827, Corporate, Production started, CSA consumer 2 2, 483747.24014854856
+8827, Corporate, Production complete, CSA consumer 2 2, 483869.5266134081
+8828, Corporate, Creation, Source corporate, 483757.67174796
+8828, Corporate, Production started, CSA Corporate 2 8, 483757.67174796
+8828, Corporate, Production complete, CSA Corporate 2 8, 483963.54716441396
+8831, Corporate, Creation, Source corporate, 487389.97199409764
+8831, Corporate, Production started, CSA Corporate 2 6, 487389.97199409764
+8831, Corporate, Production complete, CSA Corporate 2 6, 487613.421267725
+8832, Corporate, Creation, Source corporate, 487424.23057263
+8832, Corporate, Production started, CSA Corporate 2 3, 487424.23057263
+8832, Corporate, Production complete, CSA Corporate 2 3, 487742.9113518986
+8893, Corporate, Creation, Source corporate, 491074.96754758555
+8893, Corporate, Production started, CSA Corporate 2 4, 491074.96754758555
+8893, Corporate, Production complete, CSA Corporate 2 4, 491257.7158225077
+8894, Corporate, Creation, Source corporate, 494710.2788641615
+8894, Corporate, Production started, CSA Corporate 2 9, 494710.2788641615
+8894, Corporate, Production complete, CSA Corporate 2 9, 494913.63378589175
+8895, Corporate, Creation, Source corporate, 494744.1310148662
+8895, Corporate, Production started, CSA Corporate 2 0, 494744.1310148662
+8895, Corporate, Production complete, CSA Corporate 2 0, 494961.2223779312
+8979, Corporate, Creation, Source corporate, 498365.6449587819
+8979, Corporate, Production started, CSA Corporate 2 1, 498365.6449587819
+8979, Corporate, Production complete, CSA Corporate 2 1, 498586.4781168025
+8980, Corporate, Creation, Source corporate, 498417.0294800837
+8980, Corporate, Production started, CSA Corporate 2 7, 498417.0294800837
+8980, Corporate, Production complete, CSA Corporate 2 7, 498625.10279061686
+9082, Corporate, Creation, Source corporate, 502077.3645216996
+9082, Corporate, Production started, CSA Corporate 2 5, 502077.3645216996
+9082, Corporate, Production complete, CSA Corporate 2 5, 502131.4799348308
+9229, Corporate, Creation, Source corporate, 505731.94121483783
+9229, Corporate, Production started, CSA Corporate 2 5, 505731.94121483783
+9229, Corporate, Production complete, CSA Corporate 2 5, 505932.47399791575
+9597, Corporate, Creation, Source corporate, 513054.9156880296
+9597, Corporate, Production started, CSA Corporate 2 8, 513054.9156880296
+9597, Corporate, Production complete, CSA Corporate 2 8, 513063.0185674699
+9598, Corporate, Creation, Source corporate, 513028.42357371835
+9598, Corporate, Production started, CSA Corporate 2 2, 513028.42357371835
+9598, Corporate, Production complete, CSA Corporate 2 2, 513328.93445417087
+10285, Corporate, Creation, Source corporate, 524039.2582446821
+10285, Corporate, Production started, CSA Corporate 2 9, 524039.2582446821
+10285, Corporate, Production complete, CSA Corporate 2 9, 524365.950576424
+10729, Corporate, Creation, Source corporate, 531331.8063364548
+10729, Corporate, Production started, CSA Corporate 2 3, 531331.8063364548
+10729, Corporate, Production complete, CSA Corporate 2 3, 531641.9464476065
+10934, Corporate, Creation, Source corporate, 535018.248098334
+10934, Corporate, Production started, CSA Corporate 2 1, 535018.248098334
+10934, Corporate, Production complete, CSA Corporate 2 1, 535086.4044226682
+10935, Corporate, Creation, Source corporate, 534964.7419507101
+10935, Corporate, Production started, CSA Corporate 2 6, 534964.7419507101
+10935, Corporate, Production complete, CSA Corporate 2 6, 535119.3786992165
+11129, Corporate, Creation, Source corporate, 538629.1278644076
+11129, Corporate, Production started, CSA Corporate 2 0, 538629.1278644076
+11129, Corporate, Production complete, CSA Corporate 2 0, 538775.235736171
+11130, Corporate, Creation, Source corporate, 538673.4119072625
+11130, Corporate, Production started, CSA Corporate 2 4, 538673.4119072625
+11130, Corporate, Production complete, CSA Corporate 2 4, 538916.2151440143
+11296, Corporate, Creation, Source corporate, 542286.9673195402
+11296, Corporate, Production started, CSA Corporate 2 7, 542286.9673195402
+11296, Corporate, Production complete, CSA Corporate 2 7, 542375.3404707267
+11297, Corporate, Creation, Source corporate, 542325.3714481287
+11297, Corporate, Production started, CSA Corporate 2 6, 542325.3714481287
+11297, Corporate, Production complete, CSA Corporate 2 6, 542459.7342214732
+11438, Corporate, Creation, Source corporate, 545990.3418324653
+11438, Corporate, Production started, CSA Corporate 2 1, 545990.3418324653
+11438, Corporate, Production complete, CSA Corporate 2 1, 546084.8819453612
+11537, Corporate, Creation, Source corporate, 549620.6473433208
+11537, Corporate, Production started, CSA Corporate 2 5, 549620.6473433208
+11537, Corporate, Production complete, CSA Corporate 2 5, 549734.313374189
+11617, Corporate, Creation, Source corporate, 553288.8978854974
+11617, Corporate, Production started, CSA Corporate 2 8, 553288.8978854974
+11617, Corporate, Production complete, CSA Corporate 2 8, 553473.3995408887
+11618, Corporate, Creation, Source corporate, 553283.0762006835
+11618, Corporate, Production started, CSA Corporate 2 4, 553283.0762006835
+11618, Corporate, Production complete, CSA Corporate 2 4, 553477.4475774992
+11619, Corporate, Creation, Source corporate, 553312.1133610697
+11619, Corporate, Production started, CSA Corporate 2 2, 553312.1133610697
+11619, Corporate, Production complete, CSA Corporate 2 2, 553486.0265527304
+11620, Corporate, Creation, Source corporate, 553317.146550943
+11620, Corporate, Production started, CSA Corporate 2 7, 553317.146550943
+11620, Corporate, Production complete, CSA Corporate 2 7, 553529.9002423864
+11682, Corporate, Creation, Source corporate, 556969.3168515407
+11682, Corporate, Production started, CSA Corporate 2 5, 556969.3168515407
+11682, Corporate, Production complete, CSA Corporate 2 5, 557173.5920799773
+11735, Corporate, Creation, Source corporate, 560586.2597045526
+11735, Corporate, Production started, CSA Corporate 2 0, 560586.2597045526
+11735, Corporate, Production complete, CSA Corporate 2 0, 560706.5142567583
+11736, Corporate, Creation, Source corporate, 560613.0898969944
+11736, Corporate, Production started, CSA Corporate 2 1, 560613.0898969944
+11736, Corporate, Production complete, CSA Corporate 2 1, 560726.2134259411
+11762, Corporate, Creation, Source corporate, 564265.6106643374
+11762, Corporate, Production started, CSA Corporate 2 9, 564265.6106643374
+11762, Corporate, Production complete, CSA Corporate 2 9, 564353.9892801229
+11947, Corporate, Creation, Source corporate, 578927.381782908
+11947, Corporate, Production started, CSA Corporate 2 3, 578927.381782908
+11947, Corporate, Production complete, CSA Corporate 2 3, 579180.3564727168
+12056, Corporate, Creation, Source corporate, 582552.0756315712
+12056, Corporate, Production started, CSA Corporate 2 9, 582552.0756315712
+12056, Corporate, Production complete, CSA Corporate 2 9, 582711.8315677023
+12057, Corporate, Creation, Source corporate, 582543.898785599
+12057, Corporate, Production started, CSA Corporate 2 6, 582543.898785599
+12057, Corporate, Production complete, CSA Corporate 2 6, 582715.3469795454
+12058, Corporate, Creation, Source corporate, 582562.9057726886
+12058, Corporate, Production started, CSA Corporate 2 5, 582562.9057726886
+12058, Corporate, Production complete, CSA Corporate 2 5, 582836.6501238687
+12064, Corporate, Creation, Source corporate, 586232.1441378377
+12064, Corporate, Production started, CSA Corporate 2 0, 586232.1441378377
+12064, Corporate, Production complete, CSA Corporate 2 0, 586404.0731089951
+12358, Corporate, Creation, Source corporate, 597217.0006278509
+12358, Corporate, Production started, CSA Corporate 2 7, 597217.0006278509
+12358, Corporate, Production complete, CSA Corporate 2 7, 597336.6467627804
+12562, Corporate, Creation, Source corporate, 600869.1814886659
+12562, Corporate, Production started, CSA Corporate 2 3, 600869.1814886659
+12562, Corporate, Production complete, CSA Corporate 2 3, 600980.955921199
+12563, Corporate, Creation, Source corporate, 600865.9785188457
+12563, Corporate, Production started, CSA Corporate 2 1, 600865.9785188457
+12563, Corporate, Production complete, CSA Corporate 2 1, 601056.6316548652
+12802, Corporate, Creation, Source corporate, 604503.2782981151
+12802, Corporate, Production started, CSA Corporate 2 4, 604503.2782981151
+12802, Corporate, Production complete, CSA Corporate 2 4, 604723.8530462238
+12803, Corporate, Creation, Source corporate, 604515.2257042739
+12803, Corporate, Production started, CSA Corporate 2 6, 604515.2257042739
+12803, Corporate, Production complete, CSA Corporate 2 6, 604741.8187885892
+
+simulation: 6
+Number: customer type: event: station: time: 
+
+simulation: 7
+Number: customer type: event: station: time: 
+1, Corporate, Creation, Source corporate, 406818.58132233145
+1, Corporate, Production started, CSA Corporate 2 0, 406818.58132233145
+1, Corporate, Production complete, CSA Corporate 2 0, 406916.62646844774
+3, Corporate, Creation, Source corporate, 406821.0428173156
+3, Corporate, Production started, CSA Corporate 2 1, 406821.0428173156
+3, Corporate, Production complete, CSA Corporate 2 1, 407040.4371005741
+413, Corporate, Creation, Source corporate, 421469.7446447374
+413, Corporate, Production started, CSA Corporate 2 3, 421469.7446447374
+413, Corporate, Production complete, CSA Corporate 2 3, 421700.47553432017
+415, Corporate, Creation, Source corporate, 421443.09979928826
+415, Corporate, Production started, CSA Corporate 2 2, 421443.09979928826
+415, Corporate, Production complete, CSA Corporate 2 2, 421730.47764795047
+1014, Corporate, Creation, Source corporate, 432434.5228758552
+1014, Corporate, Production started, CSA Corporate 2 4, 432434.5228758552
+1014, Corporate, Production complete, CSA Corporate 2 4, 432728.050675741
+2018, Corporate, Creation, Source corporate, 447067.1927608034
+2018, Corporate, Production started, CSA Corporate 2 5, 447067.1927608034
+2018, Corporate, Production complete, CSA Corporate 2 5, 447347.98840913945
+2308, Corporate, Creation, Source corporate, 450752.1553661321
+2308, Corporate, Production started, CSA Corporate 2 6, 450752.1553661321
+2308, Corporate, Production complete, CSA Corporate 2 6, 450913.31312369514
+2325, Corporate, Creation, Source corporate, 450754.8448783995
+2325, Corporate, Production started, CSA Corporate 2 7, 450754.8448783995
+2325, Corporate, Production complete, CSA Corporate 2 7, 451057.85264829773
+3138, Corporate, Creation, Source corporate, 458097.8548976639
+3138, Corporate, Production started, CSA Corporate 2 8, 458097.8548976639
+3138, Corporate, Production complete, CSA Corporate 2 8, 458353.23089953425
+3600, Corporate, Creation, Source corporate, 461758.9240265085
+3600, Corporate, Production started, CSA Corporate 2 9, 461758.9240265085
+3600, Corporate, Production complete, CSA Corporate 2 9, 461981.71499547974
+4106, Corporate, Creation, Source corporate, 465380.06224187574
+4106, Corporate, Production started, CSA consumer 2 0, 465380.06224187574
+4106, Corporate, Production complete, CSA consumer 2 0, 465503.91888783366
+4639, Corporate, Creation, Source corporate, 469029.1116923545
+4639, Corporate, Production started, CSA consumer 2 1, 469029.1116923545
+4639, Corporate, Production complete, CSA consumer 2 1, 469189.9830613651
+4646, Corporate, Creation, Source corporate, 469072.0699770156
+4646, Corporate, Production started, CSA consumer 2 2, 469072.0699770156
+4646, Corporate, Production complete, CSA consumer 2 2, 469251.10860365897
+5159, Corporate, Creation, Source corporate, 472729.6650093789
+5159, Corporate, Production started, CSA consumer 2 3, 472729.6650093789
+5159, Corporate, Production complete, CSA consumer 2 3, 472956.2180221471
+5170, Corporate, Creation, Source corporate, 472738.91792198137
+5170, Corporate, Production started, CSA consumer 2 4, 472738.91792198137
+5170, Corporate, Production complete, CSA consumer 2 4, 473008.71490760817
+7175, Corporate, Creation, Source corporate, 487365.4398968748
+7175, Corporate, Production started, CSA consumer 2 0, 487365.4398968748
+7175, Corporate, Production complete, CSA consumer 2 0, 487528.3647857572
+7696, Corporate, Creation, Source corporate, 491015.13665486855
+7696, Corporate, Production started, CSA consumer 2 1, 491015.13665486855
+7696, Corporate, Production complete, CSA consumer 2 1, 491304.6629709801
+8687, Corporate, Creation, Source corporate, 498358.53403777676
+8687, Corporate, Production started, CSA consumer 2 2, 498358.53403777676
+8687, Corporate, Production complete, CSA consumer 2 2, 498532.71522092476
+9092, Corporate, Creation, Source corporate, 505670.2639633929
+9092, Corporate, Production started, CSA Corporate 2 6, 505670.2639633929
+9092, Corporate, Production complete, CSA Corporate 2 6, 505877.5034824552
+9093, Corporate, Creation, Source corporate, 505623.7833670074
+9093, Corporate, Production started, CSA Corporate 2 7, 505623.7833670074
+9093, Corporate, Production complete, CSA Corporate 2 7, 505892.0245540099
+9801, Corporate, Creation, Source corporate, 520281.2051870077
+9801, Corporate, Production started, CSA Corporate 2 5, 520281.2051870077
+9801, Corporate, Production complete, CSA Corporate 2 5, 520626.79153147584
+10011, Corporate, Creation, Source corporate, 523938.3903788775
+10011, Corporate, Production started, CSA Corporate 2 9, 523938.3903788775
+10011, Corporate, Production complete, CSA Corporate 2 9, 524184.1618732886
+10012, Corporate, Creation, Source corporate, 523927.48559539503
+10012, Corporate, Production started, CSA Corporate 2 3, 523927.48559539503
+10012, Corporate, Production complete, CSA Corporate 2 3, 524242.20039075124
+10013, Corporate, Creation, Source corporate, 523956.08700369013
+10013, Corporate, Production started, CSA Corporate 2 8, 523956.08700369013
+10013, Corporate, Production complete, CSA Corporate 2 8, 524368.4366420301
+10255, Corporate, Creation, Source corporate, 527581.4226775782
+10255, Corporate, Production started, CSA Corporate 2 2, 527581.4226775782
+10255, Corporate, Production complete, CSA Corporate 2 2, 527868.8855416174
+10479, Corporate, Creation, Source corporate, 531280.4785439235
+10479, Corporate, Production started, CSA Corporate 2 0, 531280.4785439235
+10479, Corporate, Production complete, CSA Corporate 2 0, 531378.898486356
+10480, Corporate, Creation, Source corporate, 531248.9508036331
+10480, Corporate, Production started, CSA Corporate 2 1, 531248.9508036331
+10480, Corporate, Production complete, CSA Corporate 2 1, 531491.2747350574
+10679, Corporate, Creation, Source corporate, 534926.6381945373
+10679, Corporate, Production started, CSA Corporate 2 5, 534926.6381945373
+10679, Corporate, Production complete, CSA Corporate 2 5, 535081.155401577
+10858, Corporate, Creation, Source corporate, 538613.4036230347
+10858, Corporate, Production started, CSA Corporate 2 6, 538613.4036230347
+10858, Corporate, Production complete, CSA Corporate 2 6, 538816.8507162329
+11011, Corporate, Creation, Source corporate, 542231.2523326713
+11011, Corporate, Production started, CSA Corporate 2 8, 542231.2523326713
+11011, Corporate, Production complete, CSA Corporate 2 8, 542526.1090413602
+11314, Corporate, Creation, Source corporate, 553206.8734562311
+11314, Corporate, Production started, CSA Corporate 2 2, 553206.8734562311
+11314, Corporate, Production complete, CSA Corporate 2 2, 553541.6534956603
+11413, Corporate, Creation, Source corporate, 556890.8519356351
+11413, Corporate, Production started, CSA Corporate 2 9, 556890.8519356351
+11413, Corporate, Production complete, CSA Corporate 2 9, 557046.5066251407
+11414, Corporate, Creation, Source corporate, 556889.3848901347
+11414, Corporate, Production started, CSA Corporate 2 4, 556889.3848901347
+11414, Corporate, Production complete, CSA Corporate 2 4, 557279.179001725
+11457, Corporate, Creation, Source corporate, 564220.1118586105
+11457, Corporate, Production started, CSA Corporate 2 7, 564220.1118586105
+11457, Corporate, Production complete, CSA Corporate 2 7, 564442.5756815219
+11508, Corporate, Creation, Source corporate, 567868.0947550863
+11508, Corporate, Production started, CSA Corporate 2 6, 567868.0947550863
+11508, Corporate, Production complete, CSA Corporate 2 6, 567976.4191508425
+11509, Corporate, Creation, Source corporate, 567892.6175777661
+11509, Corporate, Production started, CSA Corporate 2 3, 567892.6175777661
+11509, Corporate, Production complete, CSA Corporate 2 3, 568134.2985186899
+11512, Corporate, Creation, Source corporate, 571529.1398198894
+11512, Corporate, Production started, CSA Corporate 2 1, 571529.1398198894
+11512, Corporate, Production complete, CSA Corporate 2 1, 571627.9378019022
+11513, Corporate, Creation, Source corporate, 575174.8208562769
+11513, Corporate, Production started, CSA Corporate 2 0, 575174.8208562769
+11513, Corporate, Production complete, CSA Corporate 2 0, 575417.9306706893
+11569, Corporate, Creation, Source corporate, 578837.8370509583
+11569, Corporate, Production started, CSA Corporate 2 8, 578837.8370509583
+11569, Corporate, Production complete, CSA Corporate 2 8, 578933.088241359
+11735, Corporate, Creation, Source corporate, 589848.6198606193
+11735, Corporate, Production started, CSA Corporate 2 0, 589848.6198606193
+11735, Corporate, Production complete, CSA Corporate 2 0, 589943.7237183627
+11736, Corporate, Creation, Source corporate, 589810.9947755926
+11736, Corporate, Production started, CSA Corporate 2 8, 589810.9947755926
+11736, Corporate, Production complete, CSA Corporate 2 8, 590093.0052225634
+11737, Corporate, Creation, Source corporate, 589822.2760209341
+11737, Corporate, Production started, CSA Corporate 2 5, 589822.2760209341
+11737, Corporate, Production complete, CSA Corporate 2 5, 590210.300249154
+12025, Corporate, Creation, Source corporate, 593492.3099539712
+12025, Corporate, Production started, CSA Corporate 2 7, 593492.3099539712
+12025, Corporate, Production complete, CSA Corporate 2 7, 593644.4956097286
+12029, Corporate, Creation, Source corporate, 597155.6408357347
+12029, Corporate, Production started, CSA Corporate 2 6, 597155.6408357347
+12029, Corporate, Production complete, CSA Corporate 2 6, 597405.0337831661
+12030, Corporate, Creation, Source corporate, 597177.6286465202
+12030, Corporate, Production started, CSA Corporate 2 2, 597177.6286465202
+12030, Corporate, Production complete, CSA Corporate 2 2, 597521.103715361
+12210, Corporate, Creation, Source corporate, 600830.8318073545
+12210, Corporate, Production started, CSA Corporate 2 1, 600830.8318073545
+12210, Corporate, Production complete, CSA Corporate 2 1, 601074.8087285712
+12408, Corporate, Creation, Source corporate, 604495.2420873637
+12408, Corporate, Production started, CSA Corporate 2 5, 604495.2420873637
+12408, Corporate, Production complete, CSA Corporate 2 5, 604768.1378504433
+
+simulation: 8
+Number: customer type: event: station: time: 
+
+simulation: 9
+Number: customer type: event: station: time: 
+
+simulation: 10
+Number: customer type: event: station: time: 
+
+simulation end

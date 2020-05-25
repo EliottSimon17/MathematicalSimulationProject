@@ -3,11 +3,6 @@ package Simulation;
 import java.util.Random;
 
 
-/* TODO:
-    - change lines 100, 112, 115 to work with Time objects
-        --> comparison or computations of Time objects
- */
-
 
 /**
  * Generate random numbers from a Poisson distribution
@@ -72,7 +67,7 @@ public class Poisson implements Distribution {
      * @param newValue the new value of the previous arrival time
      */
     public void setPreviousArrivalTime(Time newValue) {
-        this.prevArrTime = newValue;
+        this.prevArrTime= newValue;
     }
 
     /**
@@ -97,7 +92,7 @@ public class Poisson implements Distribution {
         // Make sure that lambdaGivenTime is not null before attempting to generate a new random variate
         if (this.lambdaGivenTime != null) {
             //Retrieve the last generated arrival time
-            double t = this.prevArrTime.toSeconds();
+            double t = prevArrTime.toSeconds();
 
             // Generate the new arrival time
             double u1, u2;
@@ -114,8 +109,7 @@ public class Poisson implements Distribution {
 
             //Set the last arrival time to the newly generated one and return it
             this.setPreviousArrivalTime(new Time(t));
-
-            return new Time(this.getPreviousArrivalTime());
+            return new Time(getPreviousArrivalTime());
         }
         // If lambdaGivenTime has not yet been set, we cannot generate a random variate
         else {

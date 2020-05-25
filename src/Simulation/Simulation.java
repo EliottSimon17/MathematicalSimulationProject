@@ -26,6 +26,8 @@ public class Simulation {
      * @param consumers : number of consumers machine per shift
      */
     public Simulation(int[] corporates, int[] consumers, int corporateCSALimit) {
+
+        System.out.println("New simulation");
         // First, make sure to reset all static parameters
         CSACorporate.resetNumFreeCSACorporate();
         Corporate.resetPreviousArrivalTime();
@@ -35,15 +37,12 @@ public class Simulation {
         l = new CEventList();
         q1= new Queue();
         q2= new Queue();
-        
+
         s1 = new SourceCorporate(q1, l, "Source corporate");
         s2 = new SourceConsumer(q2, l, "Source consumer");
         
         int total = corporates[0] + corporates[1] + corporates[2];
         total += consumers[0] + consumers[1] + consumers[2];
-
-        si = new Sink("Sink 1");
-        sinks.add(si);
 
         ms = new CSA[total];
 
@@ -107,6 +106,7 @@ public class Simulation {
 
            System.out.println("\nEnd of simulation\n\n");
         }
-        WriteOnTxt.writeOnTxt(sinks);
+        System.out.println(sinks.size());
+        writeOnTxt.writeOnTxt(sinks);
     }
 }

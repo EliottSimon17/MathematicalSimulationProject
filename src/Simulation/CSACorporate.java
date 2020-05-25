@@ -1,10 +1,5 @@
 package Simulation;
 
-/* TODO:
-    - change line 30 to work with Time objects
-        --> comparison of Time objects
-    -
- */
 
 public class CSACorporate extends CSA {
     //status: b->busy, i->idle, n->not working
@@ -22,11 +17,12 @@ public class CSACorporate extends CSA {
         // add one free csacorporate to the count
         freeCSACorporate ++;
     }
-    
+
     @Override
     public void execute(int type, Time tme) {
         // show arrival
         System.out.println("Product finished at time = " + tme);
+
         // Remove product from system
         product.stamp(tme,"Production complete",name);
         sink.giveProduct(product);
