@@ -84,4 +84,11 @@ public class CSACorporate extends CSA {
         // Flag that the product has been rejected
         else return false;
     }
+
+    /**
+     * Resets the number of free CSA Corporate to 0
+     */
+    public static void resetNumFreeCSACorporate () {
+        freeCSACorporate = 0;
+    }
 }

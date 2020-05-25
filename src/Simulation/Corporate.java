@@ -84,4 +84,12 @@ public class Corporate extends Customer {
     public static Time getNewServiceTime() {
         return serviceDistr.drawRandom();
     }
+
+
+    /**
+     * Resets the arrivalDistr's previousArrivalTime
+     */
+    public static void resetPreviousArrivalTime() {
+        arrivalDistr.setPreviousArrivalTime(new Time(0));
+    }
 }

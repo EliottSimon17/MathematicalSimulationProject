@@ -26,6 +26,12 @@ public class Simulation {
      * @param consumers : number of consumers machine per shift
      */
     public Simulation(int[] corporates, int[] consumers, int corporateCSALimit) {
+        // First, make sure to reset all static parameters
+        CSACorporate.resetNumFreeCSACorporate();
+        Corporate.resetPreviousArrivalTime();
+        Consumer.resetPreviousArrivalTime();
+        // Note: did not yet reset the service times object, because they should not need to be reset
+
         l = new CEventList();
         q1= new Queue();
         q2= new Queue();
