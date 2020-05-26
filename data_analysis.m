@@ -58,8 +58,8 @@ n2 = length(avg_corporate);
 
 % Find the t-inverse function
 %pkg load statistics;
-%t_inverse_1 = tinv([r1 r2], n1-1);
-%t_inverse_2 = tinv([r1 r2], n2-1);
+t_inverse_1 = tinv([r1 r2], n1-1);
+t_inverse_2 = tinv([r1 r2], n2-1);
 
 % Find the variances of both samples
 var_consumers = var(avg_consumer);
@@ -70,16 +70,17 @@ std_mean_cons = sqrt(var_consumers/n1);
 std_mean_corp = sqrt(var_corporate/n2);
 
 % Confidence Intervals
-%Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons
-%Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
+Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons
+Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
 
 %% Replication/ Deletion Approach
 % This function uses the Welch method to find the right l vlaue
 % Do multiple runs and partition our results in two clusters
 % Withdraw the variables from X(1) to X(l)
 % CHANGE THIS SO IT TAKES THE MEAN INSTEAD
-arrival_time = arr_corp{5}
-starting_time = start_corp{5}
+
+arrival_time = arr_corp{5};
+starting_time = start_corp{5};
 y = values_plot(arrival_time , starting_time);
 figure; stem(y);
 
@@ -119,7 +120,7 @@ function [avg_sim1, performance_g_1 , performance_g_2, creation_hist, start_hist
             performance_g_1 = [performance_g_1 percentage(1)];
             performance_g_2 = [performance_g_2 percentage(2)];
             % Calculate the average waiting time
-            avg_sim1 = [avg_sim1 find_average(creation, start)]
+            avg_sim1 = [avg_sim1 find_average(creation, start)];
             creation_hist{ind} =  creation;
             start_hist{ind} =  start;
             ind = ind+1;
