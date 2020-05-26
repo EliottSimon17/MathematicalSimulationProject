@@ -11,7 +11,6 @@ close all; clear all; warning('off','all')
 %          -95% corporate need to be assisted within 3 mins        %
 %          -99% corporate need to be assisted within 7 mins        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 customer_per_1 = 5*60;
 customer_per_2 = 10*60;
 corporate_per_1 = 3*60;
@@ -19,15 +18,14 @@ corporate_per_2 = 7*60;
 
 performance_customer = [customer_per_1, customer_per_2];
 performance_corporate = [corporate_per_1, corporate_per_2];
-
 %% First step: Data retrieval and cleaning
 % Loads the files
 consumer_file = fopen('MSConsumer.txt');
 corporate_file = fopen('MSCorporate.txt');
 
 % Extract the data from the files and store them in vectors
-[avg_consumer, con_outliers_set_1 ,con_outliers_set_2]  = get_data_from_file(consumer_file, performance_customer);
-[avg_corporate, corp_outliers_set_1,corp_outliers_set_2] = get_data_from_file(corporate_file, performance_corporate);
+[avg_consumer, con_outliers_set_1 ,con_outliers_set_2, arr_cons, start_cons]  = get_data_from_file(consumer_file, performance_customer);
+[avg_corporate, corp_outliers_set_1,corp_outliers_set_2, arr_corp, start_corp] = get_data_from_file(corporate_file, performance_corporate);
 
 disp('-------------')
 
@@ -59,9 +57,9 @@ n1 = length(avg_consumer);
 n2 = length(avg_corporate);
 
 % Find the t-inverse function
-pkg load statistics;
-t_inverse_1 = tinv([r1 r2], n1-1);
-t_inverse_2 = tinv([r1 r2], n2-1);
+%pkg load statistics;
+%t_inverse_1 = tinv([r1 r2], n1-1);
+%t_inverse_2 = tinv([r1 r2], n2-1);
 
 % Find the variances of both samples
 var_consumers = var(avg_consumer);
@@ -72,13 +70,27 @@ std_mean_cons = sqrt(var_consumers/n1);
 std_mean_corp = sqrt(var_corporate/n2);
 
 % Confidence Intervals
-Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons
-Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
+%Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons
+%Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
 
 %% Replication/ Deletion Approach
-% This function uses the Welch method
+% This function uses the Welch method to find the right l vlaue
+% Do multiple runs and partition our results in two clusters
+% Withdraw the variables from X(1) to X(l)
+% CHANGE THIS SO IT TAKES THE MEAN INSTEAD
+arrival_time = arr_corp{5}
+starting_time = start_corp{5}
+y = values_plot(arrival_time , starting_time);
+figure; stem(y);
 
 
+function y_value = values_plot(arrival , start)
+    y_value = zeros(1,floor(length(arrival)));
+    for index = 1: length(arrival)
+       value = floor(arrival(index));
+       y_value(value) = (start(index)-arrival(index));
+    end
+end
 %% Batch Means
 
 %% Functions
@@ -92,10 +104,10 @@ function average = find_average(arrival, start)
     average = sum / length(arrival);
 end
 
-function [avg_sim1, performance_g_1 , performance_g_2] = get_data_from_file(file_name, performance)
+function [avg_sim1, performance_g_1 , performance_g_2, creation_hist, start_hist] = get_data_from_file(file_name, performance)
     line = fgetl(file_name);
-    creation = []; start =[]; finish = []; avg_sim1 = []; first = false;
-    performance_g_1= []; performance_g_2 = [];
+    creation = []; start =[]; finish = []; avg_sim1 = []; first = false; ind = 1;
+    performance_g_1= []; performance_g_2 = []; creation_hist = {}; start_hist={};
     while ischar(line)
      %Checks if there is a new simulation
      if (strfind(line, 'simulation'))
@@ -107,7 +119,10 @@ function [avg_sim1, performance_g_1 , performance_g_2] = get_data_from_file(file
             performance_g_1 = [performance_g_1 percentage(1)];
             performance_g_2 = [performance_g_2 percentage(2)];
             % Calculate the average waiting time
-            avg_sim1 = [avg_sim1 find_average(creation, start)];
+            avg_sim1 = [avg_sim1 find_average(creation, start)]
+            creation_hist{ind} =  creation;
+            start_hist{ind} =  start;
+            ind = ind+1;
             creation = []; start =[]; finish = [];
          end
      first= true;
