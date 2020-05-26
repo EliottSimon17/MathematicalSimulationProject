@@ -1,2 +1,4 @@
 # Project exclude paths
 /bin/
+src/Simulation/Test.java
+src/Simulation/WriteOnTxt.java

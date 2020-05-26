@@ -92,8 +92,8 @@ public class Simulation {
         l.start(new Time(2000)); // 2000 is maximum time*/
 
         // Specify the strategy for the runs
-        int[] consumerCSAPerShift = {50, 100, 50};
-        int[] corporateCSAPerShift = {100, 100, 100};
+        int[] consumerCSAPerShift = {5, 10, 5};
+        int[] corporateCSAPerShift = {10, 10, 10};
         int CSACorporateLimitForTakingConsumers = 0;
 
         sinks = new ArrayList<>();
