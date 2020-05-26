@@ -33,7 +33,7 @@ public class Corporate extends Customer {
     private static final double serviceMin = 45;
     private static final double serviceMax = Double.NaN;    
     
-    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
+    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds, "Corporate");
     private static TruncNormal serviceDistr = new TruncNormal(serviceMean, serviceStd, serviceMin, serviceMax);
 
     /**
@@ -47,13 +47,13 @@ public class Corporate extends Customer {
      * Parametric constructor
      *
      * @param previousArrivalTime the time of the last arrival which happened so far
-     */
+     *//* NOT NEEDED
     public Corporate (Time previousArrivalTime) {
         // Call the superclass constructor (which should be the one from Product
         this();
         // Set the previous arrival time
         arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
-    }
+    }*/
 
     /**
      * This method generates a new arrival time given the current time.
@@ -61,14 +61,14 @@ public class Corporate extends Customer {
      * @param previousArrivalTime the previous generated arrival time
      *
      * @return a new arrival time, generated according to the arrivalDistr distribution
-     */
+     *//* NOT NEEDED
     public static Time getNewArrivalTime(Time previousArrivalTime) {
         // Pass on the previous arrival time to the arrival time distribution
         arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
 
         // Generate and return a random number
         return arrivalDistr.drawRandom();
-    }
+    }*/
 
     /**
      * This method generates a new arrival time given the current time.
@@ -84,11 +84,6 @@ public class Corporate extends Customer {
     public static Time getNewServiceTime() {
         return serviceDistr.drawRandom();
     }
-    
-    public static Poisson getArrivDistr() {
-        return arrivalDistr;
-    }
-
 
     /**
      * Resets the arrivalDistr's previousArrivalTime

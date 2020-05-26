@@ -92,21 +92,23 @@ public class Simulation {
         l.start(new Time(2000)); // 2000 is maximum time*/
 
         // Specify the strategy for the runs
-        int[] consumerCSAPerShift = {5, 10, 5};
-        int[] corporateCSAPerShift = {10, 10, 10};
+        int[] consumerCSAPerShift = {50, 100, 50};
+        int[] corporateCSAPerShift = {100, 100, 100};
         int CSACorporateLimitForTakingConsumers = 0;
 
         sinks = new ArrayList<>();
-        int runs = 5;
+        int runs = 1;
         Simulation[] sims = new Simulation[runs];
         Time t = new Time(0, 0, 0, 7);
         for(int i = 0; i < runs; i++) {
-           sims[i] = new Simulation(corporateCSAPerShift, consumerCSAPerShift, CSACorporateLimitForTakingConsumers);
-           sims[i].start(t);
+            System.out.println("\n\nSimulation #" + i);
 
-           System.out.println("\nEnd of simulation\n\n");
+            sims[i] = new Simulation(corporateCSAPerShift, consumerCSAPerShift, CSACorporateLimitForTakingConsumers);
+            sims[i].start(t);
+
+            System.out.println("\nEnd of simulation\n\n");
         }
-        System.out.println(sinks.size());
+        System.out.println("Number of simulations: " + sinks.size());
         writeOnTxt.writeOnTxt(sinks);
     }
 }

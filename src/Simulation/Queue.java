@@ -48,21 +48,34 @@ public class Queue implements ProductAcceptor
 	*	Offer a product to the queue
 	*	It is investigated whether a machine wants the product, otherwise it is stored
 	*/
+	@Override
 	public boolean giveProduct(Product p) {
+		//System.out.println("Gave a product");
+
+
 		// Check if the machine accepts it
 		if (requests.size() < 1) {
+			//System.out.println("Was put to waiting");
 			row.add(p); // Otherwise store it
 		}
 		else {
+			//System.out.println("Free machines ! Yay !");
 			boolean delivered = false;
-			while(!delivered & (requests.size()>0))
+			int index = 0;
+			while(!delivered & (index < requests.size()))
 			{
-				delivered=requests.get(0).giveProduct(p);
+				delivered=requests.get(index).giveProduct(p);
 				// remove the request regardless of whether or not the product has been accepted
-				requests.remove(0);
+				//requests.remove(0);
+				index += 1;
 			}
-			if(!delivered)
+			if(!delivered) {
+				//System.out.println("Didn't find an accepting machine");
 				row.add(p); // Otherwise store it
+			}
+			else {
+				//System.out.println("Found an accepting machine");
+			}
 		}
 		return true;
 	}

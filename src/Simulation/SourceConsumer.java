@@ -46,7 +46,7 @@ public class SourceConsumer implements CProcess{
      */
     @Override
     public void execute(int type, Time tme) {
-        System.out.println("Arrival at time = " + tme);
+        System.out.println("Arrival at time =           " + tme);
         //Feed the product to the queue
 
         Consumer cust = new Consumer();

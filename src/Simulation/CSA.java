@@ -10,7 +10,9 @@ public abstract class CSA extends Machine {
     //      - 1 = 2  pm (=14h) to 10 pm (=22h)
     //      - 2 = 10 pm (=22h) to 6 am  (= 6h)
     protected int customers = 0;
-    protected Time totalServiceTime = new Time(0);    //Sum of service time for all the customers    
+    protected Time totalServiceTime = new Time(0);    //Sum of service time for all the customers
+
+    private Customer customer;
     
     public CSA(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN) {
         super(q,s,e,n, new Time(0));
@@ -18,14 +20,14 @@ public abstract class CSA extends Machine {
     }
     
     protected void startProduction(Product p) {
+        //System.out.println("Starting production of product " + p);
+
         Time duration;
 
         if (p instanceof Consumer) {
-            Consumer c = (Consumer) p;
-            duration = c.getNewServiceTime();
+            duration = Consumer.getNewServiceTime();
         } else {
-            Corporate c = (Corporate) p;
-            duration = c.getNewServiceTime();
+            duration = Corporate.getNewServiceTime();
         }
 
         // Create a new event in the eventlist

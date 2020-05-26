@@ -101,6 +101,9 @@ public class Machine implements CProcess,ProductAcceptor
 		product.stamp(tme,"Production complete",name);
 		sink.giveProduct(product);
 		product=null;
+
+		//System.out.println("Finished product, setting status from '" + status + "' to 'i'");
+
 		// set machine status to idle
 		status='i';
 		// Ask the queue for products
@@ -115,6 +118,8 @@ public class Machine implements CProcess,ProductAcceptor
         @Override
 	public boolean giveProduct(Product p)
 	{
+		//System.out.println("Giving product to Machine " + name + ", status = " + status);
+
 		// Only accept something if the machine is idle
 		if(status=='i')
 		{

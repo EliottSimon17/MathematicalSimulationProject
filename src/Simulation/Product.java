@@ -30,9 +30,15 @@ abstract class Product {
 		stations.add(station);
 	}
 	
-	public ArrayList<Time> getTimes()
-	{
-		return times;
+	public ArrayList<Time> getTimes() {
+		// DEBUGGING !!! DEBUG
+		ArrayList<Time> results = new ArrayList<Time>();
+
+		for (int i = 0; i < times.size(); i ++) {
+			results.add(times.get(i));
+		}
+
+		return results;
 	}
 
 	public ArrayList<String> getEvents()

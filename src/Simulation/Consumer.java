@@ -25,7 +25,7 @@ public class Consumer extends Customer {
     private static final double serviceMin = 25;
     private static final double serviceMax = Double.NaN;
     
-    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
+    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds, "Consumer");
     private static TruncNormal serviceDistr = new TruncNormal(serviceMean, serviceStd, serviceMin, serviceMax);
 
     /**

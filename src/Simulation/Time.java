@@ -51,7 +51,7 @@ public class Time {
         this.seconds = seconds % 60;
         this.minutes = (minutes+(((int)seconds)/60))%60;
         this.hours = (hours +(minutes+((int)seconds)/60)/60)%24;
-        this.days = days +(hours +(minutes+(((int)seconds)/60)/60))/24;
+        this.days = days + (hours +(minutes+((int)seconds)/60)/60)/24;
     }
 
     public Time (Time other) {

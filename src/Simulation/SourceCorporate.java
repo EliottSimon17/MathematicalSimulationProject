@@ -49,7 +49,7 @@ public class SourceCorporate implements CProcess {
      */
     @Override
     public void execute(int type, Time tme) {
-        System.out.println("Arrival at time = " + tme);
+        System.out.println("Arrival at time =           " + tme);
 
         //Feeds the product to the queue
         Corporate cust = new Corporate();
