@@ -50,7 +50,7 @@ public class Time {
     public Time(double  seconds, int minutes, int hours, int days) {
         this.seconds = seconds % 60;
         this.minutes = (minutes+(((int)seconds)/60))%60;
-        this.hours = (hours +(minutes+(((int)seconds)/60)/60))%24;
+        this.hours = (hours +(minutes+((int)seconds)/60)/60)%24;
         this.days = days +(hours +(minutes+(((int)seconds)/60)/60))/24;
     }
 
