@@ -49,9 +49,9 @@ public class Time {
      */
     public Time(double  seconds, int minutes, int hours, int days) {
         this.seconds = seconds % 60;
-        this.minutes = (minutes+((int)seconds/60))%60;
-        this.hours = (hours +(minutes+((int)seconds/60)/60))%24;
-        this.days = days +(hours +(minutes+((int)seconds/60)/60))/24;
+        this.minutes = (minutes+(((int)seconds)/60))%60;
+        this.hours = (hours +(minutes+(((int)seconds)/60)/60))%24;
+        this.days = days +(hours +(minutes+(((int)seconds)/60)/60))/24;
     }
 
     public Time (Time other) {
@@ -72,8 +72,25 @@ public class Time {
         this.days = days +(hours +(minutes+((int)seconds)/60)/60)/24;
     }
 
+    /** Getters for the count of seconds, minutes, hours and days */
+    public double getSeconds() {
+        return this.seconds;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
     /**
-     * Update the date, taking seconds in input
+     * Update the date, taking seconds as input
      * @param timePast seconds passed since last update
      */
     public void updateTime(double timePast) {
@@ -220,22 +237,6 @@ public class Time {
     public boolean inNoDay(Time[] range) { return this.greaterEqNoDay(range[0]) && !this.greaterNoDay(range[1]); }
     public boolean in(Time t1, Time t2) { return this.greaterEq(t1) && !this.greater(t2); }
     public boolean inNoDay(Time t1, Time t2) { return this.greaterEqNoDay(t1) && !this.greaterNoDay(t2); }
-
-    public double getSeconds() {
-        return this.seconds;
-    }
-
-    public int getMinutes() {
-        return minutes;
-    }
-
-    public int getHours() {
-        return hours;
-    }
-
-    public int getDays() {
-        return days;
-    }
 
     /**
      * Return the time of this object as a new object, but disregarding the number of days passed

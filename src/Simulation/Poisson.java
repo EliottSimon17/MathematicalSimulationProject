@@ -67,7 +67,7 @@ public class Poisson implements Distribution {
      * @param newValue the new value of the previous arrival time
      */
     public void setPreviousArrivalTime(Time newValue) {
-        this.prevArrTime= newValue;
+        this.prevArrTime = newValue;
     }
 
     /**
@@ -76,7 +76,7 @@ public class Poisson implements Distribution {
      * @return the value of the last arrival time
      */
     public Time getPreviousArrivalTime() {
-        return this.prevArrTime;
+        return new Time(this.prevArrTime);
     }
 
     /**
@@ -104,12 +104,12 @@ public class Poisson implements Distribution {
             } while (u2 > (this.lambdaGivenTime.getLambda(new Time(t)) / this.lambdaStar));
 
             // Test for debugging !!! DEBUG !!! DEBUGGING !!!
-            System.out.println("Previous Arrival time: " + getPreviousArrivalTime());
+            System.out.println("Previous Arrival time:        " + getPreviousArrivalTime());
             System.out.println("Newly generated arrival time: " + new Time(t));
 
             //Set the last arrival time to the newly generated one and return it
             this.setPreviousArrivalTime(new Time(t));
-            return new Time(getPreviousArrivalTime());
+            return new Time(t);
         }
         // If lambdaGivenTime has not yet been set, we cannot generate a random variate
         else {
