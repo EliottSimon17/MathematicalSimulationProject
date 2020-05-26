@@ -78,9 +78,8 @@ Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
 % Do multiple runs and partition our results in two clusters
 % Withdraw the variables from X(1) to X(l)
 % CHANGE THIS SO IT TAKES THE MEAN INSTEAD
-
-arrival_time = arr_corp{5};
-starting_time = start_corp{5};
+arrival_time = arr_cons{2};
+starting_time = start_cons{2};
 y = values_plot(arrival_time , starting_time);
 figure; stem(y);
 
