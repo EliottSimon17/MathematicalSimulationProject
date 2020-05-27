@@ -26,7 +26,9 @@ corporate_file = fopen('MSCorporate.txt');
 % Extract the data from the files and store them in vectors
 [avg_consumer, con_outliers_set_1 ,con_outliers_set_2, arr_cons, start_cons]  = get_data_from_file(consumer_file, performance_customer);
 [avg_corporate, corp_outliers_set_1,corp_outliers_set_2, arr_corp, start_corp] = get_data_from_file(corporate_file, performance_corporate);
-
+% Calculates the mean of the averages
+mean_avg_consumer = mean(avg_consumer);
+mean_avg_corporate = mean(avg_corporate);
 disp('-------------')
 
 % Displays the percentage of successful trials
@@ -44,8 +46,8 @@ fprintf(cp_str2, corp_outliers_set_2)
 disp('-------------')
 
 %% Find average waiting time and confidence interval
-disp(['Average waiting time (customer): ', num2str(avg_consumer(1)),'s']);
-disp(['Average waiting time (corporate): ', num2str(avg_corporate(1)),'s']);
+disp(['Average waiting time (customer): ', num2str(mean_avg_consumer),'s']);
+disp(['Average waiting time (corporate): ', num2str(mean_avg_corporate),'s']);
 
 % Confidence Interval
 % Say we want 95% Confidence Interval, we consider positive the values of
@@ -77,7 +79,6 @@ std_mean_corp = sqrt(var_corporate/n2);
 % This function uses the Welch method to find the right l vlaue
 % Do multiple runs and partition our results in two clusters
 % Withdraw the variables from X(1) to X(l)
-% CHANGE THIS SO IT TAKES THE MEAN INSTEAD
 y_history = zeros(1,length(arr_cons));
 y_iterate = {};
 figure('Renderer', 'painters', 'Position', [10 10 1300 600]);
