@@ -3,15 +3,6 @@ package Simulation;
 import java.util.Random;
 
 
-
-/* TODO MODIFY EXECUTE SUCH AS TO USE THE POISSON DISTRIBUTIONS OF CONSUMER AND CORPORATE DIRECTLY,
- * THEN TAKE ONLY THE FIRST ONE, AND SAVE THE OTHER ONE FOR LATER.
- * THEN NEXT TIME, GENERATE A NEW ARRIVAL TIME ONLY FOR THE ONE THAT HAD BEEN TAKEN BEFORE.
- * ETC
- *
-*/
-
-
 /**
  *	A source of products
  *	This class implements CProcess so that it can execute events.
@@ -21,7 +12,6 @@ import java.util.Random;
  */
 public class Source implements CProcess
 {
-        //TODO use 2 queues or 2 sources
 	/** Eventlist that will be requested to construct events */
 	private CEventList list;
 	/** Queue that buffers products for the machine */
@@ -54,7 +44,6 @@ public class Source implements CProcess
 		// put first event in list for initialization
 		//list.add(this,0,drawRandomExponential(meanArrTime)); //target,type,time
 		//list.add(this,0,drawNextPoisson(previousArrivalTime)); //target,type,time
-		// TODO ADD THE FIRST EVENT IN LIST
 	}
 
 	/**
@@ -90,7 +79,6 @@ public class Source implements CProcess
 		// generate duration
 		if (! iaTimesPrespecified)
 		{
-			/*  TODO, replace this to use the Poisson distributions of the Consumer and Corporate classes */
 			//Time nextTime = drawNextPoisson(previousArrivalTime);
 			// Create a new event in the eventlist
 			//list.add(this,0,nextTime); //target,type,time

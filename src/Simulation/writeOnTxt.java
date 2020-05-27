@@ -42,9 +42,11 @@ public class writeOnTxt {
             out.println("events length: "+ events.length);
             out.println("Station length: "+ stations.length);
             out.println("times length: "+times.length);
+            out.println("Number of Customers: " + customer.length/3);
             out.println();
 
             try {
+                int numCons = 0;
                 for (int i= 0; i < numbers.length; i++) {
                     if (customer[i].equals("consumer")) {
                         sb.append(numbers[i]);
@@ -57,8 +59,10 @@ public class writeOnTxt {
                         sb.append(", ");
                         sb.append(times[i].toSeconds());
                         sb.append("\n");
+                        numCons ++;
                     }
                 }
+                out.println("\nNumber of Consumer customers processed: " + numCons/3 + "\n");
                 sb.append("\n");
             } catch (IndexOutOfBoundsException e) {
                 writer.write(sb.toString());
@@ -99,9 +103,11 @@ public class writeOnTxt {
             out.println("events length: "+ events.length);
             out.println("Station length: "+ stations.length);
             out.println("times length: "+times.length);
+            out.println("Number of Customers: " + customer.length/3);
             out.println();
 
             try {
+                int numCorp = 0;
                 for (int i= 0; i < numbers.length; i++) {
                     if (customer[i].equals("Corporate")) {
                         sb.append(numbers[i]);
@@ -114,8 +120,11 @@ public class writeOnTxt {
                         sb.append(", ");
                         sb.append(times[i].toSeconds());
                         sb.append("\n");
+                        numCorp ++;
                     }
                 }
+                out.println("\nNumber of Corporate customers processed: " + numCorp/3 + "\n");
+
                 sb.append("\n");
 
             } catch (IndexOutOfBoundsException e) {

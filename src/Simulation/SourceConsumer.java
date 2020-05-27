@@ -8,6 +8,8 @@ public class SourceConsumer implements CProcess{
     /** Name of the source */
     private String name;
 
+    public int numberConsumer = 0;
+
     public SourceConsumer(ProductAcceptor q,CEventList l,String n) {
         list = l;
         queue = q;
@@ -19,15 +21,7 @@ public class SourceConsumer implements CProcess{
      *  Initializes the event list
      */
     private void addFirstEvent() {
-        Time newEventTime = Consumer.getNewArrivalTime();
-
-
-        // DEBUGGING !!! DEBUG !!!
-        // System.out.println("Generated new first arrival at time t=" + newEventTime);
-
-
-
-        list.add(this, 0, newEventTime);
+        list.add(this, 0, Consumer.getNewArrivalTime());
     }
 
     public String getName(){
@@ -46,7 +40,7 @@ public class SourceConsumer implements CProcess{
      */
     @Override
     public void execute(int type, Time tme) {
-        System.out.println("Arrival at time =           " + tme);
+        System.out.println("Consumer Arrival at time = " + tme);
         //Feed the product to the queue
 
         Consumer cust = new Consumer();
@@ -54,5 +48,6 @@ public class SourceConsumer implements CProcess{
         queue.giveProduct(cust);
 
         list.add(this, 0, Consumer.getNewArrivalTime());
+        numberConsumer ++;
     }
 }

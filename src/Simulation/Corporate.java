@@ -1,13 +1,5 @@
 package Simulation;
 
-
-/* TODO:
- *  - GIVE THE PARAMETERS OF THE POISSON AND TRUNCNORMAL DISTRIBUTIONS IN THE CONSTRUCTOR
- *      --> compute them from the assignment sheet
- *
- *  - WRITE THE BODY OF THE getNewServiceTime() METHOD TO USE THE TRUNCNORMAL
- */
-
 public class Corporate extends Customer {
     // These variables are the distributions used for generating arrival times and service times
     private static final double lambdaStarPerSecond = 1.0 / 60;
@@ -31,9 +23,9 @@ public class Corporate extends Customer {
     private static final double serviceMean = 3.6*60;
     private static final double serviceStd = 1.2*60;
     private static final double serviceMin = 45;
-    private static final double serviceMax = Double.NaN;    
+    private static final double serviceMax = Double.NaN;
     
-    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds, "Corporate");
+    private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
     private static TruncNormal serviceDistr = new TruncNormal(serviceMean, serviceStd, serviceMin, serviceMax);
 
     /**

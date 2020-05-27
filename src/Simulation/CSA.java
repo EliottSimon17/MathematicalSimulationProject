@@ -15,7 +15,7 @@ public abstract class CSA extends Machine {
     private Customer customer;
     
     public CSA(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN) {
-        super(q,s,e,n, new Time(0));
+        super(q,s,e,n);
         shift = shiftN;
     }
     
@@ -44,9 +44,8 @@ public abstract class CSA extends Machine {
     @Override
     public boolean giveProduct(Product p)
     {
-        //TODO override -> adapt to customers/corporate, depends on policy                
         if(status!='b')
-        {            
+        {
             if(eventlist.getTime().inShift(getShift(shift))) {  // starting of the shift
                 status = 'i';
             }else{
@@ -55,7 +54,7 @@ public abstract class CSA extends Machine {
             }
             
             // accept the product
-            product=p;
+            product=(Customer)p;
             // mark starting time
             product.stamp(eventlist.getTime(),"Production started",name);
             // start production
@@ -67,15 +66,54 @@ public abstract class CSA extends Machine {
         else return false;
     }
 
-    /*      IS THIS STILL NEEDED ???
-    public Time[] getShiftInterval(int n) {
-        //TODO
-        return new Time[]{new Time(0,0)};
+    /** Check whether we start our shift now
+     *
+     */
+    public void checkShift (Time current) {
+        if (status == 'n' && current.inShift(getShift(shift))) {
+            // Change the state to working
+            status = 'i';
+
+            // Ask the queue for products
+            queue.askProduct(this);
+        }
     }
-    */
+
+    /**
+     *	Method to have this object execute an event
+     *	@param type	The type of the event that has to be executed
+     *	@param tme	The current time
+     */
+    public void execute(int type, Time tme)
+    {
+        // show arrival
+        System.out.println("Consumer Product finished at time =  " + tme);
+        // Remove product from system
+        product.stamp(tme,"Production complete",name);
+        sink.giveProduct(product);
+        product=null;
+
+        //System.out.println("Finished product, setting status from '" + status + "' to 'i'");
+
+        // set machine status to idle
+        status='i';
+        // Ask the queue for products
+        queue.askProduct(this);
+    }
         
     public int getShift() {
         return shift;
+    }
+
+    /** Returns the current shift as Time array for n=1, 2, 3
+     *
+     * @param n the code of the shift
+     * @return an array with {start, end} of the shifts
+     */
+    public Time[] getShift(int n) {
+        int h1 = 6 + 8 * n;
+        int h2 = 6 + 8 * (n + 1);
+        return new Time[]{new Time(0, 0, h1 % 24, 0), new Time(0, 0, h2 % 24, 0)};
     }
         
     public double getCurrentCost() {
@@ -96,11 +134,5 @@ public abstract class CSA extends Machine {
         
     public Time getMeanServiceTime() {
         return new Time(totalServiceTime.getSeconds() / customers);
-    }    
-    
-    public Time[] getShift(int n) {
-        int h1 = 6 + 8 * n;
-        int h2 = 6 + 8 * (n + 1);
-        return new Time[]{new Time(0, h1 % 24, 0, 0), new Time(0, h2 % 24, 0, 0)};
     }
 }

@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class CEventList implements CProcess
 {
     /** The time in the simulation */
-    private Time currentTime;
+    protected Time currentTime;
     /** List of events that have to be executed */
-    private final ArrayList<CEvent> events;
+    protected final ArrayList<CEvent> events;
     /** Stop flag */
-    private boolean stopFlag;
+    protected boolean stopFlag;
 
     /**
     *	Standard constructor
@@ -40,7 +40,6 @@ public class CEventList implements CProcess
     {
         // !!! DEBUGGING !!! DEBUG
         //System.out.println("Adding event with target of type " + target.getClass().getName());
-
 
         boolean success=false;
         // First create a new event using the parameters

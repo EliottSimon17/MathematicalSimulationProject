@@ -28,6 +28,8 @@ public class Queue implements ProductAcceptor
 	*	True is returned if a product could be delivered; false if the request is queued
 	*/
 	public boolean askProduct(Machine machine) {
+		printReport();
+
 		// This is only possible with a non-empty queue
 		if(row.size()>0) {
 			// If the machine accepts the product
@@ -51,7 +53,7 @@ public class Queue implements ProductAcceptor
 	@Override
 	public boolean giveProduct(Product p) {
 		//System.out.println("Gave a product");
-
+		printReport();
 
 		// Check if the machine accepts it
 		if (requests.size() < 1) {
@@ -69,14 +71,14 @@ public class Queue implements ProductAcceptor
 				//requests.remove(0);
 				index += 1;
 			}
-			if(!delivered) {
-				//System.out.println("Didn't find an accepting machine");
+			if(!delivered)
 				row.add(p); // Otherwise store it
-			}
-			else {
-				//System.out.println("Found an accepting machine");
-			}
 		}
 		return true;
+	}
+
+	public void printReport () {
+		// TODO OR REMOVE
+		System.out.println();
 	}
 }

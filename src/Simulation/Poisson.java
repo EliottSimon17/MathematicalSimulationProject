@@ -24,7 +24,7 @@ public class Poisson implements Distribution {
      * @param lambdaStar the maximum rate of the Poisson distribution at any given time of arrivals per second
      */
     public Poisson(double lambdaStar) {
-        this(lambdaStar, null, "");
+        this(lambdaStar, null);
     }
 
     /**
@@ -33,8 +33,8 @@ public class Poisson implements Distribution {
      * @param lambdaStar the maximum rate of the Poisson distribution at any given time of arrivals per second
      * @param lambdaT object giving the value of lambda(t) for a given t of arrivals per second
      */
-    public Poisson (double lambdaStar, LambdaT lambdaT, String name) {
-        this(lambdaStar, lambdaT, new Time(0), name);
+    public Poisson (double lambdaStar, LambdaT lambdaT) {
+        this(lambdaStar, lambdaT, new Time(0));
     }
 
     /**
@@ -44,16 +44,29 @@ public class Poisson implements Distribution {
      * @param lambdaT object giving the value of lambda(t) for a given t of arrivals per second
      * @param previousArrivalTime the last generated arrival time, by default holds value 0
      */
-    public Poisson (double lambdaStar, LambdaT lambdaT, Time previousArrivalTime, String name) {
+    public Poisson (double lambdaStar, LambdaT lambdaT, Time previousArrivalTime) {
         // Save the given parameters in the corresponding variables
         this.lambdaStar = lambdaStar;
         this.lambdaGivenTime = lambdaT;
         this.prevArrTime = previousArrivalTime;
 
-        this.name = name;
-
         // Initialize the random number generator
         rnd = new Random();
+    }
+
+    /**
+     * Full parametric constructor for this class
+     *
+     * @param lambdaStar the maximum rate of the Poisson distribution at any given time of arrivals per second
+     * @param lambdaT object giving the value of lambda(t) for a given t of arrivals per second
+     * @param previousArrivalTime the last generated arrival time, by default holds value 0
+     * @param seed the seed the random number generator should start at
+     */
+    public Poisson (double lambdaStar, LambdaT lambdaT, Time previousArrivalTime, long seed) {
+        this(lambdaStar, lambdaT, previousArrivalTime);
+
+        // Initialize the random number generator
+        rnd = new Random(seed);
     }
 
     /**

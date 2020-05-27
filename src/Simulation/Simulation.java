@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Simulation {
 
-    public CEventList l;
+    public CEventListWithShift l;
     public Queue q1;
     public Queue q2;
     public SourceCorporate s1;
@@ -34,13 +34,13 @@ public class Simulation {
         Consumer.resetPreviousArrivalTime();
         // Note: did not yet reset the service times object, because they should not need to be reset
 
-        l = new CEventList();
+        l = new CEventListWithShift();
         q1= new Queue();    //Corporate
         q2= new Queue();    //Consumer
 
         s1 = new SourceCorporate(q1, l, "Source corporate");
         s2 = new SourceConsumer(q2, l, "Source consumer");
-        
+
         int total = corporates[0] + corporates[1] + corporates[2];
         total += consumers[0] + consumers[1] + consumers[2];
 
@@ -63,9 +63,18 @@ public class Simulation {
     }
     
     public void start(Time t) {
-        l.start(t);
+        l.start(t, this);
     }
-    
+
+    /** This method is supposed to go through the CSA's and make sure that the CSA's that start their shift now start working
+     *
+     */
+    public void callCSAtoWork (Time current) {
+        for (int i = 0; i < ms.length; i ++) {
+            ms[i].checkShift(current);
+        }
+    }
+
     // Recipe for a successful simulation:
     //
     // 1 single CEventList
@@ -97,14 +106,23 @@ public class Simulation {
         int CSACorporateLimitForTakingConsumers = 0;
 
         sinks = new ArrayList<>();
-        int runs = 5;
+        int runs = 1;
         Simulation[] sims = new Simulation[runs];
-        Time t = new Time(0, 0, 0, 7);
+        Time t = new Time(0, 0, 0, 1);
         for(int i = 0; i < runs; i++) {
             System.out.println("\n\nSimulation #" + i);
 
             sims[i] = new Simulation(corporateCSAPerShift, consumerCSAPerShift, CSACorporateLimitForTakingConsumers);
             sims[i].start(t);
+
+            for (int j = 0; j < sims[i].ms.length; j ++) {
+                if (sims[i].ms[j] instanceof CSAConsumer)
+                    System.out.println("Consumer CSA took on  " + sims[i].ms[j].customers + " customers");
+                else
+                    System.out.println("Corporate CSA took on " + sims[i].ms[j].customers + " customers");
+            }
+
+            System.out.println("\n\nThere were overall " + sims[i].s1.numberCorporate + " Corporate and " + sims[i].s2.numberConsumer + " Consumers. \nNote that some might still be waiting to be processed.\n");
 
             System.out.println("\nEnd of simulation\n\n");
         }

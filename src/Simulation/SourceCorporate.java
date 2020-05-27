@@ -8,6 +8,8 @@ public class SourceCorporate implements CProcess {
     /** Name of the source */
     private String name;
 
+    public int numberCorporate = 1;
+
     public SourceCorporate(ProductAcceptor q,CEventList l,String n) {
         list = l;
         queue = q;
@@ -49,7 +51,7 @@ public class SourceCorporate implements CProcess {
      */
     @Override
     public void execute(int type, Time tme) {
-        System.out.println("Arrival at time =           " + tme);
+        System.out.println("Corporate Arrival at time = " + tme);
 
         //Feeds the product to the queue
         Corporate cust = new Corporate();
@@ -57,5 +59,7 @@ public class SourceCorporate implements CProcess {
         queue.giveProduct(cust);
 
         list.add(this, 0, Corporate.getNewArrivalTime());
+
+        numberCorporate ++;
     }
 }

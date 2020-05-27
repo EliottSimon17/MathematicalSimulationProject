@@ -21,7 +21,7 @@ public class CSACorporate extends CSA {
     @Override
     public void execute(int type, Time tme) {
         // show arrival
-        System.out.println("Product finished at time = " + tme);
+        System.out.println("Corporate Product finished at time = " + tme);
 
         // Remove product from system
         product.stamp(tme,"Production complete",name);
@@ -59,7 +59,7 @@ public class CSACorporate extends CSA {
             }
 
             // accept the product only if it is a Corporate or there are enough free csacorporate
-            if ((product instanceof Corporate) || (freeCSACorporate >= limitForTakingConsumers)) {
+            if ((p instanceof Corporate) || (freeCSACorporate >= limitForTakingConsumers)) {
                 // We accept the product, so the number of freeCSACorporate is decreased by 1
                 freeCSACorporate --;
 
@@ -79,6 +79,24 @@ public class CSACorporate extends CSA {
         }
         // Flag that the product has been rejected
         else return false;
+    }
+
+    /** Check whether we start our shift now
+     *
+     */
+    @Override
+    public void checkShift (Time current) {
+        if (current.inShift(getShift(shift))) {
+            // Change the state to working
+            status = 'i';
+            // Add a idle CSA
+            freeCSACorporate ++;
+
+            // Ask the queue for products
+            if (! queue.askProduct(this)) {
+                altQueue.askProduct(this);
+            }
+        }
     }
 
     /**
