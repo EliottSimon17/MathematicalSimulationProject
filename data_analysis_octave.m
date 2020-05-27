@@ -94,8 +94,8 @@ end
 
 
 
-
-
+% Load the stats package for Octave
+pkg load statistics
 
 
 %% Data Analysis
