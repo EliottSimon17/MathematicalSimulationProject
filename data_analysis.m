@@ -58,8 +58,8 @@ n2 = length(avg_corporate);
 
 % Find the t-inverse function
 %pkg load statistics;
-t_inverse_1 = tinv([r1 r2], n1-1);
-t_inverse_2 = tinv([r1 r2], n2-1);
+%t_inverse_1 = tinv([r1 r2], n1-1);
+%t_inverse_2 = tinv([r1 r2], n2-1);
 
 % Find the variances of both samples
 var_consumers = var(avg_consumer);
@@ -70,30 +70,67 @@ std_mean_cons = sqrt(var_consumers/n1);
 std_mean_corp = sqrt(var_corporate/n2);
 
 % Confidence Intervals
-Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons
-Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
+%Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons
+%Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
 
 %% Replication/ Deletion Approach
 % This function uses the Welch method to find the right l vlaue
 % Do multiple runs and partition our results in two clusters
 % Withdraw the variables from X(1) to X(l)
 % CHANGE THIS SO IT TAKES THE MEAN INSTEAD
-arrival_time = arr_cons{2};
-starting_time = start_cons{2};
-y = values_plot(arrival_time , starting_time);
-figure; stem(y);
+y_history = zeros(1,length(arr_cons));
+y_iterate = {};
+figure('Renderer', 'painters', 'Position', [10 10 1300 600]);
 
+%Plots each simulation's waiting time
+for index = 1:length(arr_cons)
+    arrival_time = arr_cons{index};
+    starting_time = start_cons{index};
+    y = values_plot(arrival_time , starting_time);
+    y_history(index) = length(y);
+    y_iterate{index} = y;
+    x = linspace(1, length(y), length(y));
+    subplot(2,3,index); plot(x,y); title(['Simulation: ', num2str(index)])
+end
 
+%get the max value from all the values so we can equal the vector lengths
+y_max = max(y_history);
+
+%Equalize all the vector lengths so we can apply the mean on each of them
+for index = 1:length(y_iterate)
+    missing_Y = y_max - y_history(index);
+    for i = y_history(index)+1:missing_Y+y_history(index)
+        y_iterate{index}(i) = 1;
+    end
+end
+%Calculate the mean waiting time vector
+mean_vector = zeros(1,length(y_iterate{1}));
+for index = 1:length(y_iterate{1})
+    sum = 0;
+    for i = 1: length(y_iterate)-1
+        sum = sum + y_iterate{i}(index);
+    end
+    mean_vector(index) = (sum/length(y_iterate));
+end
+% plots the mean vector
+x = linspace(1, length(mean_vector), length(mean_vector));
+figure('Renderer', 'painters', 'Position', [10 10 1300 600]); plot(x,mean_vector,'g');  xlim([4e4 10e4])
+
+% Deletion factor l
+l = 7e4
+
+%% Functions
 function y_value = values_plot(arrival , start)
     y_value = zeros(1,floor(length(arrival)));
     for index = 1: length(arrival)
-       value = floor(arrival(index));
+       value = ceil(arrival(index));
        y_value(value) = (start(index)-arrival(index));
+       for i = value:(start(index)-arrival(index))+value
+           y_value(i) = start(index)-arrival(index);
+       end
     end
 end
-%% Batch Means
 
-%% Functions
 %Calculates the mean of two vectors
 function average = find_average(arrival, start)
     sum = 0;

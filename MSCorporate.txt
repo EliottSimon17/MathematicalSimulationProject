@@ -1,0 +1,82 @@
+simulation: 1
+Number: customer type: event: station: time: 
+9, Corporate, Creation, Source corporate, 300.1687497980288
+9, Corporate, Production started, CSA Corporate 2 0, 300.1687497980288
+9, Corporate, Production complete, CSA Corporate 2 0, 510.02183257735317
+13, Corporate, Creation, Source corporate, 717.3091463313767
+13, Corporate, Production started, CSA Corporate 0 0, 717.3091463313767
+13, Corporate, Production complete, CSA Corporate 0 0, 985.2789432959951
+14, Corporate, Creation, Source corporate, 864.0561001587612
+14, Corporate, Production started, CSA Corporate 1 0, 864.0561001587612
+14, Corporate, Production complete, CSA Corporate 1 0, 1071.0268233050397
+
+simulation: 2
+Number: customer type: event: station: time: 
+4, Corporate, Creation, Source corporate, 312.9170917493822
+4, Corporate, Production started, CSA Corporate 2 0, 312.9170917493822
+4, Corporate, Production complete, CSA Corporate 2 0, 409.24224441765836
+9, Corporate, Creation, Source corporate, 819.1703993545974
+9, Corporate, Production started, CSA Corporate 0 0, 819.1703993545974
+9, Corporate, Production complete, CSA Corporate 0 0, 1076.4915374873112
+12, Corporate, Creation, Source corporate, 1023.4375889987758
+12, Corporate, Production started, CSA Corporate 1 0, 1023.4375889987758
+12, Corporate, Production complete, CSA Corporate 1 0, 1331.8264008472368
+
+simulation: 3
+Number: customer type: event: station: time: 
+6, Corporate, Creation, Source corporate, 147.43977936311222
+6, Corporate, Production started, CSA Corporate 2 0, 147.43977936311222
+6, Corporate, Production complete, CSA Corporate 2 0, 278.1643998670173
+8, Corporate, Creation, Source corporate, 180.56310683305932
+8, Corporate, Production started, CSA Corporate 2 0, 278.1643998670173
+8, Corporate, Production complete, CSA Corporate 2 0, 418.1832445321629
+12, Corporate, Creation, Source corporate, 386.116412606152
+12, Corporate, Production started, CSA Corporate 0 0, 386.116412606152
+12, Corporate, Production complete, CSA Corporate 0 0, 583.2356467536276
+14, Corporate, Creation, Source corporate, 500.04314913266
+14, Corporate, Production started, CSA Corporate 0 2, 500.04314913266
+14, Corporate, Production complete, CSA Corporate 0 2, 668.8461339405615
+18, Corporate, Creation, Source corporate, 493.58581514003197
+18, Corporate, Production started, CSA Corporate 0 1, 493.58581514003197
+18, Corporate, Production complete, CSA Corporate 0 1, 794.2393695795329
+19, Corporate, Creation, Source corporate, 641.6156738095895
+19, Corporate, Production started, CSA Corporate 0 0, 641.6156738095895
+19, Corporate, Production complete, CSA Corporate 0 0, 944.879190459038
+20, Corporate, Creation, Source corporate, 770.3931955158084
+20, Corporate, Production started, CSA Corporate 0 2, 770.3931955158084
+20, Corporate, Production complete, CSA Corporate 0 2, 944.9173917547604
+27, Corporate, Creation, Source corporate, 1143.0340526308507
+27, Corporate, Production started, CSA Corporate 1 96, 1143.0340526308507
+27, Corporate, Production complete, CSA Corporate 1 96, 1320.9979863855517
+
+simulation: 4
+Number: customer type: event: station: time: 
+3, Corporate, Creation, Source corporate, 163.60136639931736
+3, Corporate, Production started, CSA Corporate 2 0, 163.60136639931736
+3, Corporate, Production complete, CSA Corporate 2 0, 307.5240768625898
+12, Corporate, Creation, Source corporate, 809.270415998007
+12, Corporate, Production started, CSA Corporate 0 0, 809.270415998007
+12, Corporate, Production complete, CSA Corporate 0 0, 1057.9751518461726
+21, Corporate, Creation, Source corporate, 1720.1376521714576
+21, Corporate, Production started, CSA Corporate 2 98, 1720.1376521714576
+21, Corporate, Production complete, CSA Corporate 2 98, 1782.1331823599435
+
+simulation: 5
+Number: customer type: event: station: time: 
+2, Corporate, Creation, Source corporate, 95.47579028614699
+2, Corporate, Production started, CSA Corporate 2 0, 95.47579028614699
+2, Corporate, Production complete, CSA Corporate 2 0, 277.171181394667
+5, Corporate, Creation, Source corporate, 272.7104551703529
+5, Corporate, Production started, CSA Corporate 2 0, 277.171181394667
+5, Corporate, Production complete, CSA Corporate 2 0, 403.90696001729447
+8, Corporate, Creation, Source corporate, 566.1320355937914
+8, Corporate, Production started, CSA Corporate 0 0, 566.1320355937914
+8, Corporate, Production complete, CSA Corporate 0 0, 680.9816363700863
+11, Corporate, Creation, Source corporate, 738.8399300748521
+11, Corporate, Production started, CSA Corporate 0 0, 738.8399300748521
+11, Corporate, Production complete, CSA Corporate 0 0, 941.315088260036
+13, Corporate, Creation, Source corporate, 793.7006234569324
+13, Corporate, Production started, CSA Corporate 0 1, 793.7006234569324
+13, Corporate, Production complete, CSA Corporate 0 1, 1117.2815529147583
+
+simulation end
