@@ -15,7 +15,7 @@ public class CSACorporate extends CSA {
         altQueue = q2;
         this.limitForTakingConsumers = limitForTakingConsumers;
         // add one free csacorporate to the count if the starting Time is in this object's shift
-        if(eventlist.getTime().inShift(getShift(shift))) {
+        if(e.getTime().inShift(getShift(shift))) {
             freeCSACorporate++;
 
             if (! q1.askProduct(this)) {
