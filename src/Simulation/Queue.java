@@ -33,6 +33,7 @@ public class Queue implements ProductAcceptor
 		// This is only possible with a non-empty queue
 		if(row.size()>0) {
 			// TO CHECK
+			/*
 			boolean acceptedProduct = false;
 			for (int i = 0; i < row.size(); i ++) {
 				// If the machine accepts the product
@@ -43,8 +44,8 @@ public class Queue implements ProductAcceptor
 			}
 
 			return acceptedProduct;
+			*/
 
-			/*
 			// If the machine accepts the product
 			if(machine.giveProduct(row.get(0))) {
 				row.remove(0);// Remove it from the queue
@@ -52,11 +53,10 @@ public class Queue implements ProductAcceptor
 			}
 			else
 				return false; // Machine rejected; don't queue request
-			*/
 		}
 		else {
 			// TODO NOT SURE IF THIS WORKS (THE IF STATEMENT)
-			if (! requests.contains(machine))
+			//if (! requests.contains(machine))
 				requests.add(machine);
 
 			return false; // queue request
@@ -82,19 +82,27 @@ public class Queue implements ProductAcceptor
 				// We do not remove requests as they could be from Corporates refusing Consumers ...
 				delivered = requests.get(index).giveProduct(p);
 				// remove the request regardless of whether or not the product has been accepted
-				//requests.remove(0);
-				index += 1;
+				requests.remove(0);
+				//index += 1;
 			}
 			if (! delivered)
 				row.add(p); // Otherwise store it
+			/*
 			else
 				requests.remove(index-1);
+				*/
 		}
 
 		return true;
 	}
 
 	public void printReport () {
+		if (row.size() > 0) {
+			if (row.get(0) instanceof Consumer)
+				System.out.println("Consumer QUEUE");
+			else
+				System.out.println("Corporate QUEUE");
+		}
 		System.out.println("In row, we have " + row.size() + " elements.");
 		System.out.println("In requests, we have: " + requests.size() + " elements.");
 	}

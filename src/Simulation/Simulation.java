@@ -58,14 +58,15 @@ public class Simulation {
         total = 0;
         for(int i = 0; i < 3; i++) {
             // For each shift, create as many corporate and consumer CSAs as specified, keeping track of which index we are at in ms
-            for(int j = 0; j < corporates[i]; j++) {
-                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i, corporateCSALimit);
-            }
-            total += corporates[i];
             for(int j = 0; j < consumers[i]; j++) {
                 ms[total + j] = new CSAConsumer(q2, si, l, "CSA consumer " + i + " " + j , i);
             }
             total += consumers[i];
+            for(int j = 0; j < corporates[i]; j++) {
+                ms[total + j] = new CSACorporate(q1, q2, si, l, "CSA Corporate " + i + " " + j , i, corporateCSALimit);
+            }
+            total += corporates[i];
+
         }
     }
     
@@ -114,13 +115,13 @@ public class Simulation {
     public static void main(String[] args) throws FileNotFoundException {
         // Specify the strategy for the runs
         // First index is for shift 6:00-14:00, second for 14:00-22:00 and third for 22:00-06:00
-        int[] consumerCSAPerShift = {10, 5, 10};
-        int[] corporateCSAPerShift = {10, 10, 10};
+        int[] consumerCSAPerShift = {100, 100, 100};
+        int[] corporateCSAPerShift = {100, 100, 100};
         // The number of CSA Corporate that should be free before taking Consumers
         int CSACorporateLimitForTakingConsumers = 0;
 
         // Initialize the number of runs and the time they will take
-        int runs = 1;
+        int runs = 5;
         int numDays = 7;
         Time t = new Time(0, 0, 0, numDays);
 
@@ -137,6 +138,7 @@ public class Simulation {
             sims[i].start(t);
 
             // DEBUGGING At the end, print the number of customers that each CSA has taken on.
+
             for (int j = 0; j < sims[i].ms.length; j ++) {
                 if (sims[i].ms[j] instanceof CSAConsumer)
                     System.out.println("Consumer CSA is in state: " + sims[i].ms[j].status + "\nHandled " + sims[i].ms[j].customers + " customers");
@@ -147,7 +149,7 @@ public class Simulation {
             }
 
             // DEBUG
-            System.out.println("Number of shift changes: " + numShiftChanges);
+            System.out.println("\nNumber of shift changes: " + numShiftChanges);
 
             // DEBUGGING Print the overall number of corporate and consumers
             System.out.println("\n\nThere were overall " + sims[i].s1.numberCorporate + " Corporate and " + sims[i].s2.numberConsumer + " Consumers. \nNote that some might still be waiting to be processed.\n");

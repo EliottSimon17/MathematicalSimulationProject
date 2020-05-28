@@ -10,7 +10,7 @@ public class CSACorporate extends CSA {
     private static int freeCSACorporate = 0;
 
     public CSACorporate(Queue q1, Queue q2, ProductAcceptor s, CEventList e, String n, int shiftN, int limitForTakingConsumers) {
-        super(q1,s,e,n, shiftN);                
+        super(q1,s,e,n, shiftN);
         costHour = 60;
         altQueue = q2;
         this.limitForTakingConsumers = limitForTakingConsumers;

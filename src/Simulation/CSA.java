@@ -12,8 +12,6 @@ public abstract class CSA extends Machine {
     protected int customers = 0;
     protected Time totalServiceTime = new Time(0);    //Sum of service time for all the customers
 
-    private Customer customer;
-    
     public CSA(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN) {
         super(q,s,e,n, false);
         shift = shiftN;
