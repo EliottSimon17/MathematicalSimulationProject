@@ -255,12 +255,12 @@ public class Time {
         // for range=(a, b), if a < b, then we have a "normal" case, for example from 8 am to 4 pm (of the same day)
         if (range[0].smaller(range[1])) {
             // So then we check whether we are after a AND before b
-            return (this.greaterEq(range[0]) && this.smallerEq(range[1]));
+            return (this.greaterEqNoDay(range[0]) && this.smallerEqNoDay(range[1]));
         }
         // otherwise, we have for example a range from 22 pm to 6 am (of consecutive days),
         else {
             // So we have to check if we are after the a OR before b in this case
-            return (this.greaterEq(range[0]) || this.smallerEq(range[1]));
+            return (this.greaterEqNoDay(range[0]) || this.smallerEqNoDay(range[1]));
         }
     }
 
