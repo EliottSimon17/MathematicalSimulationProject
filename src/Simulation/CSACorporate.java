@@ -17,6 +17,10 @@ public class CSACorporate extends CSA {
         // add one free csacorporate to the count if the starting Time is in this object's shift
         if(eventlist.getTime().inShift(getShift(shift))) {
             freeCSACorporate++;
+
+            if (! q1.askProduct(this)) {
+                altQueue.askProduct(this);
+            }
         }
         else {
             status = 'n';
@@ -96,7 +100,7 @@ public class CSACorporate extends CSA {
      */
     @Override
     public void checkShift (Time current) {
-        if (current.inShift(getShift(shift))) {
+        if (status == 'n' && current.inShift(getShift(shift))) {
             // Change the state to working
             status = 'i';
             // Add a idle CSA

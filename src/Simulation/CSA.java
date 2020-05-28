@@ -21,6 +21,9 @@ public abstract class CSA extends Machine {
         if (e.getTime().inShift(getShift(shift))) {
             q.askProduct(this);
         }
+        else {
+            status = 'n';
+        }
     }
     
     protected void startProduction(Product p) {

@@ -31,8 +31,7 @@ public class CEvent
 	/**
 	*	Method to signal the target to execute an event
 	*/
-	public void execute()
-	{
+	public void execute() {
 		target.execute(type,executionTime);
 	}
 	
