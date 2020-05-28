@@ -14,8 +14,13 @@ public class CSACorporate extends CSA {
         costHour = 60;
         altQueue = q2;
         this.limitForTakingConsumers = limitForTakingConsumers;
-        // add one free csacorporate to the count
-        freeCSACorporate ++;
+        // add one free csacorporate to the count if the starting Time is in this object's shift
+        if(eventlist.getTime().inShift(getShift(shift))) {
+            freeCSACorporate++;
+        }
+        else {
+            status = 'n';
+        }
     }
 
     @Override
@@ -48,13 +53,18 @@ public class CSACorporate extends CSA {
         if(status!='b')
         {
             if(eventlist.getTime().inShift(getShift(shift))) {
-                //Starting of the shift, one more free csa corporate
-                status = 'i';
-                freeCSACorporate ++;
-            }else{
-                // End of the shift, one less free csacorporate
-                freeCSACorporate --;
-                status = 'n';
+                if (status == 'n') {
+                    //Starting of the shift, one more free csa corporate
+                    status = 'i';
+                    freeCSACorporate++;
+                }
+            }else {
+                if (status == 'i') {
+                    // End of the shift, one less free csacorporate
+                    freeCSACorporate--;
+                    status = 'n';
+                }
+
                 return false;
             }
 

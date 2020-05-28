@@ -41,7 +41,9 @@ public class Queue implements ProductAcceptor
 				return false; // Machine rejected; don't queue request
 		}
 		else {
+			// TO CHECK
 			requests.add(machine);
+
 			return false; // queue request
 		}
 	}
@@ -52,33 +54,32 @@ public class Queue implements ProductAcceptor
 	*/
 	@Override
 	public boolean giveProduct(Product p) {
-		//System.out.println("Gave a product");
 		printReport();
 
 		// Check if the machine accepts it
 		if (requests.size() < 1) {
-			//System.out.println("Was put to waiting");
 			row.add(p); // Otherwise store it
 		}
 		else {
-			//System.out.println("Free machines ! Yay !");
 			boolean delivered = false;
 			int index = 0;
-			while(!delivered & (index < requests.size()))
-			{
-				delivered=requests.get(index).giveProduct(p);
+			while(!delivered & (index < requests.size())) {
+				// We do not remove requests as they could be from Corporates refusing Consumers ...
+				delivered = requests.get(index).giveProduct(p);
 				// remove the request regardless of whether or not the product has been accepted
 				//requests.remove(0);
 				index += 1;
 			}
-			if(!delivered)
+			if (! delivered)
 				row.add(p); // Otherwise store it
+			else
+				requests.remove(index-1);
 		}
 		return true;
 	}
 
 	public void printReport () {
-		// TODO OR REMOVE
-		System.out.println();
+		System.out.println("In row, we have " + row.size() + " elements.");
+		System.out.println("In requests, we have: " + requests.size() + " elements.");
 	}
 }

@@ -101,14 +101,15 @@ public class Simulation {
         l.start(new Time(2000)); // 2000 is maximum time*/
 
         // Specify the strategy for the runs
-        int[] consumerCSAPerShift = {5, 10, 5};
+        // First index is for shift 6:00-14:00, second for 14:00-22:00 and third for 22:00-06:00
+        int[] consumerCSAPerShift = {15, 15, 15};
         int[] corporateCSAPerShift = {10, 10, 10};
         int CSACorporateLimitForTakingConsumers = 0;
 
         sinks = new ArrayList<>();
-        int runs = 1;
+        int runs = 5;
         Simulation[] sims = new Simulation[runs];
-        Time t = new Time(0, 0, 0, 1);
+        Time t = new Time(0, 0, 0, 7);
         for(int i = 0; i < runs; i++) {
             System.out.println("\n\nSimulation #" + i);
 

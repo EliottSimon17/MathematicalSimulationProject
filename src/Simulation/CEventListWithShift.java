@@ -20,7 +20,7 @@ public class CEventListWithShift extends CEventList {
             // Make the similation time equal to the execution time of the first event in the list that has to be processed
             currentTime=events.get(0).getExecutionTime();
 
-            if (currentTime.greaterNoDay(shiftTransitions[currentShiftEnd])) {
+            if (currentTime.inShift(shiftTransitions[currentShiftEnd], shiftTransitions[(currentShiftEnd+1)%shiftTransitions.length])) {
                 // We have a shift transition
                 currentShiftEnd = (currentShiftEnd + 1) % shiftTransitions.length;
 

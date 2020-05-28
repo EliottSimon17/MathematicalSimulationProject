@@ -263,4 +263,14 @@ public class Time {
             return (this.greaterEq(range[0]) || this.smallerEq(range[1]));
         }
     }
+
+    /** Helper method to use inShift
+     *
+     * @param lower
+     * @param upper
+     * @return
+     */
+    public boolean inShift (Time lower, Time upper) {
+        return this.inShift(new Time[]{lower, upper});
+    }
 }

@@ -32,8 +32,8 @@ mean_avg_corporate = mean(avg_corporate);
 disp('-------------')
 
 % Displays the percentage of successful trials
-cn_str = ['Customer (5 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_1)-1),'%g]\n'];
-cn_str2 = ['Customer (10 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_2)-1),'%g]\n'];
+cn_str = ['Consumer (5 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_1)-1),'%g]\n'];
+cn_str2 = ['Consumer (10 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_2)-1),'%g]\n'];
 
 cp_str = ['Corporate (3 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(corp_outliers_set_1)-1),'%g]\n'];
 cp_str2 = ['Corporate (7 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(corp_outliers_set_2)-1),'%g]\n'];
@@ -46,7 +46,7 @@ fprintf(cp_str2, corp_outliers_set_2)
 disp('-------------')
 
 %% Find average waiting time and confidence interval
-disp(['Average waiting time (customer): ', num2str(mean_avg_consumer),'s']);
+disp(['Average waiting time (consumer): ', num2str(mean_avg_consumer),'s']);
 disp(['Average waiting time (corporate): ', num2str(mean_avg_corporate),'s']);
 
 % Confidence Interval
