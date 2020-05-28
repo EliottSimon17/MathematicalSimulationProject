@@ -114,7 +114,7 @@ public class TruncNormal implements Distribution{
         }
         
         public void setRight(double max) {                     
-            this.min = max;
+            this.max = max;
         }
         
         public double getLeftTrunc() { return min; }
