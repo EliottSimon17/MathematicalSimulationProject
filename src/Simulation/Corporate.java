@@ -19,7 +19,7 @@ public class Corporate extends Customer {
             return 0.2/60;      // rate = 0.2 / minute = 0.2/60 / second
     };
     
-    //in seconds
+    //all measured in seconds
     private static final double serviceMean = 3.6*60;
     private static final double serviceStd = 1.2*60;
     private static final double serviceMin = 45;

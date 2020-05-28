@@ -82,12 +82,18 @@ public abstract class CSA extends Machine {
      *
      */
     public void checkShift (Time current) {
-        if (status == 'n' && current.inShift(getShift(shift))) {
-            // Change the state to working
-            status = 'i';
+        if (current.inShift(getShift(shift))) {
+            if (status == 'n') {
+                // Change the state to working
+                status = 'i';
 
-            // Ask the queue for products
-            queue.askProduct(this);
+                // Ask the queue for products
+                queue.askProduct(this);
+            }
+        } else {
+            if (status == 'i') {
+                status = 'n';
+            }
         }
     }
 

@@ -100,15 +100,21 @@ public class CSACorporate extends CSA {
      */
     @Override
     public void checkShift (Time current) {
-        if (status == 'n' && current.inShift(getShift(shift))) {
-            // Change the state to working
-            status = 'i';
-            // Add a idle CSA
-            freeCSACorporate ++;
+        if (current.inShift(getShift(shift))) {
+            if (status == 'n') {
+                // Change the state to working
+                status = 'i';
+                // Add a idle CSA
+                freeCSACorporate++;
 
-            // Ask the queue for products
-            if (! queue.askProduct(this)) {
-                altQueue.askProduct(this);
+                // Ask the queue for products
+                if (!queue.askProduct(this)) {
+                    altQueue.askProduct(this);
+                }
+            }
+        } else {
+            if (status == 'i') {
+                status = 'n';
             }
         }
     }
