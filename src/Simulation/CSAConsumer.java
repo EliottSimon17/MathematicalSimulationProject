@@ -8,18 +8,23 @@ public class CSAConsumer extends CSA{
 
     @Override
     public boolean giveProduct(Product p)
-    {
+    {        
         if(status!='b')
         {
-            if(eventlist.getTime().inShift(getShift(shift))) {  // starting of the shift
-                status = 'i';
+            if(eventlist.getTime().getTimeOfTheDay().inShift(getShift(shift))) {  // starting of the shift
+                if (status == 'n') {
+                    status = 'i';
+                }
             }else{
-                status = 'n';
+                if (status == 'i') {
+                    status = 'n';
+                }
+                System.out.println("Refused");
                 return false;
             }
 
             // accept the product only if the product is a Consumer
-            if (p instanceof Consumer) {
+            /*if (p instanceof Consumer) {
                 product = p;
                 // mark starting time
                 product.stamp(eventlist.getTime(), "Production started", name);
@@ -30,9 +35,18 @@ public class CSAConsumer extends CSA{
             }
             else {
                 return false;
-            }
+            }*/
+            product=(Consumer)p;
+            // mark starting time
+            product.stamp(eventlist.getTime(),"Production started",name);
+            // start production
+            startProduction(p);
+            // Flag that the product has arrived
+            return true;
         }
         // Flag that the product has been rejected
-        else return false;
+        else{            
+            return false;
+        }
     }
 }

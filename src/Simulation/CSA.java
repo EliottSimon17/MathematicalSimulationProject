@@ -51,7 +51,7 @@ public abstract class CSA extends Machine {
     {
         if(status!='b')
         {
-            if(eventlist.getTime().inShift(getShift(shift))) {  // starting of the shift
+            if(eventlist.getTime().getTimeOfTheDay().inShift(getShift(shift))) {  // starting of the shift
                 if (status == 'n') {
                     status = 'i';
                 }
@@ -110,15 +110,15 @@ public abstract class CSA extends Machine {
         product=null;
 
         // Make sure we are still in the shift
-        if (tme.inShift(getShift(shift))) {
+        //if (tme.inShift(getShift(shift))) {
             // set machine status to idle
             status='i';
             // Ask the queue for products
             queue.askProduct(this);
-        }
+        /*}
         else {
             status = 'n';
-        }
+        }*/
     }
         
     public int getShift() {

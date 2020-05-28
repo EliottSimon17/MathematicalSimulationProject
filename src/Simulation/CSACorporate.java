@@ -15,11 +15,11 @@ public class CSACorporate extends CSA {
         altQueue = q2;
         this.limitForTakingConsumers = limitForTakingConsumers;
         // add one free csacorporate to the count if the starting Time is in this object's shift
-        if(eventlist.getTime().inShift(getShift(shift))) {
+        if(e.getTime().inShift(getShift(shift))) {
             freeCSACorporate++;
 
             if (! q1.askProduct(this)) {
-                altQueue.askProduct(this);
+             //   altQueue.askProduct(this);
             }
         }
         else {
@@ -37,16 +37,16 @@ public class CSACorporate extends CSA {
         sink.giveProduct(product);
         product=null;
         // set machine status to idle
-        if (tme.inShift(getShift(shift))) {
+        //if (tme.inShift(getShift(shift))) {
             status='i';
             freeCSACorporate ++;
             // Ask the queue for products
             if(!queue.askProduct(this)) {
                 altQueue.askProduct(this);
             }
-        }else {
+        /*}else {
             status='n';
-        }        
+        } */       
     }            
     
     @Override
@@ -56,7 +56,7 @@ public class CSACorporate extends CSA {
     {
         if(status!='b')
         {
-            if(eventlist.getTime().inShift(getShift(shift))) {
+            if(eventlist.getTime().getTimeOfTheDay().inShift(getShift(shift))) {
                 if (status == 'n') {
                     //Starting of the shift, one more free csa corporate
                     status = 'i';
