@@ -7,10 +7,10 @@ public class Consumer extends Customer {
     // the highest point will be 2 + (2-0.2) = 2 + 1.8 = 3.8 / minute = 3.8/60 / second
 
     // Set some constants, to get the lambdaT
-    private static final double period = new Time(0, 0, 0, 1).toSeconds();
-    private static final double lowestPoint = new Time(0, 0, 3).toSeconds();
-    private static final double mean = 2.0 / 60;      //mean arrival rate is 2 / minute, = 2/60 / second
-    private static final double range = 3.6 / 60;
+    private static final double period = new Time(0, 0, 0, 1).toSeconds();     // period is obviously 1 day
+    private static final double lowestPoint = new Time(0, 0, 3).toSeconds();        // lowest rate is at 3 am
+    private static final double mean = 2.0 / 60;      // mean arrival rate is 2 / minute, = 2/60 / second
+    private static final double range = 3.6 / 60;     // the range goes from 0.2 to 2 + (2-0.2) = 3.8 --> range of 3.6 /minutes
     private static final LambdaT lambdaGivenTimeInSeconds = (time) -> {
         double timeInSeconds = time.toSeconds();
 
@@ -19,12 +19,13 @@ public class Consumer extends Customer {
         return range/2 * Math.cos((2.0*Math.PI*(timeInSeconds + (period/2 - lowestPoint)))/(period)) + mean;
     };
     
-    //in seconds
-    private static final double serviceMean = 1.2*60;
-    private static final double serviceStd = 35;
-    private static final double serviceMin = 25;
-    private static final double serviceMax = Double.NaN;
-    
+    //all measures in seconds
+    private static final double serviceMean = 1.2*60;       // the mean of the service time
+    private static final double serviceStd = 35;            // the std of the service time
+    private static final double serviceMin = 25;            // the minimum of the truncated normal
+    private static final double serviceMax = Double.NaN;    // the maximum (undefined) of the truncated normal
+
+    // The distribution objects that will be sampled from
     private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
     private static TruncNormal serviceDistr = new TruncNormal(serviceMean, serviceStd, serviceMin, serviceMax);
 

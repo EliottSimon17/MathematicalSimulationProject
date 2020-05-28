@@ -34,6 +34,7 @@ public class Machine implements CProcess,ProductAcceptor
 	*	@param s	Where to send the completed products
 	*	@param e	Eventlist that will manage events
 	*	@param n	The name of the machine
+	*   @param giveQueue whether we should already ask the queue for a product
 	*/
 	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, boolean giveQueue)
 	{
@@ -42,7 +43,7 @@ public class Machine implements CProcess,ProductAcceptor
 		sink=s;
 		eventlist=e;
 		name=n;
-		meanProcTime=new Time(0, 30);
+		meanProcTime=new Time(-1);
 
 		// Only give the queue the product if we want to
 		if (giveQueue) {
@@ -52,34 +53,15 @@ public class Machine implements CProcess,ProductAcceptor
 
 	/**
 	*	Constructor
-	*        Service times are exponentially distributed with specified mean
-	*	@param q	Queue from which the machine has to take products
-	*	@param s	Where to send the completed products
-	*	@param e	Eventlist that will manage events
-	*	@param n	The name of the machine
-	*        @param m	Mean processing time
-	*/
-	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, Time m)
-	{
-		status='i';
-		queue=q;
-		sink=s;
-		eventlist=e;
-		name=n;
-		meanProcTime=m;
-		queue.askProduct(this);
-	}
-	
-	/**
-	*	Constructor
 	*        Service times are pre-specified
 	*	@param q	Queue from which the machine has to take products
 	*	@param s	Where to send the completed products
 	*	@param e	Eventlist that will manage events
 	*	@param n	The name of the machine
 	*        @param st	service times
+	*   @param giveQueue whether we should already ask the queue for a product
 	*/
-	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, Time[] st)
+	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, Time[] st, boolean giveQueue)
 	{
 		status='i';
 		queue=q;
@@ -89,7 +71,9 @@ public class Machine implements CProcess,ProductAcceptor
 		meanProcTime=new Time(-1);
 		processingTimes=st;
 		procCnt=0;
-		queue.askProduct(this);
+
+		if (giveQueue)
+			queue.askProduct(this);
 	}
 
 	/**
