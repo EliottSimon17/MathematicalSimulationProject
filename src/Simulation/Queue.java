@@ -41,8 +41,9 @@ public class Queue implements ProductAcceptor
 				return false; // Machine rejected; don't queue request
 		}
 		else {
-			// TO CHECK
-			requests.add(machine);
+			// TODO NOT SURE IF THIS WORKS (THE IF STATEMENT)
+			if (! requests.contains(machine))
+				requests.add(machine);
 
 			return false; // queue request
 		}
@@ -75,6 +76,7 @@ public class Queue implements ProductAcceptor
 			else
 				requests.remove(index-1);
 		}
+
 		return true;
 	}
 

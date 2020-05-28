@@ -15,8 +15,12 @@ public abstract class CSA extends Machine {
     private Customer customer;
     
     public CSA(Queue q, ProductAcceptor s, CEventList e, String n, int shiftN) {
-        super(q,s,e,n);
+        super(q,s,e,n, false);
         shift = shiftN;
+
+        if (e.getTime().inShift(getShift(shift))) {
+            q.askProduct(this);
+        }
     }
     
     protected void startProduction(Product p) {
@@ -47,9 +51,14 @@ public abstract class CSA extends Machine {
         if(status!='b')
         {
             if(eventlist.getTime().inShift(getShift(shift))) {  // starting of the shift
-                status = 'i';
+                if (status == 'n') {
+                    status = 'i';
+                }
             }else{
-                status = 'n';
+                if (status == 'i') {
+                    status = 'n';
+                }
+
                 return false;
             }
             
@@ -93,12 +102,16 @@ public abstract class CSA extends Machine {
         sink.giveProduct(product);
         product=null;
 
-        //System.out.println("Finished product, setting status from '" + status + "' to 'i'");
-
-        // set machine status to idle
-        status='i';
-        // Ask the queue for products
-        queue.askProduct(this);
+        // Make sure we are still in the shift
+        if (tme.inShift(getShift(shift))) {
+            // set machine status to idle
+            status='i';
+            // Ask the queue for products
+            queue.askProduct(this);
+        }
+        else {
+            status = 'n';
+        }
     }
         
     public int getShift() {

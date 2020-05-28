@@ -35,7 +35,7 @@ public class Machine implements CProcess,ProductAcceptor
 	*	@param e	Eventlist that will manage events
 	*	@param n	The name of the machine
 	*/
-	public Machine(Queue q, ProductAcceptor s, CEventList e, String n)
+	public Machine(Queue q, ProductAcceptor s, CEventList e, String n, boolean giveQueue)
 	{
 		status='i';
 		queue=q;
@@ -43,7 +43,11 @@ public class Machine implements CProcess,ProductAcceptor
 		eventlist=e;
 		name=n;
 		meanProcTime=new Time(0, 30);
-		queue.askProduct(this);
+
+		// Only give the queue the product if we want to
+		if (giveQueue) {
+			queue.askProduct(this);
+		}
 	}
 
 	/**
