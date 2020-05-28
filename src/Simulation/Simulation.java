@@ -18,6 +18,9 @@ public class Simulation {
     public Sink si;
     public static ArrayList<Sink> sinks;
     public CSA[] ms;
+
+    public static final double costPerCSAConsumerPerHour = 35;
+    public static final double costPerCSACorporatePerHour = 60;
     
     /**
      * 
@@ -77,13 +80,38 @@ public class Simulation {
         }
     }
 
+    /** Computes the cost of running a simulation with these number of CSAConsumers and CSACorporate for the given time
+     *
+     * @param CSAConsumerPerShift array containing the number of Consumer CSA for each shift
+     * @param CSACorporatePerShift array containing the number of Corporate CSA for each shift
+     * @param runTime the time the simulation will run for
+     * @return the total cost of this strategy during the given time
+     */
+    public static double computeCostOfSimulation (int[] CSAConsumerPerShift, int[] CSACorporatePerShift, Time runTime) {
+        int totalConsumers = 0;
+        for (int i = 0; i < CSAConsumerPerShift.length; i ++) {
+            totalConsumers += CSAConsumerPerShift[i];
+        }
+
+        int totalCorporate = 0;
+        for (int i = 0; i < CSACorporatePerShift.length; i ++) {
+            totalCorporate += CSACorporatePerShift[i];
+        }
+
+        // Note: This only works for runTime's of only an integer number of days, nothing about hours, seconds or minutes ...
+        int days = runTime.getDays();
+        // Notice that since we take full days, every CSA will only work one shift
+        double cost = (totalConsumers * costPerCSAConsumerPerHour + totalCorporate * costPerCSACorporatePerHour) * 8 * days;
+        return cost;
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
         // Specify the strategy for the runs
         // First index is for shift 6:00-14:00, second for 14:00-22:00 and third for 22:00-06:00
-        int[] consumerCSAPerShift = {5, 10, 5};
+        int[] consumerCSAPerShift = {10, 5, 10};
         int[] corporateCSAPerShift = {10, 10, 10};
         // The number of CSA Corporate that should be free before taking Consumers
         int CSACorporateLimitForTakingConsumers = 0;
@@ -118,6 +146,9 @@ public class Simulation {
 
         // DEBUGGING Print the number of simulations
         System.out.println("Number of simulations: " + sinks.size() + "\n");
+
+        // Print the cost of the simulation
+        System.out.println("The cost of the strategy for running during " + t + "\n is " + Simulation.computeCostOfSimulation(consumerCSAPerShift, corporateCSAPerShift, t) + "\n\n");
 
         // And write the result
         writeOnTxt.writeOnTxt(sinks);
