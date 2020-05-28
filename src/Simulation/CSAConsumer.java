@@ -23,6 +23,7 @@ public class CSAConsumer extends CSA{
                 product = p;
                 // mark starting time
                 product.stamp(eventlist.getTime(), "Production started", name);
+
                 // start production
                 startProduction(p);
                 // Flag that the product has arrived

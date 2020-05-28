@@ -84,13 +84,12 @@ public class Machine implements CProcess,ProductAcceptor
 	public void execute(int type, Time tme)
 	{
 		// show arrival
-		System.out.println("Consumer Product finished at time =  " + tme);
+		if (Simulation.DEBUG_PRINT)
+			System.out.println("Consumer Product finished at time =  " + tme);
 		// Remove product from system
 		product.stamp(tme,"Production complete",name);
 		sink.giveProduct(product);
 		product=null;
-
-		//System.out.println("Finished product, setting status from '" + status + "' to 'i'");
 
 		// set machine status to idle
 		status='i';
@@ -106,8 +105,6 @@ public class Machine implements CProcess,ProductAcceptor
         @Override
 	public boolean giveProduct(Product p)
 	{
-		//System.out.println("Giving product to Machine " + name + ", status = " + status);
-
 		// Only accept something if the machine is idle
 		if(status=='i')
 		{

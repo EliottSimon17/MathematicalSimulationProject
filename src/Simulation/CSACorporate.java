@@ -30,7 +30,8 @@ public class CSACorporate extends CSA {
     @Override
     public void execute(int type, Time tme) {
         // show arrival
-        System.out.println("Corporate Product finished at time = " + tme);
+        if (Simulation.DEBUG_PRINT)
+            System.out.println("Corporate Product finished at time = " + tme);
 
         // Remove product from system
         product.stamp(tme,"Production complete",name);
@@ -52,17 +53,15 @@ public class CSACorporate extends CSA {
     @Override
     //The queue call this method to give a product to this machine
     //If giveProduct returns false the object is kept in the queue
-    public boolean giveProduct(Product p)
-    {
-        if(status!='b')
-        {
+    public boolean giveProduct(Product p) {
+        if(status!='b') {
             if(eventlist.getTime().inShift(getShift(shift))) {
                 if (status == 'n') {
                     //Starting of the shift, one more free csa corporate
                     status = 'i';
                     freeCSACorporate++;
                 }
-            }else {
+            } else {
                 if (status == 'i') {
                     // End of the shift, one less free csacorporate
                     freeCSACorporate--;
@@ -86,7 +85,7 @@ public class CSACorporate extends CSA {
                 // Flag that the product has arrived
                 return true;
             }
-            else{
+            else {
                 // Flag that the product is rejected
                 return false;
             }

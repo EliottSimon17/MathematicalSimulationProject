@@ -23,7 +23,7 @@ performance_corporate = [corporate_per_1, corporate_per_2];
 consumer_file = fopen('MSConsumer.txt');
 corporate_file = fopen('MSCorporate.txt');
 
-% Extract the data from the files and store them in vectors
+% Extract the data from the files and store them in vectorzs
 [avg_consumer, con_outliers_set_1 ,con_outliers_set_2, arr_cons, start_cons]  = get_data_from_file(consumer_file, performance_customer);
 [avg_corporate, corp_outliers_set_1,corp_outliers_set_2, arr_corp, start_corp] = get_data_from_file(corporate_file, performance_corporate);
 % Calculates the mean of the averages

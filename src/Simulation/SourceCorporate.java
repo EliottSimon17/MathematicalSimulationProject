@@ -51,7 +51,8 @@ public class SourceCorporate implements CProcess {
      */
     @Override
     public void execute(int type, Time tme) {
-        System.out.println("Corporate Arrival at time = " + tme);
+        if (Simulation.DEBUG_PRINT)
+            System.out.println("Corporate Arrival at time = " + tme);
 
         //Feeds the product to the queue
         Corporate cust = new Corporate();

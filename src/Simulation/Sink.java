@@ -34,14 +34,11 @@ public class Sink implements ProductAcceptor {
 	
         @Override
 	public boolean giveProduct(Product p) {
-		//System.out.println("nex product");
 		number++;
-		//System.out.println("\n		Finished processing product #" + number + "\n");
 		// store stamps
 		ArrayList<Time> t = p.getTimes();
 		ArrayList<String> e = p.getEvents();
 		ArrayList<String> s = p.getStations();
-		//System.out.println("-----------------"+t.size()+"------------");
 		for(int i=0;i<t.size();i++) {
 			products.add(p);
 			numbers.add(number);

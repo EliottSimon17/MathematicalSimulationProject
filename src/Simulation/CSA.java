@@ -25,15 +25,12 @@ public abstract class CSA extends Machine {
     }
     
     protected void startProduction(Product p) {
-        //System.out.println("Starting production of product " + p);
-
+        // Compute the service time of the product
         Time duration;
-
-        if (p instanceof Consumer) {
+        if (p instanceof Consumer)
             duration = Consumer.getNewServiceTime();
-        } else {
+        else
             duration = Corporate.getNewServiceTime();
-        }
 
         // Create a new event in the eventlist
         Time tme = eventlist.getTime();
@@ -47,15 +44,13 @@ public abstract class CSA extends Machine {
     }
     
     @Override
-    public boolean giveProduct(Product p)
-    {
-        if(status!='b')
-        {
+    public boolean giveProduct(Product p) {
+        if(status!='b') {
             if(eventlist.getTime().inShift(getShift(shift))) {  // starting of the shift
                 if (status == 'n') {
                     status = 'i';
                 }
-            }else{
+            } else {
                 if (status == 'i') {
                     status = 'n';
                 }
@@ -103,7 +98,8 @@ public abstract class CSA extends Machine {
     public void execute(int type, Time tme)
     {
         // show arrival
-        System.out.println("Consumer Product finished at time =  " + tme);
+        if (Simulation.DEBUG_PRINT)
+            System.out.println("Consumer Product finished at time =  " + tme + ", status = " + status);
         // Remove product from system
         product.stamp(tme,"Production complete",name);
         sink.giveProduct(product);

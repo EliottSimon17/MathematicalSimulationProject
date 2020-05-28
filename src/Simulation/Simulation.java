@@ -23,6 +23,8 @@ public class Simulation {
     public static final double costPerCSACorporatePerHour = 60;
 
     public static int numShiftChanges = 0;
+
+    public static boolean DEBUG_PRINT = false;
     
     /**
      * 
@@ -115,13 +117,13 @@ public class Simulation {
     public static void main(String[] args) throws FileNotFoundException {
         // Specify the strategy for the runs
         // First index is for shift 6:00-14:00, second for 14:00-22:00 and third for 22:00-06:00
-        int[] consumerCSAPerShift = {100, 100, 100};
-        int[] corporateCSAPerShift = {100, 100, 100};
+        int[] consumerCSAPerShift = {10, 10, 10};
+        int[] corporateCSAPerShift = {10, 10, 10};
         // The number of CSA Corporate that should be free before taking Consumers
         int CSACorporateLimitForTakingConsumers = 0;
 
         // Initialize the number of runs and the time they will take
-        int runs = 5;
+        int runs = 10;
         int numDays = 7;
         Time t = new Time(0, 0, 0, numDays);
 
@@ -131,31 +133,13 @@ public class Simulation {
 
         // Make each separate simulation
         for(int i = 0; i < runs; i++) {
-
             // Create a new simulation object with the given parameters
             sims[i] = new Simulation(corporateCSAPerShift, consumerCSAPerShift, CSACorporateLimitForTakingConsumers);
             // And start the simulation
             sims[i].start(t);
-
-            // DEBUGGING At the end, print the number of customers that each CSA has taken on.
-
-            for (int j = 0; j < sims[i].ms.length; j ++) {
-                if (sims[i].ms[j] instanceof CSAConsumer)
-                    System.out.println("Consumer CSA is in state: " + sims[i].ms[j].status + "\nHandled " + sims[i].ms[j].customers + " customers");
-                    //System.out.println("Consumer CSA took on  " + sims[i].ms[j].customers + " customers");
-                else
-                    System.out.println("    Corporate CSA is in state: " + sims[i].ms[j].status + "\n   Handled " + sims[i].ms[j].customers + " customers");
-                    //System.out.println("Corporate CSA took on " + sims[i].ms[j].customers + " customers");
-            }
-
-            // DEBUG
-            System.out.println("\nNumber of shift changes: " + numShiftChanges);
-
-            // DEBUGGING Print the overall number of corporate and consumers
-            System.out.println("\n\nThere were overall " + sims[i].s1.numberCorporate + " Corporate and " + sims[i].s2.numberConsumer + " Consumers. \nNote that some might still be waiting to be processed.\n");
         }
 
-        // DEBUGGING Print the number of simulations
+        // Print the number of simulations
         System.out.println("Number of simulations: " + sinks.size() + "\n");
 
         // Print the cost of the simulation

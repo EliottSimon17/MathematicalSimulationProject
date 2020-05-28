@@ -28,24 +28,8 @@ public class Queue implements ProductAcceptor
 	*	True is returned if a product could be delivered; false if the request is queued
 	*/
 	public boolean askProduct(Machine machine) {
-		printReport();
-
 		// This is only possible with a non-empty queue
 		if(row.size()>0) {
-			// TO CHECK
-			/*
-			boolean acceptedProduct = false;
-			for (int i = 0; i < row.size(); i ++) {
-				// If the machine accepts the product
-				if(machine.giveProduct(row.get(i))) {
-					row.remove(i);// Remove it from the queue
-					acceptedProduct = true;
-				}
-			}
-
-			return acceptedProduct;
-			*/
-
 			// If the machine accepts the product
 			if(machine.giveProduct(row.get(0))) {
 				row.remove(0);// Remove it from the queue
@@ -55,9 +39,7 @@ public class Queue implements ProductAcceptor
 				return false; // Machine rejected; don't queue request
 		}
 		else {
-			// TODO NOT SURE IF THIS WORKS (THE IF STATEMENT)
-			//if (! requests.contains(machine))
-				requests.add(machine);
+			requests.add(machine);
 
 			return false; // queue request
 		}
@@ -69,41 +51,22 @@ public class Queue implements ProductAcceptor
 	*/
 	@Override
 	public boolean giveProduct(Product p) {
-		printReport();
-
 		// Check if the machine accepts it
 		if (requests.size() < 1) {
 			row.add(p); // Otherwise store it
 		}
 		else {
 			boolean delivered = false;
-			int index = 0;
-			while(!delivered & (index < requests.size())) {
+			while(!delivered & (requests.size() > 0)) {
 				// We do not remove requests as they could be from Corporates refusing Consumers ...
-				delivered = requests.get(index).giveProduct(p);
+				delivered = requests.get(0).giveProduct(p);
 				// remove the request regardless of whether or not the product has been accepted
 				requests.remove(0);
-				//index += 1;
 			}
 			if (! delivered)
 				row.add(p); // Otherwise store it
-			/*
-			else
-				requests.remove(index-1);
-				*/
 		}
 
 		return true;
-	}
-
-	public void printReport () {
-		if (row.size() > 0) {
-			if (row.get(0) instanceof Consumer)
-				System.out.println("Consumer QUEUE");
-			else
-				System.out.println("Corporate QUEUE");
-		}
-		System.out.println("In row, we have " + row.size() + " elements.");
-		System.out.println("In requests, we have: " + requests.size() + " elements.");
 	}
 }

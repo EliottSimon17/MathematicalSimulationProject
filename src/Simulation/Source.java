@@ -71,7 +71,8 @@ public class Source implements CProcess
 	public void execute(int type, Time tme)
 	{
 		// show arrival
-		System.out.println("Arrival at time =           " + tme);
+		if (Simulation.DEBUG_PRINT)
+			System.out.println("Arrival at time =           " + tme);
 		// give arrived product to queue
 		//Product p = new Product();
 		//p.stamp(tme,"Creation",name);

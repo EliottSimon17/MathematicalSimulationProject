@@ -120,11 +120,6 @@ public class Poisson implements Distribution {
                 t = t - (1 / this.lambdaStar) * Math.log(u1);
             } while (u2 > (this.lambdaGivenTime.getLambda(new Time(t)) / this.lambdaStar));
 
-            // Test for debugging !!! DEBUG !!! DEBUGGING !!!
-            //System.out.println(name);
-            //System.out.println("Previous Arrival time:        " + getPreviousArrivalTime());
-            //System.out.println("Newly generated arrival time: " + new Time(t));
-
             //Set the last arrival time to the newly generated one and return it
             this.setPreviousArrivalTime(new Time(t));
             return new Time(t);
