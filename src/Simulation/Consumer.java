@@ -20,10 +20,10 @@ public class Consumer extends Customer {
     };
     
     //all measures in seconds
-    private static final double serviceMean = 1.2*60;       // the mean of the service time
-    private static final double serviceStd = 35;            // the std of the service time
-    private static final double serviceMin = 25;            // the minimum of the truncated normal
-    private static final double serviceMax = Double.NaN;    // the maximum (undefined) of the truncated normal
+    private static final double serviceMean = 1.2*60;       // average service time
+    private static final double serviceStd = 35;            // std of the service time
+    private static final double serviceMin = 25;            // minimum of the truncated normal
+    private static final double serviceMax = Double.NaN;    // maximum (undefined) of the truncated normal
 
     // The distribution objects that will be sampled from
     private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
@@ -37,49 +37,23 @@ public class Consumer extends Customer {
     }
 
     /**
-     * Parametric constructor
-     *
-     * @param previousArrivalTime the time of the last arrival which happened so far
-     */
-    public Consumer(Time previousArrivalTime) {
-        // Call the superclass constructor (which should be the one from Product
-        this();
-        // Set the previous arrival time
-        arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
-    }
-
-    /**
-     * This method generates a new arrival time given the current time.
-     *
-     * @param previousArrivalTime the previous generated arrival time
-     *
-     * @return a new arrival time, generated according to the arrivalDistr distribution
-     */
-    public static Time getNewArrivalTime(Time previousArrivalTime) {
-        // Pass on the previous arrival time to the arrival time distribution
-        arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
-
-        // Generate and return a random number
-        return arrivalDistr.drawRandom();
-    }
-
-    /**
      * This method generates a new arrival time given the current time.
      * It re-uses the previous arrival time
      *
-     * @return
+     * @return a new generated arrival time of Consumers
      */
     public static Time getNewArrivalTime() {
         //Generate and return a random number
         return arrivalDistr.drawRandom();
     }
 
+    /**
+     * Generate a new service time
+     *
+     * @return a new generated service time of Consumers
+     */
     public static Time getNewServiceTime() {
         return serviceDistr.drawRandom();
-    }
-
-    public static Poisson getArrivDistr() {
-        return arrivalDistr;
     }
 
     /**

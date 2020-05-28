@@ -20,10 +20,10 @@ public class Corporate extends Customer {
     };
     
     //all measured in seconds
-    private static final double serviceMean = 3.6*60;
-    private static final double serviceStd = 1.2*60;
-    private static final double serviceMin = 45;
-    private static final double serviceMax = Double.NaN;
+    private static final double serviceMean = 3.6*60;           // average service time
+    private static final double serviceStd = 1.2*60;            // std of the service time
+    private static final double serviceMin = 45;                // minimum of the truncated normal
+    private static final double serviceMax = Double.NaN;        // maximum (undefined) of the truncated normal
     
     private static final Poisson arrivalDistr = new Poisson(lambdaStarPerSecond, lambdaGivenTimeInSeconds);
     private static TruncNormal serviceDistr = new TruncNormal(serviceMean, serviceStd, serviceMin, serviceMax);
@@ -34,33 +34,6 @@ public class Corporate extends Customer {
     public Corporate() {
         super();
     }
-
-    /**
-     * Parametric constructor
-     *
-     * @param previousArrivalTime the time of the last arrival which happened so far
-     *//* NOT NEEDED
-    public Corporate (Time previousArrivalTime) {
-        // Call the superclass constructor (which should be the one from Product
-        this();
-        // Set the previous arrival time
-        arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
-    }*/
-
-    /**
-     * This method generates a new arrival time given the current time.
-     *
-     * @param previousArrivalTime the previous generated arrival time
-     *
-     * @return a new arrival time, generated according to the arrivalDistr distribution
-     *//* NOT NEEDED
-    public static Time getNewArrivalTime(Time previousArrivalTime) {
-        // Pass on the previous arrival time to the arrival time distribution
-        arrivalDistr.setPreviousArrivalTime(previousArrivalTime);
-
-        // Generate and return a random number
-        return arrivalDistr.drawRandom();
-    }*/
 
     /**
      * This method generates a new arrival time given the current time.
