@@ -3,27 +3,26 @@ package Simulation;
 
 import java.util.ArrayList;
 /**
- *	Product that is send trough the system
+ *	Product that is sent trough the system
  *	@author Joel Karel
  *	@version %I%, %G%
  */
 abstract class Product {
 	/** Stamps for the products */
-	private ArrayList<Time> times;
-	private ArrayList<String> events;
-	private ArrayList<String> stations;
+	private ArrayList<Time> times;			// the times of events
+	private ArrayList<String> events;		// the string representing the events
+	private ArrayList<String> stations;	// the station of the event (what has happened)
 	
 	/** 
 	*	Constructor for the product
 	*	Mark the time at which it is created
-	*	@param create The current time
 	*/
 	public Product() {
 		times = new ArrayList<>();
 		events = new ArrayList<>();
 		stations = new ArrayList<>();
 	}
-	
+
 	public void stamp(Time time,String event,String station) {
 		times.add(time);
 		events.add(event);
@@ -31,28 +30,18 @@ abstract class Product {
 	}
 	
 	public ArrayList<Time> getTimes() {
-		// DEBUGGING !!! DEBUG
-		ArrayList<Time> results = new ArrayList<Time>();
-
-		for (int i = 0; i < times.size(); i ++) {
-			results.add(times.get(i));
-		}
-
-		return results;
+		return times;
 	}
 
-	public ArrayList<String> getEvents()
-	{
+	public ArrayList<String> getEvents() {
 		return events;
 	}
 
-	public ArrayList<String> getStations()
-	{
+	public ArrayList<String> getStations()	{
 		return stations;
 	}
 	
-	public Time[] getTimesAsArray()
-	{
+	public Time[] getTimesAsArray() {
 		times.trimToSize();
 		Time[] tmp = new Time[times.size()];
 		for (int i=0; i < times.size(); i++)
@@ -63,15 +52,13 @@ abstract class Product {
 		return tmp;
 	}
 
-	public String[] getEventsAsArray()
-	{
+	public String[] getEventsAsArray() 	{
 		String[] tmp = new String[events.size()];
 		tmp = events.toArray(tmp);
 		return tmp;
 	}
 
-	public String[] getStationsAsArray()
-	{
+	public String[] getStationsAsArray() {
 		String[] tmp = new String[stations.size()];
 		tmp = stations.toArray(tmp);
 		return tmp;
