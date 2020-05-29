@@ -118,8 +118,8 @@ public class Simulation {
     public static void main(String[] args) throws FileNotFoundException {
         // Specify the strategy for the runs
         // First index is for shift 6:00-14:00, second for 14:00-22:00 and third for 22:00-06:00
-        int[] consumerCSAPerShift = {10, 10, 10};
-        int[] corporateCSAPerShift = {10, 10, 10};
+        int[] consumerCSAPerShift = {3, 3, 1};
+        int[] corporateCSAPerShift = {3, 3, 1};
         // The number of CSA Corporate that should be free before taking Consumers
         int CSACorporateLimitForTakingConsumers = 0;
 
