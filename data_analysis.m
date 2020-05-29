@@ -23,7 +23,7 @@ performance_corporate = [corporate_per_1, corporate_per_2];
 consumer_file = fopen('MSConsumer.txt');
 corporate_file = fopen('MSCorporate.txt');
 
-% Extract the data from the files and store them in vectorzs
+% Extract the data from the files and store them in vectors
 [avg_consumer, con_outliers_set_1 ,con_outliers_set_2, arr_cons, start_cons]  = get_data_from_file(consumer_file, performance_customer);
 [avg_corporate, corp_outliers_set_1,corp_outliers_set_2, arr_corp, start_corp] = get_data_from_file(corporate_file, performance_corporate);
 % Calculates the mean of the averages
@@ -32,8 +32,8 @@ mean_avg_corporate = mean(avg_corporate);
 disp('-------------')
 
 % Displays the percentage of successful trials
-cn_str = ['Consumer (5 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_1)-1),'%g]\n'];
-cn_str2 = ['Consumer (10 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_2)-1),'%g]\n'];
+cn_str = ['Customer (5 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_1)-1),'%g]\n'];
+cn_str2 = ['Customer (10 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(con_outliers_set_2)-1),'%g]\n'];
 
 cp_str = ['Corporate (3 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(corp_outliers_set_1)-1),'%g]\n'];
 cp_str2 = ['Corporate (7 mins) : Percentage of success (%%) : [', repmat('%g, ', 1, numel(corp_outliers_set_2)-1),'%g]\n'];
@@ -46,7 +46,7 @@ fprintf(cp_str2, corp_outliers_set_2)
 disp('-------------')
 
 %% Find average waiting time and confidence interval
-disp(['Average waiting time (consumer): ', num2str(mean_avg_consumer),'s']);
+disp(['Average waiting time (customer): ', num2str(mean_avg_consumer),'s']);
 disp(['Average waiting time (corporate): ', num2str(mean_avg_corporate),'s']);
 
 % Confidence Interval
@@ -94,17 +94,17 @@ for index = 1:length(arr_cons)
     subplot(2,3,index); plot(x,y); title(['Simulation: ', num2str(index)])
 end
 
-%get the max value from all the values so we can equal the vector lengths
+% G et the max value from all the values so we can equal the vector lengths
 y_max = max(y_history);
 
-%Equalize all the vector lengths so we can apply the mean on each of them
+% Equalize all the vector lengths so we can apply the mean on each of them
 for index = 1:length(y_iterate)
     missing_Y = y_max - y_history(index);
     for i = y_history(index)+1:missing_Y+y_history(index)
         y_iterate{index}(i) = 1;
     end
 end
-%Calculate the mean waiting time vector
+% Calculate the mean waiting time vector
 mean_vector = zeros(1,length(y_iterate{1}));
 for index = 1:length(y_iterate{1})
     sum = 0;
@@ -113,12 +113,72 @@ for index = 1:length(y_iterate{1})
     end
     mean_vector(index) = (sum/length(y_iterate));
 end
-% plots the mean vector
+% Plots the mean vector
 x = linspace(1, length(mean_vector), length(mean_vector));
-figure('Renderer', 'painters', 'Position', [10 10 1300 600]); plot(x,mean_vector,'g');  xlim([4e4 10e4])
+figure('Renderer', 'painters', 'Position', [10 10 1300 600]);
+subplot(1,2,1),plot(x,mean_vector,'b'); title('Average waiting time'); xlim([4e4 10e4]); xlabel('time(i)'); ylabel('mean time(Y)')
 
-% Deletion factor l
-l = 7e4
+
+% Low Pass Filter
+w = 2000    ;
+y_bar = zeros(1, length(mean_vector));
+
+for i = 2:length(mean_vector)-1
+   sum =0;
+   if(i > w && i < length(mean_vector)-w-1)
+        for index = i-w:i+w
+            sum = sum+ mean_vector(index);
+        end
+   y_bar(i) = (sum/(2*w+1));
+   else
+        for index = i-1:i+1
+           index;
+           sum = sum+ mean_vector(index);
+        end
+   y_bar(i) = (sum/(2+1));
+   end
+end
+subplot(1,2,2), plot(x,y_bar,'b');title('Low Pass Filtering (LPF)');  xlim([4e4 10e4]), xlabel('time(i)'); ylabel('mean time(Y)')
+
+
+% cut off point l
+l = 65000;
+for index = 1: length(y_iterate)
+    y_iterate{index} = y_iterate{index}(l:end);
+end
+
+% Calculate the mean waiting time vector
+mean_vector = zeros(1,length(y_iterate{1}));
+for index = 1:length(y_iterate{1})
+    sum = 0;
+    for i = 1: length(y_iterate)-1
+        sum = sum + y_iterate{i}(index);
+    end
+    mean_vector(index) = (sum/length(y_iterate));
+end
+
+confidence = find_confidence(mean_vector);
+disp(['Confidence interval after replication/deletion: ', num2str(confidence)])
+
+%% FUNCTIONS
+function Conf_Interv_cons = find_confidence(vector)
+
+    n1 = length(vector);
+    % Find the variances of both samples
+    var_consumers = var(vector);
+
+    % STD of the means of both sampls
+    r1 = 0.025;
+    r2 = 0.975;
+    % Compute new confidence interval
+    t_inverse_1 = tinv([r1 r2], n1-1);
+
+    std_mean_cons = sqrt(var_consumers/n1);
+
+    Conf_Interv_cons = vector + t_inverse_1*std_mean_cons;
+end
+
+
 
 %% Functions
 function y_value = values_plot(arrival , start)
