@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import static java.lang.System.out;
 
 public class writeOnTxt {
-
     public static void writeOnTxt(ArrayList<Sink> sinks) throws FileNotFoundException {
         generateConsumerFile(sinks);
         generateCorporateFile(sinks);
-
     }
 
     public static void generateConsumerFile(ArrayList<Sink> sinks) throws FileNotFoundException {
