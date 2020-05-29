@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static java.lang.System.out;
 
-public class WriteOnTxt {
+public class writeOnTxt {
 
     public static void writeOnTxt(ArrayList<Sink> sinks) throws FileNotFoundException {
         out.println(sinks.get(0).getEvents().length);
