@@ -147,11 +147,11 @@ function Conf_Interv_cons = find_confidence(vector)
     r1 = 0.025;
     r2 = 0.975;
     % Compute new confidence interval
-    %_inverse_1 = tinv([r1 r2], n1-1);
+    t_inverse_1 = tinv([r1 r2], n1-1);
 
     std_mean_cons = sqrt(var_consumers/n1);
-    %Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons;
-    Conf_Interv_cons = 0
+    Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons;
+    %Conf_Interv_cons = 0
 end
 
 
