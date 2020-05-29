@@ -19,7 +19,6 @@ public class CSAConsumer extends CSA{
                 if (status == 'i') {
                     status = 'n';
                 }
-                System.out.println("Refused");
                 return false;
             }
 

@@ -30,8 +30,13 @@ public class CSACorporate extends CSA {
     @Override
     public void execute(int type, Time tme) {
         // show arrival
-        if (Simulation.DEBUG_PRINT)
-            System.out.println("Corporate Product finished at time = " + tme);
+        if (Simulation.DEBUG_PRINT) {
+            if (product instanceof Consumer) {
+                System.out.println("Consumer Product finished at time = " + tme);
+            } else {
+                System.out.println("Corporate Product finished at time = " + tme);
+            }
+        }
 
         // Remove product from system
         product.stamp(tme,"Production complete",name);

@@ -24,6 +24,7 @@ public class Simulation {
 
     public static int numShiftChanges = 0;
 
+    // Whether or not to print the events happening
     public static boolean DEBUG_PRINT = false;
     
     /**
@@ -140,7 +141,8 @@ public class Simulation {
         }
 
         // Print the number of simulations
-        System.out.println("Number of simulations: " + sinks.size() + "\n");
+        if (DEBUG_PRINT)
+            System.out.println("Number of simulations: " + sinks.size() + "\n");
 
         // Print the cost of the simulation
         System.out.println("The cost of the strategy for running during " + t + "\n is " + Simulation.computeCostOfSimulation(consumerCSAPerShift, corporateCSAPerShift, t) + "\n\n");
