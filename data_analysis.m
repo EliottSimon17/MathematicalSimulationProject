@@ -65,7 +65,7 @@ for index = 1:length(arr_cons)
     y_history(index) = length(y);
     y_iterate{index} = y;
     x = linspace(1, length(y), length(y));
-    subplot((length(arr_cons)/2)-1,length(arr_cons)/2,index); plot(x,y); title(['Simulation: ', num2str(index)])
+    subplot(floor(length(arr_cons)/2),ceil(length(arr_cons)/2),index); plot(x,y); title(['Simulation: ', num2str(index)])
 end
 
 % G et the max value from all the values so we can equal the vector lengths
@@ -147,10 +147,11 @@ function Conf_Interv_cons = find_confidence(vector)
     r1 = 0.025;
     r2 = 0.975;
     % Compute new confidence interval
-    t_inverse_1 = tinv([r1 r2], n1-1);
+    %_inverse_1 = tinv([r1 r2], n1-1);
 
     std_mean_cons = sqrt(var_consumers/n1);
-    Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons;
+    %Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons;
+    Conf_Interv_cons = 0
 end
 
 
@@ -161,20 +162,15 @@ function y_value = values_plot(arrival , start)
     for index = 1: length(arrival)
        value = ceil(arrival(index));
        y_value(value) = (start(index)-arrival(index));
-       for i = value:(start(index)-arrival(index))+value
-           y_value(i) = start(index)-arrival(index);
-       end
+       y_value(value:value+(start(index) - arrival(index))) = start(index) - arrival(index);
     end
 end
 
 %Calculates the mean of two vectors
 function average = find_average(arrival, start)
-    sum = 0;
-    for index = 1: length(arrival)
-        waiting_time = start(index) - arrival(index);
-        sum = sum + waiting_time;
-    end
-    average = sum / length(arrival);
+    waiting_time = start - arrival;
+    sum_waiting_time = sum(waiting_time);
+    average = sum_waiting_time / length(arrival);
 end
 
 function [avg_sim1, performance_g_1 , performance_g_2, creation_hist, start_hist] = get_data_from_file(file_name, performance)
@@ -214,16 +210,10 @@ end
 % the performance needed
 function percentage =  percentage_outliers(creation_time, start_time, performance)
     n1 = length(creation_time);
-    iterator_guarantee_1 = 0;
-    iterator_guarantee_2 = 0;
-    for index = 1:n1
-        if(start_time(index)-creation_time(index) <= performance(1))
-            iterator_guarantee_1 = iterator_guarantee_1+1;
-            iterator_guarantee_2 = iterator_guarantee_2+1;
-        elseif(start_time(index)-creation_time(index) <= performance(2))
-            iterator_guarantee_2 = iterator_guarantee_2+1;
-        end
-    end
+    % get the time difference
+    waiting_time = start_time - creation_time;
+    iterator_guarantee_1 = sum(waiting_time <= performance(1));
+    iterator_guarantee_2 = sum(waiting_time <= performance(2));
 
     percentage_1 = iterator_guarantee_1/n1;
     percentage_2 = iterator_guarantee_2/n1;
