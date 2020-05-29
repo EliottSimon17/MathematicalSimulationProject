@@ -16,7 +16,8 @@ public class writeOnTxt {
     }
 
     public static void generateConsumerFile(ArrayList<Sink> sinks) throws FileNotFoundException {
-        out.println("writing corporate");
+        if (Simulation.DEBUG_PRINT)
+            out.println("writing corporate");
         PrintWriter writer = new PrintWriter(new File("MSConsumer.txt"));
 
         StringBuilder sb = new StringBuilder();
@@ -37,13 +38,10 @@ public class writeOnTxt {
             String[] events = s.getEvents();
             String[] stations = s.getStations();
             Time[] times = s.getTimes();
-            out.println("numbers length: " +numbers.length);
-            out.println("customer length: "+ customer.length);
-            out.println("events length: "+ events.length);
-            out.println("Station length: "+ stations.length);
-            out.println("times length: "+times.length);
-            out.println("Number of Customers: " + customer.length/3);
-            out.println();
+
+
+            if (Simulation.DEBUG_PRINT)
+                out.println("Number of Customers in total: " + (customer.length / 3) + "\n");
 
             try {
                 int numCons = 0;
@@ -62,7 +60,9 @@ public class writeOnTxt {
                         numCons ++;
                     }
                 }
-                out.println("\nNumber of Consumer customers processed: " + numCons/3 + "\n");
+                if (Simulation.DEBUG_PRINT)
+                    out.println("\nNumber of Consumer customers processed: " + numCons/3 + "\n");
+
                 sb.append("\n");
             } catch (IndexOutOfBoundsException e) {
                 writer.write(sb.toString());
@@ -77,7 +77,9 @@ public class writeOnTxt {
     }
 
     public static void generateCorporateFile(ArrayList<Sink> sinks) throws FileNotFoundException {
-        out.println("writing consumer");
+        if (Simulation.DEBUG_PRINT)
+            out.println("writing consumer");
+
         PrintWriter writer = new PrintWriter(new File("MSCorporate.txt"));
 
         StringBuilder sb = new StringBuilder();
@@ -98,13 +100,9 @@ public class writeOnTxt {
             String[] events = s.getEvents();
             String[] stations = s.getStations();
             Time[] times = s.getTimes();
-            out.println("numbers length: " +numbers.length);
-            out.println("customer length: "+ customer.length);
-            out.println("events length: "+ events.length);
-            out.println("Station length: "+ stations.length);
-            out.println("times length: "+times.length);
-            out.println("Number of Customers: " + customer.length/3);
-            out.println();
+
+            if (Simulation.DEBUG_PRINT)
+                out.println("Number of Customers in total: " + (customer.length/3) + "\n");
 
             try {
                 int numCorp = 0;
@@ -123,7 +121,9 @@ public class writeOnTxt {
                         numCorp ++;
                     }
                 }
-                out.println("\nNumber of Corporate customers processed: " + numCorp/3 + "\n");
+
+                if (Simulation.DEBUG_PRINT)
+                    out.println("\nNumber of Corporate customers processed: " + numCorp/3 + "\n");
 
                 sb.append("\n");
 
