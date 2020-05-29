@@ -65,7 +65,7 @@ for index = 1:length(arr_cons)
     y_history(index) = length(y);
     y_iterate{index} = y;
     x = linspace(1, length(y), length(y));
-    subplot(length(arr_cons)-4,length(arr_cons)-3,index); plot(x,y); title(['Simulation: ', num2str(index)])
+    subplot((length(arr_cons)/2)-1,length(arr_cons)/2,index); plot(x,y); title(['Simulation: ', num2str(index)])
 end
 
 % G et the max value from all the values so we can equal the vector lengths
