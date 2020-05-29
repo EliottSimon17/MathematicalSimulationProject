@@ -11,7 +11,6 @@ public class CSACorporate extends CSA {
 
     public CSACorporate(Queue q1, Queue q2, ProductAcceptor s, CEventList e, String n, int shiftN, int limitForTakingConsumers) {
         super(q1,s,e,n, shiftN);
-        costHour = 60;
         altQueue = q2;
         this.limitForTakingConsumers = limitForTakingConsumers;
         // add one free csacorporate to the count if the starting Time is in this object's shift

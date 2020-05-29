@@ -59,7 +59,7 @@ public abstract class CSA extends Machine {
             }
             
             // accept the product
-            product=(Customer)p;
+            product=p;
             // mark starting time
             product.stamp(eventlist.getTime(),"Production started",name);
             // start production
@@ -116,10 +116,6 @@ public abstract class CSA extends Machine {
             status = 'n';
         }
     }
-        
-    public int getShift() {
-        return shift;
-    }
 
     /** Returns the current shift as Time array for n=1, 2, 3
      *
@@ -130,25 +126,5 @@ public abstract class CSA extends Machine {
         int h1 = 6 + 8 * n;
         int h2 = 6 + 8 * (n + 1);
         return new Time[]{new Time(0, 0, h1 % 24, 0), new Time(0, 0, h2 % 24, 0)};
-    }
-        
-    public double getCurrentCost() {
-        return (workingTime.getDays() * 24 + workingTime.getHours() + workingTime.getMinutes() / 60.0 + workingTime.getSeconds() / 3600) * costHour;
-    }
-        
-    public double getCostPerHour() {
-        return costHour;
-    }
-        
-    public Time getWorkingTime() {
-        return workingTime;
-    }          
-        
-    public int getTotalCustomers() {
-        return customers;
-    } 
-        
-    public Time getMeanServiceTime() {
-        return new Time(totalServiceTime.getSeconds() / customers);
     }
 }

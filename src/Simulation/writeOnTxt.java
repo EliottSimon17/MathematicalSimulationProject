@@ -37,7 +37,6 @@ public class writeOnTxt {
             String[] stations = s.getStations();
             Time[] times = s.getTimes();
 
-
             if (Simulation.DEBUG_PRINT)
                 out.println("Number of Customers in total: " + (customer.length / 3) + "\n");
 
@@ -71,7 +70,6 @@ public class writeOnTxt {
 
         writer.write(sb.toString());
         writer.close();
-
     }
 
     public static void generateCorporateFile(ArrayList<Sink> sinks) throws FileNotFoundException {
