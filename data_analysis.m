@@ -49,32 +49,6 @@ disp('-------------')
 disp(['Average waiting time (customer): ', num2str(mean_avg_consumer),'s']);
 disp(['Average waiting time (corporate): ', num2str(mean_avg_corporate),'s']);
 
-% Confidence Interval
-% Say we want 95% Confidence Interval, we consider positive the values of
-% range [0.025, 0.975]
-r1 = 0.025;
-r2 = 0.975;
-
-n1 = length(avg_consumer);
-n2 = length(avg_corporate);
-
-% Find the t-inverse function
-%pkg load statistics;
-%t_inverse_1 = tinv([r1 r2], n1-1);
-%t_inverse_2 = tinv([r1 r2], n2-1);
-
-% Find the variances of both samples
-var_consumers = var(avg_consumer);
-var_corporate = var(avg_corporate);
-
-% STD of the means of both sampls
-std_mean_cons = sqrt(var_consumers/n1);
-std_mean_corp = sqrt(var_corporate/n2);
-
-% Confidence Intervals
-%Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons
-%Conf_Interv_corp = avg_corp + t_inverse_2*std_mean_corp
-
 %% Replication/ Deletion Approach
 % This function uses the Welch method to find the right l vlaue
 % Do multiple runs and partition our results in two clusters
@@ -91,7 +65,7 @@ for index = 1:length(arr_cons)
     y_history(index) = length(y);
     y_iterate{index} = y;
     x = linspace(1, length(y), length(y));
-    subplot(2,3,index); plot(x,y); title(['Simulation: ', num2str(index)])
+    subplot(length(arr_cons)-4,length(arr_cons)-3,index); plot(x,y); title(['Simulation: ', num2str(index)])
 end
 
 % G et the max value from all the values so we can equal the vector lengths
@@ -113,6 +87,8 @@ for index = 1:length(y_iterate{1})
     end
     mean_vector(index) = (sum/length(y_iterate));
 end
+confidence_inteval = find_confidence(mean_vector);
+disp(['Initial 95% Confidence interval (Avg waiting time) :', num2str(confidence)])
 % Plots the mean vector
 x = linspace(1, length(mean_vector), length(mean_vector));
 figure('Renderer', 'painters', 'Position', [10 10 1300 600]);
@@ -158,9 +134,9 @@ for index = 1:length(y_iterate{1})
 end
 
 confidence = find_confidence(mean_vector);
-disp(['Confidence interval after replication/deletion: ', num2str(confidence)])
+disp(['95 % Confidence interval after replication/deletion: ', num2str(confidence)])
 
-%% FUNCTIONS
+
 function Conf_Interv_cons = find_confidence(vector)
 
     n1 = length(vector);
@@ -174,8 +150,7 @@ function Conf_Interv_cons = find_confidence(vector)
     t_inverse_1 = tinv([r1 r2], n1-1);
 
     std_mean_cons = sqrt(var_consumers/n1);
-
-    Conf_Interv_cons = vector + t_inverse_1*std_mean_cons;
+    Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons;
 end
 
 
