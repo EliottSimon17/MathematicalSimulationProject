@@ -87,16 +87,19 @@ for index = 1:length(y_iterate{1})
     end
     mean_vector(index) = (sum/length(y_iterate));
 end
-confidence_inteval = find_confidence(mean_vector);
-disp(['Initial 95% Confidence interval (Avg waiting time) :', num2str(confidence)])
+confidence_interval = find_confidence(mean_vector);
+disp(['Initial 95% Confidence interval (Avg waiting time) :', num2str(confidence_interval)])
 % Plots the mean vector
 x = linspace(1, length(mean_vector), length(mean_vector));
 figure('Renderer', 'painters', 'Position', [10 10 1300 600]);
-subplot(1,2,1),plot(x,mean_vector,'b'); title('Average waiting time'); xlim([4e4 10e4]); xlabel('time(i)'); ylabel('mean time(Y)')
+plot(x,mean_vector,'b')
+
+figure('Renderer', 'painters', 'Position', [10 10 1300 600]);
+subplot(1,2,1),plot(x,mean_vector,'b'); title('Average waiting time'); xlim([0 1e5]); xlabel('time(i)'); ylabel('mean time(Y)')
 
 
 % Low Pass Filter
-w = 2000    ;
+w = 3000;
 y_bar = zeros(1, length(mean_vector));
 
 for i = 2:length(mean_vector)-1
@@ -114,11 +117,13 @@ for i = 2:length(mean_vector)-1
    y_bar(i) = (sum/(2+1));
    end
 end
-subplot(1,2,2), plot(x,y_bar,'b');title('Low Pass Filtering (LPF)');  xlim([4e4 10e4]), xlabel('time(i)'); ylabel('mean time(Y)')
+subplot(1,2,2), plot(x,y_bar,'b');title('Low Pass Filtering (LPF)');  xlim([0 1e5]), xlabel('time(i)'); ylabel('mean time(Y)')
 
 
 % cut off point l
-l = 65000;
+% this was computed graphically
+l = 40000;
+
 for index = 1: length(y_iterate)
     y_iterate{index} = y_iterate{index}(l:end);
 end
@@ -147,16 +152,14 @@ function Conf_Interv_cons = find_confidence(vector)
     r1 = 0.025;
     r2 = 0.975;
     % Compute new confidence interval
-    t_inverse_1 = tinv([r1 r2], n1-1);
+    %t_inverse_1 = tinv([r1 r2], n1-1);
 
     std_mean_cons = sqrt(var_consumers/n1);
-    Conf_Interv_cons = avg_consumer + t_inverse_1*std_mean_cons;
-    %Conf_Interv_cons = 0
+    %Conf_Interv_cons = mean(vector) + t_inverse_1*std_mean_cons;
+    Conf_Interv_cons = 0
 end
 
-
-
-%% Functions
+% gets the y values
 function y_value = values_plot(arrival , start)
     y_value = zeros(1,floor(length(arrival)));
     for index = 1: length(arrival)
